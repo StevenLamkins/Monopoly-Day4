@@ -5,11 +5,11 @@ import java.util.List;
 
 public class MonopolyGame {
 	
-	Board board = new Board();
-	List<Die> dice = new ArrayList<>();
-	List<Player> playerList = new ArrayList<>();
-	int numPlayers;
-	String[] playerTokens = {"Dog", "Car", "Ship", "Boot", "Wheelbarrow", "Iron", "Thimble", "Hat"};
+	private Board board = new Board();
+	private List<Die> dice = new ArrayList<>();
+	private List<Player> playerList = new ArrayList<>();
+	private int numPlayers;
+	private String[] playerTokens = {"Dog", "Car", "Ship", "Boot", "Wheelbarrow", "Iron", "Thimble", "Hat"};
 	
 	public MonopolyGame() {
 		this(2);

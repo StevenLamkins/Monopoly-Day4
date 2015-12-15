@@ -57,7 +57,7 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldStartPlayersOnGo() {
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
 		
 		for (Player player : players) {
@@ -68,7 +68,7 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
 		for (Player player : players) {
 			int match = 0;
@@ -94,7 +94,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldHave1500DollarsPerPlayer() {
 		// setup and exercise
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
 		
 		//verify
@@ -102,5 +102,23 @@ public class WhenSettingUpGame {
 			assertEquals(STARTING_BALANCE, players.get(i).getBalance());
 		}
 	}
+	
+	@Test
+	public void shouldHaveUniqueSquareNames() {
+		MonopolyGame game = new MonopolyGame();
+		List<Square> squares = game.getSquares();
+
+		//private String[] names = {"Mediterranean", "Baltic", "Oriental", "Vermont", "Connecticut", "St. Charles Place", "States", "Virginia", "St. James Place", "Tennessee", "New York", "Kentucky", "Indiana", "Illinois", "Atlantic", "Ventnor", "Marvin Gardens", "Pacific", "North Carolina", "Pennsylvania", "Park Place", "Boardwalk", "Electric Company", "Water Works", "Reading Railroad", "Pennsylvania Railroad", "B&O Railroad", "Short Line Railroad", "Community Chest", "Income Tax", "Chance", "Jail", "Community Chest", "Free Parking", "Chance", "Go to Jail", "Community Chest", "Chance", "Luxury Tax"};
+		
+		assertEquals("Go", squares.get(0).getName());
+		assertEquals("Mediterranean", squares.get(1).getName());
+		assertEquals("Community Chest", squares.get(2).getName());
+		assertEquals("Baltic", squares.get(3).getName());
+		assertEquals("Income Tax", squares.get(4).getName());
+		assertEquals("Reading Railroad", squares.get(5).getName());
+		
+	}
+	
+	// @Test(expected=IllegalArgumentException.class)
 
 }

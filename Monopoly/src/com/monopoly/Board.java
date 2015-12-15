@@ -11,7 +11,7 @@ public class Board {
 	{
 		for (int i = 0; i < 40; i++) 
 		{
-			squares.add(new Square());
+			squares.add(new Square(i));
 		}
 	}
 
