@@ -42,8 +42,8 @@ public class Board {
 		Square newSquare = null;
 		String[] arraySplit = line.split(",");
 		if (arraySplit.length==2){				
-			String id = line.split(",")[0].split(":")[1];
-			String squareType = line.split(",")[1].split(":")[1];
+			String id = arraySplit[0].split(":")[1];
+			 String squareType = arraySplit[1].split(":")[1];
 			newSquare = new Square(id,squareType);
 		}//end if
 		else if (arraySplit.length==3){
@@ -53,7 +53,7 @@ public class Board {
 			 newSquare = new Square(id,squareType,price);
 		}//end else if
 		else if (arraySplit.length>3){
-			 String id = arraySplit[0].split(":")[0];
+			 String id = arraySplit[0].split(":")[1];
 			 String squareType = arraySplit[1].split(":")[1];
 			 int price = Integer.parseInt(arraySplit[2].split("=")[1]);
 			 int rent = Integer.parseInt(arraySplit[3].split("=")[1]);

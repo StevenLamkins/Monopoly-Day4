@@ -63,7 +63,9 @@ public class Player {
 		for (int i = 0; i < moveCount; i++) {			
 			square = square.getNextSquare();
 			//pass go collect $200
-			if (square.getSquareType()=="GO") money+=200;
+			if (square.getSquareType()=="GO") {
+				money+=200;
+			}//end if
 		}//end for
 		if (doubleCount!=0) takeTurn();
 		return stillInGame;
