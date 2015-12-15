@@ -8,6 +8,7 @@ public class MonopolyGame {
 
 	Board board = new Board();
 	List<Player> players = new ArrayList<Player>();
+	Die die = new Die();
 	
 	public MonopolyGame (int playerCount){
 		if (playerCount<2){
@@ -72,7 +73,7 @@ public class MonopolyGame {
 			Iterator<Player> playerIterator = players.iterator();
 			while(playerIterator.hasNext()){
 				Player player = playerIterator.next();
-				if(!player.takeTurn())
+				if(!player.takeTurn(die))
 					players.remove(player);
 			}
 		}

@@ -15,7 +15,8 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Square startSquare = currentPlayer.getSquare();
-		currentPlayer.takeTurn();
+		Die die = new Die(6, 2);
+		currentPlayer.takeTurn(die);
 		assertNotEquals(startSquare, currentPlayer.getSquare());
 	}
 	
@@ -26,6 +27,16 @@ public class WhenPlayingTheGame {
 		Player currentPlayer = players.get(0);
 		currentPlayer.moveToSquare("free parking");
 		assertEquals(currentPlayer.getSquare().getId(), "free parking");
+	}
+	
+	@Test
+	public void gameShouldReward200AfterPassingGo() {
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 20);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getMoney(), 1700);
 	}
 
 }

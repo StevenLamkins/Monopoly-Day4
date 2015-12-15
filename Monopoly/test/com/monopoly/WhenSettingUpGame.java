@@ -61,9 +61,8 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldStartPlayersOnGo() {
-		boolean success = true;
 		for (Player player : players) {
-			assertTrue(player.getSquare().getId().compareTo("Go")==0);
+			assertTrue(player.getSquare().getId().equals("Go"));
 		}
 	}
 	
