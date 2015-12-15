@@ -24,17 +24,17 @@ id:chance-2,squareType:CHANCE
 id:indiana avenue,squareType:PROPERTY,price=220,rent=18,group=red
 id:illinois avenue,squareType:PROPERTY,price=240,rent=20,group=red
 id:B&O railroad,squareType:RR,price=200
-id:atlantic avenue,squareType:PROPERTY
-id:ventinor avenue,squareType:PROPERTY
-id:water works,squareType:UTILITY
-id:marvin gardens,squareType:PROPERTY
+id:atlantic avenue,squareType:PROPERTY,price=260,rent=22,group=yellow
+id:ventinor avenue,squareType:PROPERTY,price=260,rent=22,group=yellow
+id:water works,squareType:UTILITY,price=150
+id:marvin gardens,squareType:PROPERTY,price=280,rent=22,group=yellow
 id:go to jail,squareType:JAIL_JUMP
-id:pacific avenue,squareType:PROPERTY
-id:north carolina avenue,squareType:PROPERTY
+id:pacific avenue,squareType:PROPERTY,price=300,rent=26,group=darkGreen
+id:north carolina avenue,squareType:PROPERTY,price=300,rent=26,group=darkGreen
 id:community chest,squareType:CC
-id:pennsylvania avenue,squareType:PROPERTY
-id:short line,squareType:RR
+id:pennsylvania avenue,squareType:PROPERTY,price=320,rent=28,group=darkGreen
+id:short line,squareType:RR,price=200
 id:chance-3,squareType:CHANCE
-id:park place,squareType:PROPERTY
+id:park place,squareType:PROPERTY,price=350,rent=35,group=darkBlue
 id:luxury tax,squareType:LUX_TAX
-id:board walk,squareType:PROPERTY
+id:board walk,squareType:PROPERTY,price=400,rent=50,group=darkBlue
