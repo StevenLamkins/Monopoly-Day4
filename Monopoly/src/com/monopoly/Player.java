@@ -4,6 +4,7 @@ package com.monopoly;
 public class Player {
 
 	private Square currentSquare;
+	
 	private MonopolyGame.Token token;
 	
 	public Player(Square startSquare, MonopolyGame.Token token) {
@@ -25,5 +26,8 @@ public class Player {
 		return currentSquare;
 	}
 
-	
+	public void setCurrentSquare(Square currentSquare) {
+		this.currentSquare = currentSquare;
+	}
+
 }

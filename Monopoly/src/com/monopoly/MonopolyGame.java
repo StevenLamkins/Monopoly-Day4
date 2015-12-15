@@ -3,6 +3,8 @@ package com.monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dicegame.Die;
+
 public class MonopolyGame {
 
 	private Board board;
@@ -49,4 +51,17 @@ public class MonopolyGame {
 		return board.getSquares().get(0);
 	}
 
+	public void playRound() {
+		Die dice = new Die();
+		
+		for (Player player : players) {
+			int faceValue = dice.rollDice();
+			Square newLocation = null;
+			for (int move = 0; move < faceValue; move++){
+				 newLocation = getSquares().get(move);
+			}
+			player.setCurrentSquare(newLocation);
+		}
+		
+	}
 }

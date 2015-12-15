@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.dicegame.Die;
+
 public class WhenSettingUpGame {
 	/*
 	 * @Before public void setUp() throws Exception { }
@@ -57,6 +59,7 @@ public class WhenSettingUpGame {
 		for (Player player : players) {
 			Square currentSquare = player.getCurrentSquare();
 			assertEquals(currentSquare, squares.get(0));
+			Die die;
 		}
 	}
 
