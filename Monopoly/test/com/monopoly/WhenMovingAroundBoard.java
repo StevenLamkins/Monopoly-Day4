@@ -2,9 +2,14 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import com.monopoly.MonopolyGame.Token;
 
 public class WhenMovingAroundBoard {
 
@@ -52,5 +57,19 @@ public class WhenMovingAroundBoard {
 		player.move(45);
 		int newPosition = player.getPosition();
 		assertTrue(newPosition - oldPosition == 5 );
+	}
+	
+	@Test
+	public void playerRollsDoubles(){
+		LoadedDie dieOne = new LoadedDie(64564);
+		LoadedDie dieTwo = new LoadedDie(64564);
+		List<Die> dice = new ArrayList<>();
+		dice.add(dieOne);
+		dice.add(dieTwo);
+		
+		Player player = new Player(game.getSquares().get(0), Token.Battleship, dice);
+		
+		assertEquals(3, player.takeTurn());
+		
 	}
 }

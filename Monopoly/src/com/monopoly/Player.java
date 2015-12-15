@@ -38,8 +38,16 @@ public class Player {
 		this.money = money;
 	}
 
-	public void takeTurn() {
-		move(rollDice());
+	public int takeTurn() {
+		int value = rollDice();
+		int roll = 1;
+		while(dice.get(0).getFaceValue() == dice.get(1).getFaceValue() && roll < 3)
+		{
+			value += rollDice();
+			roll++;
+		}
+		move(value);
+		return roll;
 	}
 	
 	public int rollDice() {
