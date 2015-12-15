@@ -2,6 +2,8 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Before;
@@ -58,12 +60,27 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldStartPlayersOnGo() {
-		fail("Not yet implemented");
+		boolean success = true;
+		List<Player> players = game.getPlayers();
+		for (Player player : players) {
+			if(player.getLocation()!=0)
+				success=false;
+		}
+		assertEquals(success, true);
 	}
 	
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		fail("Not yet implemented");
+		boolean success = true;
+		List<Player> players = game.getPlayers();
+		List<String> tokens = new ArrayList<String>();
+		for (Player player : players) {
+			if(tokens.contains(player.getToken()))
+				success=false;
+			else
+				tokens.add(player.getToken());
+		}
+		assertEquals(success, true);
 	}
 
 }

@@ -63,6 +63,10 @@ public class MonopolyGame {
 		return board.getSquares();
 	}
 	
+	public List<Player> getPlayers() {
+		return players;
+	}
+	
 	public static void main(String[] args) {
 		
 	}//end main
