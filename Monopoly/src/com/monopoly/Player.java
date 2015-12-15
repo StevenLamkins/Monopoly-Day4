@@ -71,11 +71,14 @@ public class Player {
 	
 	public void moveToSquare(String id){
 		Boolean squareFound=false;
-		while(!squareFound){			
+		int counter=0;
+		while(!squareFound && counter<41){			
+			counter++;
 			square = square.getNextSquare();
 			if (square.getId().compareTo(id)==0){
 				squareFound=true;
 			}//end if
+			
 			
 		}//end for
 	}//end moveToSquare
