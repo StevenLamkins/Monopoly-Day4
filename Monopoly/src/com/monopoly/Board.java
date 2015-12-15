@@ -27,7 +27,7 @@ public class Board {
 			while(squareIter.hasNext()){
 				Square square = squareIter.next();
 				if(squareIter.hasNext())
-					square.setNextSquare(squares.get(currentSquare+1));
+					square.setNextSquare(squares.get(++currentSquare));
 				else
 					square.setNextSquare(squares.get(0));
 				
