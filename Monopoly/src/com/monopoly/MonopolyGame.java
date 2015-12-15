@@ -7,6 +7,7 @@ public class MonopolyGame {
 	
 	private List<Square> squares = new ArrayList<Square>();
 	private List<Player> players = new ArrayList<Player>();
+	private String[] tokens = new String[] {"dog", "wheelbarrow", "top hat", "thimble", "battleship", "car", "boat", "iron"};
 	
 	public MonopolyGame(int people){
 		if (people < 2){
@@ -23,11 +24,15 @@ public class MonopolyGame {
 				count++;
 			}
 		count = 0;
-		Player person = new Player();
+		Player person;
 		while(count < people){
+			person= new Player();
+			person.setToken(tokens[count]);
 			players.add(person);
+			squares.get(0).addPlayertoSpace(person);
 			count++;
 		}
+		
 	}
 
 	public List<Square> getSquares() {
