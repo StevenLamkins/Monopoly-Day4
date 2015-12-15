@@ -80,7 +80,6 @@ public class WhenSettingUpGame {
 		for (Player player : players) {
 			assertTrue(player.getMoney()==1500);
 		}
-		
 	}
-
+	
 }

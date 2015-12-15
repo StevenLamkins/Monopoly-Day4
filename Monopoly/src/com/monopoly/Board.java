@@ -3,6 +3,7 @@ package com.monopoly;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Board {
@@ -18,10 +19,19 @@ public class Board {
 		try {
 			List<String> lines = Files.readAllLines(Paths.get("config/BoardInfo.prop"));
 			for (String line : lines) {
-
 				squares.add(createSquare(line));
-				
 			}//end for each
+			
+			Iterator<Square> squareIter = squares.iterator();
+			int currentSquare=0;
+			while(squareIter.hasNext()){
+				Square square = squareIter.next();
+				if(squareIter.hasNext())
+					square.setNextSquare(squares.get(currentSquare+1));
+				else
+					square.setNextSquare(squares.get(0));
+				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}//end catch

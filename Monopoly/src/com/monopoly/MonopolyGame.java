@@ -1,12 +1,12 @@
 package com.monopoly;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MonopolyGame {
 
 	Board board = new Board();
-	Die die = new Die();
 	List<Player> players = new ArrayList<Player>();
 	
 	public MonopolyGame (int playerCount){
@@ -65,6 +65,20 @@ public class MonopolyGame {
 	
 	public List<Player> getPlayers() {
 		return players;
+	}
+	
+	public void runRound(){
+		if(players.size()>2){
+			Iterator<Player> playerIterator = players.iterator();
+			while(playerIterator.hasNext()){
+				Player player = playerIterator.next();
+				if(!player.takeTurn())
+					players.remove(player);
+			}
+		}
+		else{
+			System.out.println("The game is over! The " + players.get(0).getToken() + " has won!");
+		}
 	}
 	
 	public static void main(String[] args) {

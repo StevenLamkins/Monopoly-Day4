@@ -7,7 +7,16 @@ public class Square {
 	int price;
 	int rent;
 	String group;
+	Square nextSquare;
 	
+	public Square getNextSquare() {
+		return nextSquare;
+	}
+
+	public void setNextSquare(Square nextSquare) {
+		this.nextSquare = nextSquare;
+	}
+
 	public Square(String id,String squareType, int price,int rent,String group){
 		this.id=id;
 		this.squareType =squareType;
