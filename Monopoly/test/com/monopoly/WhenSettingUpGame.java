@@ -2,76 +2,114 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenSettingUpGame {
-	private MonopolyGame game;
-	private int initNumPlayers = 4;
-
-	@Before
-	public void setUp() throws Exception {
-		//setup
-		game = new MonopolyGame(initNumPlayers);
-	}
 
 	@Test
-	public void shouldHave40Squares() {		
-		//verify
-		List<Square> squares = game.getSquares();
-		
-		assertEquals(40, squares.size());		
+	public void shouldHave40Squares() {
 
+		// setup
+		MonopolyGame game = new MonopolyGame();
+		for (int i = 0; i < 4; i++) {
+			game.addPlayer();
+		}
+		game.start();
+
+		// verify
+		List<Square> squares = game.getSquares();
+		assertEquals(40, squares.size());
 	}
-	
+
 	@Test
 	public void shouldHaveCorrectNumberOfPlayers() {
+
+		// setup
+		MonopolyGame game = new MonopolyGame();
+		for (int i = 0; i < 4; i++) {
+			game.addPlayer();
+		}
+		
+		game.start();
+		int initNumPlayers = 4;
+
 		int numPlayers = game.getNumberPlayers();
 		assertEquals(initNumPlayers, numPlayers);
 	}
 
 	@Test
 	public void shouldErrorWithTooManyPlayers() {
-		
-		try {
-			game = new MonopolyGame(9);
-			fail();
-		} catch (IllegalArgumentException e) {
-			assertTrue("Too Many Players", true);
 
+		MonopolyGame game = new MonopolyGame();
+
+		try {
+			for (int i = 0; i < 9; i++) {
+				game.addPlayer();
+			}
+			game.start();
+			fail();
+		} catch (RuntimeException e) {
+			assertTrue("Too Many Players", true);
 		}
-	}	
-	
+	}
+
 	@Test
 	public void shouldErrorWithTooFewPlayers() {
+
+		MonopolyGame game = new MonopolyGame();
 		try {
-			game = new MonopolyGame(0);
+			game.addPlayer();
+			game.start();
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals("Too Few Players", e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void shouldStartPlayersOnGo() {
+
+		MonopolyGame game = new MonopolyGame();
+		for (int i = 0; i < 4; i++) {
+			game.addPlayer();
+		}
+		game.start();
 		List<Player> players = game.getPlayers();
 		for (Player player : players) {
 			Square square = player.getSquare();
-			
-			assertEquals(square.getName(), "Go");
-			
-		} 
-		
 
+			assertEquals("Go", square.getName());
+		}
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame();
+		List<String> tokenList = new ArrayList<String>();
+		for (int i = 0; i < MonopolyGame.MAX_NUM_PLAYERS; i++) {
+			game.addPlayer();
+			String token = game.getPlayers().get(i).getToken();
+			
+			if(tokenList.contains(token)) {
+				fail();
+			}
+			tokenList.add(token);
+		}
+		assertTrue(true);
+	}
+	
+	@Test
+	public void shouldBeAbleToAddPlayer() {
+		
+		//Setup
+		MonopolyGame game = new MonopolyGame();
+		int currentNumPlayers = 0;
+		game.addPlayer();		
+		
+		assertEquals(currentNumPlayers + 1, game.getNumberPlayers());
 	}
 	
 }

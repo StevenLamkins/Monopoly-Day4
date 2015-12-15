@@ -1,10 +1,24 @@
 package com.monopoly;
 
 public class Square {
+	
+	private String name;
+	private Square nextSquare;
 
-	public Object getName() {
-		// TODO Auto-generated method stub
-		return null;
+	public Square getNextSquare() {
+		return nextSquare;
 	}
 
+	public void setNextSquare(Square nextSquare) {
+		this.nextSquare = nextSquare;
+	}
+
+	public Square(String name) {
+		this.name = name;
+		
+	}
+
+	public Object getName() {
+		return name;
+	}
 }
