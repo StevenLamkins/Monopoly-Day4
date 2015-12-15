@@ -8,6 +8,7 @@ public class Square {
 	int rent;
 	String group;
 	Square nextSquare;
+	Player owner;
 	
 	public Square getNextSquare() {
 		return nextSquare;
@@ -42,6 +43,14 @@ public class Square {
 
 	public String getSquareType() {
 		return squareType;		
-	}//end getSquareType
+	}
+	
+	public boolean handlePlayerLanding(Player player, boolean buyIfProperty){
+		return true;
+	}
+
+	public Player getOwner() {
+		return owner;
+	}
 	
 }//end Square

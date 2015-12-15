@@ -73,7 +73,7 @@ public class MonopolyGame {
 			Iterator<Player> playerIterator = players.iterator();
 			while(playerIterator.hasNext()){
 				Player player = playerIterator.next();
-				if(!player.takeTurn(die))
+				if(!player.takeTurn(die, true))
 					players.remove(player);
 			}
 		}

@@ -16,7 +16,7 @@ public class WhenPlayingTheGame {
 		Player currentPlayer = players.get(0);
 		Square startSquare = currentPlayer.getSquare();
 		Die die = new Die(6, 2, false);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertNotEquals(startSquare, currentPlayer.getSquare());
 	}
 	
@@ -35,7 +35,7 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Die die = new Die(6, 21, false);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getMoney(), 1700);
 	}
 	
@@ -45,7 +45,7 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Die die = new Die(6, 3, true);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
 	}
 	
@@ -55,9 +55,9 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Die die = new Die(6, 3, true);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
 	}
 	
@@ -66,16 +66,16 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		Die die = new Die(6, 3, true);
-		currentPlayer.takeTurn(die);
+		Die die = new Die(6, 1, true);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
-		die = new Die(6, 3, false);
-		currentPlayer.takeTurn(die);
+		die = new Die(6, 1, false);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
-		currentPlayer.takeTurn(die);
-		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
+		currentPlayer.takeTurn(die, false);
+		assertEquals(currentPlayer.isInJail(), false);
 		assertEquals(currentPlayer.getMoney(), 1450);
 	}
 	
@@ -85,13 +85,25 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Die die = new Die(6, 3, true);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
 		currentPlayer.addOutOfJailCard();
 		die = new Die(6, 3, false);
-		currentPlayer.takeTurn(die);
+		currentPlayer.takeTurn(die, false);
 		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
 		assertEquals(currentPlayer.getMoney(), 1500);
+	}
+	
+	@Test
+	public void gameShouldAllowPlayerToBuyProperty(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 1, false);
+		currentPlayer.takeTurn(die, true);
+		assertEquals(currentPlayer.getMoney(), 1440);
+		assertEquals(currentPlayer.getSquare().getSquareType(),"PROPERTY");
+		assertEquals(currentPlayer.getSquare().getOwner(),currentPlayer);
 	}
 
 }

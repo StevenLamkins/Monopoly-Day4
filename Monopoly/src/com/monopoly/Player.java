@@ -7,6 +7,10 @@ public class Player {
 	int money, doubleCount, jailTurnCount, outOfJailFreeCount;
 	boolean isInJail=false;
 	
+	public boolean isInJail() {
+		return isInJail;
+	}
+
 	Player(String token, Square square){
 		this.token=token;
 		this.square =square;
@@ -53,7 +57,7 @@ public class Player {
 		return success;
 	}
 	
-	public boolean takeTurn(Die die){
+	public boolean takeTurn(Die die, Boolean buyIfProperty){
 		boolean stillInGame = true;
 		
 		int roll1 = die.roll(12345);
@@ -97,12 +101,22 @@ public class Player {
 		int moveCount = roll1 + roll2;
 		for (int i = 0; i < moveCount; i++) {			
 			square = square.getNextSquare();
-			if (square.getSquareType().equals("GO")) {
+			if (square.getId().equals("GO")) {
 				money+=200;
 			}
 		}
+		if(square.getId().equals("go to jail")){
+			moveToSquare("jail");
+			return stillInGame;
+		}
+		else {
+			stillInGame = square.handlePlayerLanding(this, buyIfProperty);
+			if(!stillInGame)
+				return stillInGame;
+		}
+			
 		if (doubleCount!=0) {
-			takeTurn(die);
+			takeTurn(die, buyIfProperty);
 		}			
 		
 		return stillInGame;
