@@ -9,6 +9,7 @@ public class Die {
 	int sides;
 	int loadedDiceValue = 0;
 	boolean noDoubles=false;
+	boolean alwaysDoubles=false;
 	
 	public Die(){
 		this(6);//calls constructor with 'sides' argument		
@@ -19,10 +20,11 @@ public class Die {
 		this.sides = sides;		
 	}//end Die constructor
 	
-	public Die(int sides, int loadedDiceValue) {
+	public Die(int sides, int loadedDiceValue, boolean alwaysDoubles) {
 		if (sides < 2) throw new IllegalArgumentException("Too few Sides!");
 			this.sides = sides;
 		this.loadedDiceValue=loadedDiceValue;
+		this.alwaysDoubles=alwaysDoubles;
 	}
 
 	public int getFaceValue() {
@@ -32,7 +34,9 @@ public class Die {
 	public int roll(int seed){
 		int returnValue;
 		if (loadedDiceValue!=0){
-			if(!noDoubles)
+			if(alwaysDoubles)
+				returnValue = loadedDiceValue;
+			else if(!noDoubles)
 				returnValue=loadedDiceValue;
 			else
 				returnValue=loadedDiceValue+1;

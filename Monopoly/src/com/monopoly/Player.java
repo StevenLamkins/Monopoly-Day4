@@ -4,7 +4,7 @@ public class Player {
 
 	private String token;
 	private Square square;
-	int money, doubleCount;
+	int money, doubleCount, jailTurnCount, outOfJailFreeCount;
 	boolean isInJail=false;
 	
 	Player(String token, Square square){
@@ -12,6 +12,8 @@ public class Player {
 		this.square =square;
 		this.money=1500;
 		this.doubleCount=0;
+		this.jailTurnCount=0;
+		this.outOfJailFreeCount=0;
 	}//end player
 	
 	public String getToken(){
@@ -49,9 +51,36 @@ public class Player {
 	
 	public boolean takeTurn(Die die){
 		boolean stillInGame = true;
+		
 		int roll1 = die.roll(12345);
 		int roll2 = die.roll(6789);
-		if (roll1==roll2) {
+		
+		boolean wasInJail=false;
+		if(isInJail){
+			if(outOfJailFreeCount!=0){
+				isInJail=false;
+				jailTurnCount=0;
+				outOfJailFreeCount--;
+			}
+			else{
+				if(roll1==roll2){
+					isInJail=false;
+					wasInJail=true;
+					jailTurnCount=0;
+				}
+				else if(jailTurnCount<3){
+					jailTurnCount++;
+					return stillInGame;
+				}
+				else{
+					money-=50;
+					isInJail=false;
+					jailTurnCount=0;
+				}
+			}
+		}
+		
+		if (roll1==roll2 && !wasInJail) {
 			doubleCount++;
 			if (doubleCount==3){
 				moveToSquare("jail");
@@ -60,6 +89,7 @@ public class Player {
 		}//end if
 		else
 			doubleCount=0;
+		
 		int moveCount = roll1 + roll2;
 		for (int i = 0; i < moveCount; i++) {			
 			square = square.getNextSquare();
@@ -69,7 +99,8 @@ public class Player {
 		}
 		if (doubleCount!=0) {
 			takeTurn(die);
-		}
+		}			
+		
 		return stillInGame;
 	}
 	

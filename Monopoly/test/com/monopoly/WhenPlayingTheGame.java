@@ -15,7 +15,7 @@ public class WhenPlayingTheGame {
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
 		Square startSquare = currentPlayer.getSquare();
-		Die die = new Die(6, 2);
+		Die die = new Die(6, 2, false);
 		currentPlayer.takeTurn(die);
 		assertNotEquals(startSquare, currentPlayer.getSquare());
 	}
@@ -34,9 +34,31 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		Die die = new Die(6, 21);
+		Die die = new Die(6, 21, false);
 		currentPlayer.takeTurn(die);
 		assertEquals(currentPlayer.getMoney(), 1700);
+	}
+	
+	@Test
+	public void gameShouldSendPlayerToJailAfterDoubles(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 3, true);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+	}
+	
+	@Test
+	public void gameShouldAllowPlayerToLeaveJailAfterDoubles(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 3, true);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+		currentPlayer.takeTurn(die);
+		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
 	}
 
 }
