@@ -1,29 +1,29 @@
 id:Go,squareType:GO
-id:mediteranian avenue,squareType:PROPERTY
+id:mediteranian avenue,squareType:PROPERTY,price=60,rent=2,group=purple
 id:community Chest-1,squareType:CC
-id:baltic avenue,squareType:PROPERTY
+id:baltic avenue,squareType:PROPERTY,price=60,rent=4,group=purple
 id:income tax,squareType:INC_TAX
-id:reading railroad,squareType:RR
-id:oriental avenue,squareType:PROPERTY
+id:reading railroad,squareType:RR,price=200
+id:oriental avenue,squareType:PROPERTY,price=100,rent=6,group=lightGreen
 id:chance-1,squareType:CHANCE
-id:vermont avenue,squareType:PROPERTY
-id:connecticut avenue,squareType:PROPERTY
+id:vermont avenue,squareType:PROPERTY,price=100,rent=6,group=lightGreen
+id:connecticut avenue,squareType:PROPERTY,price=100,rent=8,group=lightGreen
 id:jail,squareType:JAIL
-id:st charles place,squareType:PROPERTY
-id:electric company,squareType:UTILITY
-id:states avenue,squareType:PROPERTY
-id:virginia avenue,squareType:PROPERTY
-id:pennsylvania railroad,squareType:RR
-id:st james place,squareType:PROPERTY
+id:st charles place,squareType:PROPERTY,price=140,rent=10,group=violet
+id:electric company,squareType:UTILITY,price=150
+id:states avenue,squareType:PROPERTY,price=140,rent=10,group=violet
+id:virginia avenue,squareType:PROPERTY,price=160,rent=12,group=violet
+id:pennsylvania railroad,squareType:RR,price=200
+id:st james place,squareType:PROPERTY,price=180,rent=14,group=orange
 id:community chest-2,squareType:CC
-id:tennessee avenue,squareType:PROPERTY
-id:new york avenue,squareType:PROPERTY
+id:tennessee avenue,squareType:PROPERTY,price=180,rent=14,group=orange
+id:new york avenue,squareType:PROPERTY,price=200,rent=16,group=orange
 id:free parking,squareType:FREEPARKING
-id:kentucky avenue,squareType:PROPERTY
+id:kentucky avenue,squareType:PROPERTY,price=220,rent=18,group=red
 id:chance-2,squareType:CHANCE
-id:indiana avenue,squareType:PROPERTY
-id:illinois avenue,squareType:PROPERTY
-id:B&O railroad,squareType:RR
+id:indiana avenue,squareType:PROPERTY,price=220,rent=18,group=red
+id:illinois avenue,squareType:PROPERTY,price=240,rent=20,group=red
+id:B&O railroad,squareType:RR,price=200
 id:atlantic avenue,squareType:PROPERTY
 id:ventinor avenue,squareType:PROPERTY
 id:water works,squareType:UTILITY

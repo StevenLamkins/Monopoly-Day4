@@ -11,10 +11,10 @@ public class MonopolyGame {
 	
 	public MonopolyGame (int playerCount){
 		if (playerCount<2){
-			throw new IllegalArgumentException("To Few Players");
+			throw new IllegalArgumentException("Too few players");
 		}//end if
 		else if (playerCount>8){
-			throw new IllegalArgumentException("To many Players");
+			throw new IllegalArgumentException("Too many players");
 		}//end if
 		
 		for (int i = 0; i < playerCount; i++) {

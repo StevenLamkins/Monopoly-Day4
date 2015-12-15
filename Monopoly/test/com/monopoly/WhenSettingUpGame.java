@@ -4,14 +4,20 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class WhenSettingUpGame {
+	MonopolyGame game;
+	
+	@Before
+	public void setupGame(){
+		game = new MonopolyGame(4);
+	}
 
 	@Test
 	public void shouldHave40Squares() {
 		// setup + exercise
-		MonopolyGame game = new MonopolyGame(4);
 		List<Square> squares = game.getSquares();
 
 		//verify
@@ -19,18 +25,35 @@ public class WhenSettingUpGame {
 	}
 	
 	@Test
-	public void shouldHaveCorrectNumberOfPlayers() {
-		fail("Not yet implemented");
+	public void shouldHaveLessThan9Players() {
+		assertTrue(game.getPlayers().size()<9);
+	}
+	
+	@Test
+	public void shouldHaveMoreThan2Players() {
+		assertTrue(game.getPlayers().size()>2);
 	}
 	
 	@Test
 	public void shouldErrorWithTooManyPlayers() {
-		fail("Not yet implemented");
+		try{
+			MonopolyGame game2 = new MonopolyGame(9);
+			fail("Too many players test failure");
+		}
+		catch (IllegalArgumentException e){
+			assertEquals("Too many players",e.getMessage());
+		}
 	}
 	
 	@Test
 	public void shouldErrorWithTooFewPlayers() {
-		fail("Not yet implemented");
+		try{
+			MonopolyGame game2 = new MonopolyGame(1);
+			fail("Too few players test failure");
+		}
+		catch (IllegalArgumentException e){
+			assertEquals("Too few players",e.getMessage());
+		}
 	}
 
 	@Test
