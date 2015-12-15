@@ -10,7 +10,8 @@ import org.junit.Test;
 
 public class WhenSettingUpGame {
 	
-	public final static int FIRST_LOCATION = 0;
+	private static final int FIRST_LOCATION = 0;
+	private static final int STARTING_BALANCE = 1500;
 
 	@Test
 	public void shouldHave40Squares() {
@@ -58,7 +59,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldStartPlayersOnGo() {
 		MonopolyGame game = new MonopolyGame();
-		List<String> players = game.getPlayers();
+		List<String> players = game.getPlayerNames();
 		
 		for (String name : players) {
 			int location = game.getPlayerLocation(name);
@@ -78,6 +79,28 @@ public class WhenSettingUpGame {
 				}
 			}
 			assertTrue(match < 2);
+		}
+	}
+
+	@Test
+	public void shouldHave2Dice() {
+		// setup and exercise
+		MonopolyGame game = new MonopolyGame();
+		List<Die> dice = game.getDice();
+		
+		// verify
+		assertEquals(2, dice.size());
+	}
+
+	@Test
+	public void shouldHave1500DollarsPerPlayer() {
+		// setup and exercise
+		MonopolyGame game = new MonopolyGame();
+		List<Player> players = game.getPlayers();
+		
+		//verify
+		for (int i = 0; i < players.size(); i++) {
+			assertEquals(STARTING_BALANCE, players.get(i).getBalance());
 		}
 	}
 

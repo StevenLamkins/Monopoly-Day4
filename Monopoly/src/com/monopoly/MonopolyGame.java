@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MonopolyGame {
+	
 	Board board = new Board();
+	List<Die> dice = new ArrayList<>();
 	List<Player> playerList = new ArrayList<>();
 	int numPlayers;
+	String[] playerTokens = {"Dog", "Car", "Ship", "Boot", "Wheelbarrow", "Iron", "Thimble", "Hat"};
 	
 	public MonopolyGame() {
 		this(2);
@@ -19,11 +22,15 @@ public class MonopolyGame {
 		this.numPlayers = players;
 		
 		for (int indx = 0; indx < this.numPlayers; indx++) {
-			
 	       Player player = new Player();
+	       player.setToken(playerTokens[indx]);
 	       playerList.add(player);
-			
 		}
+
+		Die d1 = new Die();
+		dice.add(d1);
+		Die d2 = new Die();
+		dice.add(d2);
 		
 	}
 	
@@ -35,7 +42,11 @@ public class MonopolyGame {
 		return numPlayers;
 	}
 
-	public List<String> getPlayers() {
+	public List<Player> getPlayers() {		
+		return playerList;
+	}
+
+	public List<String> getPlayerNames() {
 		
 		List<String> playerNames = new ArrayList<>();
 		
@@ -70,6 +81,10 @@ public class MonopolyGame {
 		}
 		
 		return playerTokens;
+	}
+
+	public List<Die> getDice() {
+		return dice;
 	}
 
 	
