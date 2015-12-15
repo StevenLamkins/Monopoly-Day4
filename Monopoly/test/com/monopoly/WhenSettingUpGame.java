@@ -61,13 +61,12 @@ public class WhenSettingUpGame {
 		MonopolyGame game = new MonopolyGame();
 		List<Square> squares = game.getSquares();
 		List<Player> players = game.getPlayers();
+
 		for (Player player : players) {
-			Square square = player.getCurrentLocation();
-			// verify
-			assertEquals(squares.get(0), square);
+			Square currentSquare = player.getCurrentSquare();
+			assertEquals(currentSquare, squares.get(0));
 		}
-		}
-	
+	}
 
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {

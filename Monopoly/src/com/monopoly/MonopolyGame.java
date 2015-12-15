@@ -5,22 +5,20 @@ import java.util.List;
 
 public class MonopolyGame {
 
-	private List<Square> squares = new ArrayList<>();
+	private Board board;
+	
 	private List<Player> players = new ArrayList<>();
 	
-	final int NUMBER_OF_SQUARES = 40;
 	final int MAX_NUMBER_OF_PLAYERS = 8;
 
 	public MonopolyGame() {
-		for (int i = 0; i < NUMBER_OF_SQUARES; i++) {
-			squares.add(new Square());
-		}
+		board = new Board();
 	}
 
 	
 	public List<Square> getSquares() {
 		
-		return squares;
+		return board.getSquares();
 	}
 
 	public List<Player> getPlayers() {
@@ -29,6 +27,11 @@ public class MonopolyGame {
 			players.add(player);
 		}
 		return players;
+	}
+	
+	public Square getGoSquare () {
+		
+		return	board.getSquares().get(0);
 	}
 
 }
