@@ -1,5 +1,12 @@
 package com.monopoly;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public enum Square {
 	Go                   (SquareType.GO, SquareGroup.NONE, 0, 0),
 	MediterraneanAvenue  (SquareType.PROPERTY, SquareGroup.PURPLE, 60, 2),
@@ -42,12 +49,52 @@ public enum Square {
 	LuxuryTax            (SquareType.TAX, SquareGroup.NONE, 0, 0),
 	Boardwalk            (SquareType.PROPERTY, SquareGroup.DARK_BLUE, 400, 50);
 	
+	private static Map<SquareGroup, Set<Square>> monopolyMap;
+	
+	static {
+		monopolyMap = new HashMap<>();
+		
+		for (Square s : Square.values()) {
+			if (!monopolyMap.containsKey(s.getGroup())) {
+				monopolyMap.put(s.getGroup(), new HashSet<Square>());
+			}
+			
+			monopolyMap.get(s.getGroup()).add(s);
+		}
+	}
+	
+	public static List<SquareGroup> getMonopolies(List<Square> properties) {
+		List<SquareGroup> monopolies = new ArrayList<>();
+		
+		Map<SquareGroup, Set<Square>> monopolyMap = new HashMap<>();
+		
+		for (Square s : properties) {
+			if (!monopolyMap.containsKey(s.getGroup())) {
+				monopolyMap.put(s.getGroup(), new HashSet<Square>());
+			}
+			
+			monopolyMap.get(s.getGroup()).add(s);
+		}
+		
+		for (SquareGroup group : Square.monopolyMap.keySet()) {
+			Set<Square> playerSquares = monopolyMap.get(group);
+			Set<Square> squares = Square.monopolyMap.get(group);
+			
+			if (playerSquares != null && playerSquares.containsAll(squares)) {
+				monopolies.add(group);
+				System.out.println("FOUND MONOPOLY "+group.name());
+			}
+		}
+		
+		return monopolies;
+	}
+	
 	private SquareType type;
 	private SquareGroup group;
 	private int price;
 	private int rent;
 	private int houseBuildingCost;
-	private int numHouses;	
+	private int numHouses;
 	
 	private Square(SquareType type, SquareGroup group, int price, int rent) {
 		this.type = type;
