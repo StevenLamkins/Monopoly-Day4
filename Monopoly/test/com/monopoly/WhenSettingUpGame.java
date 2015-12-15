@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -82,18 +83,28 @@ public class WhenSettingUpGame
 		
 	}
 	
-	@Ignore
+	
 	@Test
 	public void shouldStartPlayersOnGo()
 	{
-		fail("Not yet implemented");
+		for (int j = 2; j < 9; j++) {
+			MonopolyGame game = new MonopolyGame(j);
+			Set<Player> players = game.getPlayers();
+			for (Player p : players) {
+				assertEquals(0,p.getCurrentPosition());
+			}
+		}
 	}
 	
 	@Ignore
 	@Test
 	public void shouldHaveUniqueTokenForPlayers()
 	{
-		fail("Not yet implemented");
+//		MonopolyGame game = new MonopolyGame(x);
+//		for(Player p : game.getPlayers())
+//		{
+//			
+//		}
 	}
 	
 	

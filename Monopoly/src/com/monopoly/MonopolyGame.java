@@ -25,7 +25,7 @@ public class MonopolyGame
 		
 		for (int i = 0; i < numPlayers; i++)
 		{
-			players.add(new Player());
+			players.add(new Player(i));
 		}
 	}
 	
