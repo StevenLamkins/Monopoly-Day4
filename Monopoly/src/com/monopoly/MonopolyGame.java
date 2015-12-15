@@ -3,6 +3,8 @@ package com.monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dicegame.Die;
+
 public class MonopolyGame {
 	
 	private int numberOfPlayers;
