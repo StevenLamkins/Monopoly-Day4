@@ -1,5 +1,6 @@
 package com.monopoly;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,7 +9,7 @@ import java.util.Set;
 public class MonopolyGame
 {
 	private Board board;
-	private Set<Player> players;
+	private List<Player> players;
 	
 	public MonopolyGame(int numPlayers)
 	{
@@ -22,7 +23,7 @@ public class MonopolyGame
 		}
 		
 		board = new Board(numPlayers);
-		players = new HashSet<>();
+		players = new ArrayList<>();
 		
 		for (int i = 0; i < numPlayers; i++)
 		{
@@ -40,7 +41,7 @@ public class MonopolyGame
 		return die.roll() + die.roll();
 	}
 	
-	public Set<Player> getPlayers()
+	public List<Player> getPlayers()
 	{
 		return players;
 	}

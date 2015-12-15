@@ -6,25 +6,25 @@ public class Player
   Square currentPosition;
   String piece;
   
-  public Player(int token, Square startSquare){
+  public Player(int playerNumber, Square startSquare){
 	  
-	  switch(token)
+	  switch(playerNumber)
 	  {
-	  case 0: this.piece = "DOG";
+	  case 0: this.piece = "Dog";
 	  		break;
-	  case 1: this.piece = "HAT";
+	  case 1: this.piece = "Iron";
 		break;
-	  case 2: this.piece = "IRON";
+	  case 2: this.piece = "Shoe";
 		break;
-	  case 3: this.piece = "BOAT";
+	  case 3: this.piece = "Racecar";
 		break;
-	  case 4: this.piece = "CAR";
+	  case 4: this.piece = "Battleship";
 		break;
-	  case 5: this.piece = "WHEELBARROW";
+	  case 5: this.piece = "Thimble";
 		break;
-	  case 6: this.piece = "THUMBLE";
+	  case 6: this.piece = "Wheelbarrow";
 		break;
-	  case 7: this.piece = "SHOE";
+	  case 7: this.piece = "TopHat";
 		break;
 	  
 	  }
@@ -47,6 +47,11 @@ public Square getCurrentPosition()
 {
 	return currentPosition; 
 	
+}
+
+public String getName()
+{
+	return piece;
 }
 	
 

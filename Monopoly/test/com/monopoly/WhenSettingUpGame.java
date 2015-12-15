@@ -89,7 +89,7 @@ public class WhenSettingUpGame
 	{
 		for (int j = 2; j < 9; j++) {
 			MonopolyGame game = new MonopolyGame(j);
-			Set<Player> players = game.getPlayers();
+			List<Player> players = game.getPlayers();
 			List<Square> squares = game.getSquares();
 			Square goSquare= squares.get(0);
 			for (Player p : players) {
@@ -98,10 +98,20 @@ public class WhenSettingUpGame
 		}
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveUniqueTokenForPlayers()
 	{
+		MonopolyGame game = new MonopolyGame(8);
+		List<Player> players = game.getPlayers();
+		assertEquals(Token.Dog.toString(), players.get(0).getName());
+		assertEquals(Token.Iron.toString(), players.get(1).getName());
+		assertEquals(Token.Shoe.toString(), players.get(2).getName());
+		assertEquals(Token.Racecar.toString(), players.get(3).getName());
+		assertEquals(Token.Battleship.toString(), players.get(4).getName());
+		assertEquals(Token.Thimble.toString(), players.get(5).getName());
+		assertEquals(Token.Wheelbarrow.toString(), players.get(6).getName());
+		assertEquals(Token.TopHat.toString(), players.get(7).getName());
+		
 //		MonopolyGame game = new MonopolyGame(x);
 //		for(Player p : game.getPlayers())
 //		{
