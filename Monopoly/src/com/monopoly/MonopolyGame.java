@@ -7,7 +7,7 @@ public class MonopolyGame {
 	
 	private List<Square> squares = new ArrayList<Square>();
 	private List<Player> players = new ArrayList<Player>();
-	private String[] tokens = new String[] {"dog", "wheelbarrow", "top hat", "thimble", "battleship", "car", "boat", "iron"};
+	public String[] tokens = new String[] {"dog", "wheelbarrow", "top hat", "thimble", "battleship", "car", "boot", "iron"};
 	
 	public MonopolyGame(int people){
 		if (people < 2){
