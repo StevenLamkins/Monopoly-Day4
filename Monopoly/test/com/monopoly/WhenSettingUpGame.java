@@ -70,6 +70,15 @@ public class WhenSettingUpGame {
 	public void shouldHaveUniqueTokensForPlayers() {
 		MonopolyGame game = new MonopolyGame();
 		List<String> playerTokens = game.getPlayerTokens();
+		for (String token : playerTokens) {
+			int match = 0;
+			for (int i = 0; i < playerTokens.size(); i++) {
+				if (playerTokens.get(i).equals(token)) {
+					match++;
+				}
+			}
+			assertTrue(match < 2);
+		}
 	}
 
 }

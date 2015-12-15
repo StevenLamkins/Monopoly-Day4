@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MonopolyGame {
-	List<Square> squares = new ArrayList<>();
-	int numPlayers;
-
+	Board board = new Board();
 	List<Player> playerList = new ArrayList<>();
+	int numPlayers;
 	
 	public MonopolyGame() {
 		this(2);
@@ -18,9 +17,6 @@ public class MonopolyGame {
 		if (players < 2) throw new IllegalArgumentException("Too few players!");
 		
 		this.numPlayers = players;
-		for (int i = 0; i < 40; i++) {
-			squares.add(new Square());
-		}
 		
 		for (int indx = 0; indx < this.numPlayers; indx++) {
 			
@@ -32,7 +28,7 @@ public class MonopolyGame {
 	}
 	
 	public List<Square> getSquares() {
-		return squares;
+		return board.getSquares();
 	}
 
 	public int getNumPlayers() {
@@ -63,6 +59,17 @@ public class MonopolyGame {
 		}
 		
 		return -1;
+	}
+
+	public List<String> getPlayerTokens() {
+		List<String> playerTokens = new ArrayList<>();
+		
+		for (Player player : playerList) 
+		{
+			playerTokens.add(player.getToken());
+		}
+		
+		return playerTokens;
 	}
 
 	

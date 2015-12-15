@@ -4,6 +4,7 @@ public class Player {
 
 	 private int location;
 	 private String name = "Jacob";
+	 private String token = "Dog";
 	 
 	public int getLocation() {
 		return location;
@@ -19,6 +20,10 @@ public class Player {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getToken() {
+		return token;
 	}
 	 
 	 
