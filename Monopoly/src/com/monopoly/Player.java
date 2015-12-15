@@ -40,6 +40,10 @@ public class Player {
 		this.money+=money;
 	}
 	
+	public void addOutOfJailCard(){
+		this.outOfJailFreeCount++;
+	}
+	
 	public boolean removeMoney(int money) {
 		boolean success = true;
 		if(money>this.money)
@@ -68,7 +72,7 @@ public class Player {
 					wasInJail=true;
 					jailTurnCount=0;
 				}
-				else if(jailTurnCount<3){
+				else if(jailTurnCount<2){
 					jailTurnCount++;
 					return stillInGame;
 				}

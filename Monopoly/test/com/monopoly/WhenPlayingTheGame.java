@@ -60,5 +60,38 @@ public class WhenPlayingTheGame {
 		currentPlayer.takeTurn(die);
 		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
 	}
+	
+	@Test
+	public void gameNeeds3NonDoublesToEscapeJail(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 3, true);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+		die = new Die(6, 3, false);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+		currentPlayer.takeTurn(die);
+		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
+		assertEquals(currentPlayer.getMoney(), 1450);
+	}
+	
+	@Test
+	public void gameShouldAllowPlayerToLeaveJailWithCard(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		Die die = new Die(6, 3, true);
+		currentPlayer.takeTurn(die);
+		assertEquals(currentPlayer.getSquare().getId(), "jail");
+		currentPlayer.addOutOfJailCard();
+		die = new Die(6, 3, false);
+		currentPlayer.takeTurn(die);
+		assertNotEquals(currentPlayer.getSquare().getId(), "jail");
+		assertEquals(currentPlayer.getMoney(), 1500);
+	}
 
 }
