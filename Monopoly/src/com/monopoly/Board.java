@@ -20,12 +20,17 @@ public class Board {
 	public void setSquares(List<Square> squares) {
 		this.squares = squares;
 	}
+	
+	public Square getStartSquare() {
+		return squares.get(0);
+	}
 
 
 	private void createSquares() {
 	   squares = new ArrayList<>();
-	   for (int i = 0; i < 40; i++) {
-			squares.add(new Square(""));
+	   squares.add(new Square("Go Square"));
+	   for (int i = 1; i < 40; i++) {
+			squares.add(new Square("Square" + i));
 		}
 	}
 }

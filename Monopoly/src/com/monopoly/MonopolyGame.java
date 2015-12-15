@@ -44,7 +44,7 @@ public class MonopolyGame {
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Token token = Token.values()[i];
 			Player aPlayer = new Player();
-			aPlayer.setLocation(new Square("GO"));
+			aPlayer.setLocation(board.getStartSquare());
 			aPlayer.setMoney(1500);
 			aPlayer.setToken(token);
 			

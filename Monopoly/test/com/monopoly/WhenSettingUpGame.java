@@ -1,7 +1,6 @@
 package com.monopoly;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 import java.util.List;
 
@@ -54,7 +53,7 @@ public class WhenSettingUpGame {
 		List<Player> players = game.getPlayers();
 		
 		for (Player aplayer : players) {
-			assertEquals("GO", aplayer.getLocation().getName());
+			assertEquals("Go Square", aplayer.getLocation().getName());
 		}	
 	}
 
