@@ -46,7 +46,7 @@ public enum Square {
 	private SquareGroup group;
 	private int price;
 	private int rent;
-	private int housePrice;
+	private int houseBuildingCost;
 	private int numHouses;	
 	
 	private Square(SquareType type, SquareGroup group, int price, int rent) {
@@ -54,6 +54,27 @@ public enum Square {
 		this.group = group;
 		this.price = price;
 		this.rent = rent;
+		
+		switch (group) {
+			case PURPLE:
+			case LIGHT_GREEN:
+				houseBuildingCost = 50;
+				break;
+			case VIOLET:
+			case ORANGE:
+				houseBuildingCost = 100;
+				break;
+			case RED:
+			case YELLOW:
+				houseBuildingCost = 150;
+				break;
+			case DARK_GREEN:
+			case DARK_BLUE:
+				houseBuildingCost = 200;
+				break;
+			default:
+				break;
+		}
 	}
 	
 	public SquareType getType() {
@@ -69,15 +90,15 @@ public enum Square {
 	}
 	
 	public int getRent() {
-		return rent;
+		return (int) (rent + (rent * 1.25) * numHouses);
 	}
 	
 	public int getNumHouses() {
 		return numHouses;
 	}
 	
-	public int getHousePrice() {
-		return housePrice;
+	public int getHouseBuildingCost() {
+		return houseBuildingCost;
 	}
 	
 	public int addHouse() {

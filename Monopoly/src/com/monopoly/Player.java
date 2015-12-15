@@ -8,6 +8,7 @@ public class Player {
 	private int balance;
 	private int position;
 	private List<Square> properties;
+	private int doubleCount;
 	
 	public Player(int token, int balance) {
 		this.token = token;
@@ -48,5 +49,17 @@ public class Player {
 		balance += amount;
 		
 		return balance;
-	}	
+	}
+	
+	public int getDoubleCount() {
+		return doubleCount;
+	}
+	
+	public void incrementDoubleCount() {
+		doubleCount++;
+	}
+	
+	public void resetDoubleCount() {
+		doubleCount = 0;
+	}
 }
