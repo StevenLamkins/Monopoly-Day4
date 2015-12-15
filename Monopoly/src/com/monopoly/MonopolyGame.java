@@ -1,40 +1,20 @@
 package com.monopoly;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class MonopolyGame
 {
-	List<Square> squares;
-	private int numPlayers;
-	
-//	public MonopolyGame()
-//	{
-//		squares = new ArrayList<>();
-//		for (int i =0; i < 40; i++)
-//		{
-//			Square temp = new Square();
-//			squares.add(temp);
-//		}
-//
-//	}
+	private Board board;
 	
 	public MonopolyGame(int numPlayers)
 	{
-		squares = new ArrayList<>();
-		for (int i =0; i < 40; i++)
-		{
-			Square temp = new Square();
-			squares.add(temp);
-		}
-		this.numPlayers = numPlayers;
-		
+		board = new Board(numPlayers);
 	}
 	
 	public List<Square> getSquares()
 	{
-		return squares;
+		return board.getSquares();
 	}
 	public int roll()
 	{
