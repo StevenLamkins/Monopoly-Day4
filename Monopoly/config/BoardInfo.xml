@@ -1,0 +1,40 @@
+id:Go,squareType:GO
+id:mediteranian avenue,squareType:PROPERTY
+id:community Chest-1,squareType:CC
+id:baltic avenue,squareType:PROPERTY
+id:income tax,squareType:INC_TAX
+id:reading railroad,squareType:RR
+id:oriental avenue,squareType:PROPERTY
+id:chance-1,squareType:CHANCE
+id:vermont avenue,squareType:PROPERTY
+id:connecticut avenue,squareType:PROPERTY
+id:jail,squareType:JAIL
+id:st charles place,squareType:PROPERTY
+id:electric company,squareType:UTILITY
+id:states avenue,squareType:PROPERTY
+id:virginia avenue,squareType:PROPERTY
+id:pennsylvania railroad,squareType:RR
+id:st james place,squareType:PROPERTY
+id:community chest-2,squareType:CC
+id:tennessee avenue,squareType:PROPERTY
+id:new york avenue,squareType:PROPERTY
+id:free parking,squareType:FREEPARKING
+id:kentucky avenue,squareType:PROPERTY
+id:chance-2,squareType:CHANCE
+id:indiana avenue,squareType:PROPERTY
+id:illinois avenue,squareType:PROPERTY
+id:B&O railroad,squareType:RR
+id:atlantic avenue,squareType:PROPERTY
+id:ventinor avenue,squareType:PROPERTY
+id:water works,squareType:UTILITY
+id:marvin gardens,squareType:PROPERTY
+id:go to jail,squareType:JAIL_JUMP
+id:pacific avenue,squareType:PROPERTY
+id:north carolina avenue,squareType:PROPERTY
+id:community chest,squareType:CC
+id:pennsylvania avenue,squareType:PROPERTY
+id:short line,squareType:RR
+id:chance-3,squareType:CHANCE
+id:park place,squareType:PROPERTY
+id:luxury tax,squareType:LUX_TAX
+id:board walk,squareType:PROPERTY
