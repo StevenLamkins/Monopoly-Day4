@@ -3,7 +3,6 @@ package com.monopoly;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Before;
@@ -11,10 +10,12 @@ import org.junit.Test;
 
 public class WhenSettingUpGame {
 	MonopolyGame game;
+	List<Player> players;
 	
 	@Before
 	public void setupGame(){
 		game = new MonopolyGame(4);
+		players = game.getPlayers();
 	}
 
 	@Test
@@ -61,7 +62,6 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldStartPlayersOnGo() {
 		boolean success = true;
-		List<Player> players = game.getPlayers();
 		for (Player player : players) {
 			if(player.getLocation()!=0)
 				success=false;
@@ -72,13 +72,22 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
 		boolean success = true;
-		List<Player> players = game.getPlayers();
 		List<String> tokens = new ArrayList<String>();
 		for (Player player : players) {
 			if(tokens.contains(player.getToken()))
 				success=false;
 			else
 				tokens.add(player.getToken());
+		}
+		assertEquals(success, true);
+	}
+	
+	@Test
+	public void shouldStartPlayersWith1500Money(){
+		boolean success = true;
+		for (Player player : players) {
+			if(player.getMoney()!=1500)
+				success=false;
 		}
 		assertEquals(success, true);
 	}
