@@ -1,7 +1,9 @@
 package com.monopoly;
 import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
+
 import com.monopoly.MonopolyGame;
 
 import static org.junit.Assert.*;
@@ -14,28 +16,41 @@ public class WhenSettingUpAGame {
 	public void shouldHave40Squares() {
 		//setup + exercise
 		
-		MonopolyGame game = new MonopolyGame();
-		List<Space> space = game.getSpace();
+		MonopolyGame game = new MonopolyGame(4);
+		List<Space> space = game.getSpaces();
 		
 		//verify
 		assertEquals(40, space.size());
+	}
+	
+	@Ignore
+	@Test
+	public void shouldHaveUniqueSpaceName(){
+
 	}
 	
 	@Test
 	public void shouldHaveAtLeast2Players() {
 		
 		//setup + exercise
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(4);
 		List<Player> player = game.getPlayers();
 		
 		//verify
 		assertTrue("At Least 2 Players", player.size() > 2);
 	}
 	
-	@Ignore
 	@Test
-	public void shouldErrorWhenStartPointIsNotGo() {
-		fail("Not yet implemented");
+	public void shouldErrorWhenLessThan2Player() {
+		//setup + exercise
+		MonopolyGame game;
+		try {
+			game = new MonopolyGame(1);
+			fail();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Ignore
