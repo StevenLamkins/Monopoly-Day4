@@ -62,7 +62,13 @@ public class WhenSettingUpTheGame {
 	
 	@Test
 	public void shouldStartPlayersOnGo() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame(2);
+		
+		List<Player> players = game.getPlayers();
+		
+		for (Player p : players) {
+			assertEquals("Go", game.getPlayerSquareName(p));
+		}
 	}
 	
 	@Test
