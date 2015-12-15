@@ -5,30 +5,20 @@ public class Player {
 	public static final int FIRST_LOCATION = 0;
 	public static final int STARTING_BALANCE = 1500;
 
-	 private int location;
+	 private Square location;
 	 private int balance;
-	 private String name = "Jacob";
 	 private String token = "Dog";
 	 
 	 public Player() {
 		 balance = STARTING_BALANCE;
-		 location = FIRST_LOCATION;
 	 }
 	 
-	public int getLocation() {
+	public Square getLocation() {
 		return location;
 	}
 	
-	public void setLocation(int location) {
+	public void setLocation(Square location) {
 		this.location = location;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getToken() {
