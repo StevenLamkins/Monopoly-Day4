@@ -56,15 +56,14 @@ public class WhenSettingUpGame {
 		for (Player aplayer : players) {
 			System.out.println("Location: " + aplayer.getLocation().getName());
 			assertEquals("GO", aplayer.getLocation().getName());
-		}
-		
+		}	
 	}
 
 	@Ignore
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
 		List<Player> players = game.getPlayers();
-		player.getToken();
+		//player.getToken();
 	}
 	
 

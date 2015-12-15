@@ -6,12 +6,13 @@ import java.util.List;
 public class MonopolyGame {
 	
 	private int numberOfPlayers;
-	private List<Square> squares;
+	
 	private List<Player> players;
+	private Board board;
 	
 	public MonopolyGame() {
 		this.numberOfPlayers = 2;
-		createSquares();
+		board = new Board();
 		players = new ArrayList<>();
 		placePlayersOnGo();
 	}
@@ -26,13 +27,13 @@ public class MonopolyGame {
 		return numberOfPlayers;
 	}
 	
-	public List<Square> getSquares() {
-		return squares;
-	}
-	
 	public List<Player> getPlayers() {
 		return players;
 	}
+	
+    public List<Square> getSquares() {
+    	return board.getSquares();
+    }
 	
 	private void placePlayersOnGo() {
 		for (int i = 0; i < numberOfPlayers; i++) {
@@ -41,12 +42,6 @@ public class MonopolyGame {
 			players.add(aPlayer);
 		}
 	}
-	
-	private void createSquares() {
-		squares = new ArrayList<>();
-	   for (int i = 0; i < 40; i++) {
-			squares.add(new Square(""));
-		}
-	}
+
 
 }
