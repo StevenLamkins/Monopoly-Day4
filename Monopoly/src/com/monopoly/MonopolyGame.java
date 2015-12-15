@@ -17,6 +17,8 @@ public class MonopolyGame {
 	}
 
 	public MonopolyGame(int numberOfPlayers) {
+		if (numberOfPlayers > 8) throw new IllegalArgumentException();
+		if (numberOfPlayers < 2) throw new IllegalArgumentException();
 		players = new ArrayList<>();
 		board = new Board();
 		this.numberOfPlayers = numberOfPlayers;
@@ -40,20 +42,13 @@ public class MonopolyGame {
 	
 	private void setupPlayers() {
 		for (int i = 0; i < numberOfPlayers; i++) {
+			Token token = Token.values()[i];
 			Player aPlayer = new Player();
 			aPlayer.setLocation(new Square("GO"));
 			aPlayer.setMoney(1500);
+			aPlayer.setToken(token);
 			
 			players.add(aPlayer);
-		}
-		Player[] playerList = new Player[players.size()];
-		players.toArray(playerList);
-		
-		int i = 0;
-		for (Token aToken : Token.values()) {
-			playerList[i++].setToken(aToken);
-			if (i == players.size())
-				break;
 		}
 	}
 

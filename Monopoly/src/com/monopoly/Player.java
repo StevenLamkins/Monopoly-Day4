@@ -1,6 +1,5 @@
 package com.monopoly;
 
-import java.util.Set;
 
 public class Player {
 

@@ -34,16 +34,16 @@ public class WhenSettingUpGame {
 		assertEquals(numplayers, game.getNumberOfPlayers());
 	}
 	
-	//@Ignore
-	@Test
+	
+	@Test(expected = IllegalArgumentException.class) 
 	public void shouldErrorWithTooManyPlayers() {
-		assertFalse(game.getNumberOfPlayers() > 8 );
+		new MonopolyGame(9);
 	}
 	
-	//@Ignore
-	@Test
+	
+	@Test(expected = IllegalArgumentException.class) 
 	public void shouldErrorWithTooFewPlayers() {
-		assertFalse(game.getNumberOfPlayers() < 2 );
+		new MonopolyGame(1);
 	}
 	
 	//@Ignore
@@ -63,16 +63,10 @@ public class WhenSettingUpGame {
 	public void shouldHaveUniqueTokensForPlayers() {
 		List<Player> players = game.getPlayers();
 
-		Player[] playerList = new Player[players.size()];
-		players.toArray(playerList);
-		assertEquals("TERRIER", playerList[0].getToken());
-		assertEquals("BATTLESHIP", playerList[1].getToken());
-		assertEquals("CAR", playerList[2].getToken());
-		assertEquals("HAT", playerList[3].getToken());
-		
-		/*for (int i=0; i< playerList.length;i++) {
-			System.out.println("Token:" + playerList[i].getToken());
-		}*/
+		assertEquals("TERRIER", players.get(0).getToken());
+		assertEquals("BATTLESHIP",  players.get(1).getToken());
+		assertEquals("CAR",  players.get(2).getToken());
+		assertEquals("HAT",  players.get(3).getToken());
 	}
 	
 	//@Ignore
