@@ -43,16 +43,23 @@ public class Player
 	return currentRoll;
   }
 
-public Square getCurrentPosition() 
-{
+  public Square getCurrentPosition() 
+  { 
 	return currentPosition; 
 	
-}
+  }
 
-public String getName()
-{
+  public String getName()
+  {
 	return piece;
+  }
+
+public void move(int spaces) {
+	Square temp = currentPosition.travel(spaces);
+	currentPosition = temp;
 }
+  
+  
 	
 
 }
