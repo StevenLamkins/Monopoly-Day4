@@ -82,7 +82,20 @@ public class WhenSettingUpGame {
 			playerTokens.add(token);
 		}
 	}
-	
-	
+
+
+	@Ignore
+	@Test
+	public void shouldHaveTwoDice() {
+		fail("Not implemented yet!");
+		// TO DO: confirm the game has two dice
+	}
+
+	@Ignore
+	@Test
+	public void shouldStartPlayersWithMoney() {
+		fail("Not implemented yet!");
+		// TO DO: confirm all players start with standard initial money amount ($1500) 		
+	}
 
 }
