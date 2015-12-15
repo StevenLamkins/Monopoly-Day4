@@ -42,4 +42,9 @@ public class MonopolyGame {
 	public List<Player> getPlayers() {
 		return players;
 	}
+
+	public void playRound() {
+		
+		
+	}
 }

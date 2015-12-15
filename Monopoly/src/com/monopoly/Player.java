@@ -26,4 +26,9 @@ public class Player {
 		return balance;
 	}
 
+	public void takeTurn() {
+		// TODO Auto-generated method stub
+		position = position.getNext();
+	}
+
 }

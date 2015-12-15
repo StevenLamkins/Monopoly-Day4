@@ -83,6 +83,8 @@ public class WhenSettingUpGame {
 		}
 	}
 	
+	
+	
 	@Test
 	public void shouldSHaveUniqueTokensForPlayers() {
 		game.setNumPlayers(4);
