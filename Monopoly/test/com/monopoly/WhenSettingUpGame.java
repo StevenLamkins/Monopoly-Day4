@@ -3,6 +3,7 @@ package com.monopoly;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -83,19 +84,20 @@ public class WhenSettingUpGame {
 		}
 	}
 
-
-	@Ignore
 	@Test
 	public void shouldHaveTwoDice() {
-		fail("Not implemented yet!");
-		// TO DO: confirm the game has two dice
+		int amount = game.getDice().size();
+		assertEquals(2, amount);
 	}
 
-	@Ignore
 	@Test
 	public void shouldStartPlayersWithMoney() {
-		fail("Not implemented yet!");
-		// TO DO: confirm all players start with standard initial money amount ($1500) 		
+		List<Player> players = game.getPlayers();
+		
+		for(Player player : players)
+		{
+			assertEquals(1500, player.getMoney());
+		}
 	}
 
 }
