@@ -11,8 +11,7 @@ public class MonopolyGame {
 	
 	private List<Player> players;
 	private Board board;
-	private Die dieOne;
-	private Die dieTwo;
+	private Die aDie;
 	
 	public MonopolyGame() {
 		this(2);
@@ -25,8 +24,8 @@ public class MonopolyGame {
 		board = new Board();
 		this.numberOfPlayers = numberOfPlayers;
 		setupPlayers();
-		dieOne = new Die();
-		dieTwo = new Die();
+		aDie= new Die();
+		//board.printBoard();
 		
 	}
 	
@@ -54,12 +53,7 @@ public class MonopolyGame {
 		}
 	}
 
-	public List<Die> getDice() {
-		List<Die> diceList = new ArrayList<>();
-		diceList.add(dieOne);
-		diceList.add(dieTwo);
-		return diceList;
-	}
+
 
 	
 	
