@@ -11,7 +11,7 @@ public class Board {
 	public Board(){
 		for (int i = 0; i < BOARD_SQUARE_COUNT; i++) {
 			Square newSquare = new Square(Integer.toString(i)) ;
-			squares.add(newSquare);
+			squares.add(newSquare); 
 		}
 	}//end Board constructor
 
