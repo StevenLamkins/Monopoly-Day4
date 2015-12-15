@@ -54,7 +54,7 @@ public class MonopolyGame {
 			pieceName="Boat";
 			break;
 		}
-		Player newPlayer = new Player(pieceName,0); 
+		Player newPlayer = new Player(pieceName,board.getSquares().get(0)); 
 		
 		return newPlayer;
 	}
