@@ -27,4 +27,8 @@ public class Square {
 		this.price = price;		
 	}//end Square Constructor
 	
+	public String getId(){
+		return id;
+	}
+	
 }//end Square

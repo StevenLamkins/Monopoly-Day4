@@ -63,33 +63,24 @@ public class WhenSettingUpGame {
 	public void shouldStartPlayersOnGo() {
 		boolean success = true;
 		for (Player player : players) {
-			if(player.getLocation()!=0)
-				success=false;
+			assertTrue(player.getSquare().getId().compareTo("Go")==0);
 		}
-		assertEquals(success, true);
 	}
 	
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		boolean success = true;
 		List<String> tokens = new ArrayList<String>();
 		for (Player player : players) {
-			if(tokens.contains(player.getToken()))
-				success=false;
-			else
-				tokens.add(player.getToken());
+			assertFalse(tokens.contains(player.getToken()));
 		}
-		assertEquals(success, true);
 	}
 	
 	@Test
 	public void shouldStartPlayersWith1500Money(){
-		boolean success = true;
 		for (Player player : players) {
-			if(player.getMoney()!=1500)
-				success=false;
+			assertTrue(player.getMoney()==1500);
 		}
-		assertEquals(success, true);
+		
 	}
 
 }
