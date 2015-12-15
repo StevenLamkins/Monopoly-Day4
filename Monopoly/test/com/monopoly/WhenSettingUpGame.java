@@ -65,7 +65,7 @@ public class WhenSettingUpGame {
 		List<Player> players = game.getPlayers();
 		for(Player player : players)
 		{
-			assertEquals(0, player.getPosition());
+			assertEquals("Go Square", player.getSquare().getName());
 		}
 	}
 	

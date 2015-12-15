@@ -12,6 +12,7 @@ public class MonopolyGame {
 	private Board board  = new Board();
 
 	public enum Token{Dog, Thimble, Iron, Battleship, Wheelbarrow, Pen, Shoe, Tophat, Car};
+	
 	public MonopolyGame(int maxPlayers) {
 		if(maxPlayers > 8)
 		{
@@ -27,7 +28,7 @@ public class MonopolyGame {
 
 		Iterator<Token> tokens = EnumSet.allOf(Token.class).iterator();
 		for(int j = 0; j < maxPlayers && tokens.hasNext(); j++){
-			players.add(new Player(board.getSquares().get(0), tokens.next()));
+			players.add(new Player(board.getSquares().get(0), tokens.next(), dice));
 		}
 	}
 

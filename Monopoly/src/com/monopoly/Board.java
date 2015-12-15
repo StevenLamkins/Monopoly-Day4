@@ -9,10 +9,15 @@ public class Board {
 	
 	public Board() {
 		squares = new ArrayList<>();
-		for(int i = 0; i < 40; i++){
-			squares.add(new Square(i));		
+		squares.add(new Square(0, "Go Square"));
+		for(int i = 1; i < 40; i++){
+			squares.add(new Square(i, "Square " + i));		
 		}
 
+		for(int i = 0; i < 39; i++){
+			squares.get(i).setNextSquare(squares.get(i+1));
+		}
+		squares.get(39).setNextSquare(squares.get(0));
 	}
 
 	public List<Square> getSquares() {
