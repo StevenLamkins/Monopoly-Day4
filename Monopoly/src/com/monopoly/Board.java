@@ -23,7 +23,7 @@ public class Board {
 
 
 	private void createSquares() {
-		squares = new ArrayList<>();
+	   squares = new ArrayList<>();
 	   for (int i = 0; i < 40; i++) {
 			squares.add(new Square(""));
 		}
