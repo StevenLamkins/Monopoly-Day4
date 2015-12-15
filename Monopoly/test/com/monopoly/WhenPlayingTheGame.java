@@ -34,7 +34,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		Die die = new Die(6, 20);
+		Die die = new Die(6, 21);
 		currentPlayer.takeTurn(die);
 		assertEquals(currentPlayer.getMoney(), 1700);
 	}

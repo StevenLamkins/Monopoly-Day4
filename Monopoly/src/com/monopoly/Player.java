@@ -63,7 +63,7 @@ public class Player {
 		int moveCount = roll1 + roll2;
 		for (int i = 0; i < moveCount; i++) {			
 			square = square.getNextSquare();
-			if (square.getSquareType()=="GO") {
+			if (square.getSquareType().equals("GO")) {
 				money+=200;
 			}
 		}

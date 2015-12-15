@@ -1,4 +1,4 @@
-id:Go,squareType:GO
+id:GO,squareType:GO
 id:mediteranian avenue,squareType:PROPERTY,price=60,rent=2,group=purple
 id:community Chest-1,squareType:CC
 id:baltic avenue,squareType:PROPERTY,price=60,rent=4,group=purple
