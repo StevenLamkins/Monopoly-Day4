@@ -9,8 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenSettingUpGame {
-	
-	private static final int FIRST_LOCATION = 0;
+
 	private static final int STARTING_BALANCE = 1500;
 
 	@Test
@@ -59,22 +58,22 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldStartPlayersOnGo() {
 		MonopolyGame game = new MonopolyGame();
-		List<String> players = game.getPlayerNames();
+		List<Player> players = game.getPlayers();
 		
-		for (String name : players) {
-			int location = game.getPlayerLocation(name);
-			assertEquals(FIRST_LOCATION, location);
+		for (Player player : players) {
+			Square location = player.getLocation();
+			assertSame(game.getSquares().get(0), location);
 		}
 	}
 
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
 		MonopolyGame game = new MonopolyGame();
-		List<String> playerTokens = game.getPlayerTokens();
-		for (String token : playerTokens) {
+		List<Player> players = game.getPlayers();
+		for (Player player : players) {
 			int match = 0;
-			for (int i = 0; i < playerTokens.size(); i++) {
-				if (playerTokens.get(i).equals(token)) {
+			for (int i = 0; i < players.size(); i++) {
+				if (players.get(i).getToken().equals(player.getToken())) {
 					match++;
 				}
 			}

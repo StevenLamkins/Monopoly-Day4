@@ -24,6 +24,7 @@ public class MonopolyGame {
 		for (int indx = 0; indx < this.numPlayers; indx++) {
 	       Player player = new Player();
 	       player.setToken(playerTokens[indx]);
+	       player.setLocation(board.getSquares().get(0));
 	       playerList.add(player);
 		}
 
@@ -44,43 +45,6 @@ public class MonopolyGame {
 
 	public List<Player> getPlayers() {		
 		return playerList;
-	}
-
-	public List<String> getPlayerNames() {
-		
-		List<String> playerNames = new ArrayList<>();
-		
-		for (Player player : playerList) 
-		{
-			playerNames.add(player.getName());
-		}
-		
-		return playerNames;
-	}
-
-	public int getPlayerLocation(String name) {
-		
-
-		for (Player player : playerList) 
-		{
-			if (player.getName().equals(name))
-			{
-				return player.getLocation();
-			}
-		}
-		
-		return -1;
-	}
-
-	public List<String> getPlayerTokens() {
-		List<String> playerTokens = new ArrayList<>();
-		
-		for (Player player : playerList) 
-		{
-			playerTokens.add(player.getToken());
-		}
-		
-		return playerTokens;
 	}
 
 	public List<Die> getDice() {
