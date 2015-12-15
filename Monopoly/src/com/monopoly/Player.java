@@ -3,11 +3,12 @@ package com.monopoly;
 public class Player {
 
 	private String token;
-	private int location, money;
+	private Square square;
+	int money;
 	
-	Player(String token, int location){
+	Player(String token, Square square){
 		this.token=token;
-		this.location=location;
+		this.square =square;
 		this.money=1500;
 	}//end player
 	
@@ -19,12 +20,12 @@ public class Player {
 		this.token = token;
 	}//end setToken
 	
-	public int getLocation(){
-		return location;
+	public Square getSquare(){
+		return square;
 	}//end getToken
 	
-	public void setLocation(int location){
-		this.location = location;
+	public void setSquare(Square square){
+		this.square = square;
 	}//end setToken
 
 	public int getMoney() {

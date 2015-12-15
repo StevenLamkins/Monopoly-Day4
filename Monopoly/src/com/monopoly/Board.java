@@ -48,8 +48,7 @@ public class Board {
 			 int price = Integer.parseInt(arraySplit[3].split("=")[1]);
 			 int rent = Integer.parseInt(arraySplit[4].split("=")[1]);
 			 String group = arraySplit[5].split("=")[1];
-			 newSquare = new Square(id,squareType,price,rent,group);
-			 
+			 newSquare = new Square(id,squareType,price,rent,group);			 
 		}//end else if		
 		return newSquare;
 	}//end createSquare
