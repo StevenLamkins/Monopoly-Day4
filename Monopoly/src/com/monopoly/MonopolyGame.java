@@ -3,12 +3,17 @@ package com.monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dicegame.Die;
+
 public class MonopolyGame {
 	private List<Square> squares = new ArrayList<>();
 	private List<Player> players = new ArrayList<>();
+	private List<Die> dice = new ArrayList<>();
 	private Board board;
 	private int[] location; 
 	private Player player;
+	private int dieRoll;
+	private boolean flag;
 	
 	private final int MIN_NUMBER_PLAYERS = 2;
 	private final int MAX_NUMBER_PLAYERS = 8;
@@ -58,6 +63,27 @@ public class MonopolyGame {
 		}
 		
 		return location;
+	}
+
+	public void playRound() {
+		dice.add(new Die());
+		dice.add(new Die());
+		for (Player player : players) {
+			dieRoll = 0;
+			for (Die die : dice) {
+				dieRoll += die.roll();
+			}		
+			
+			player.move(dieRoll);
+		}
+	}
+
+	public boolean verifyMovement() {
+		// TODO Auto-generated method stub
+		for (Player  player : players) {
+			flag = player.verifyMovement(dieRoll);
+		}
+		return flag;
 	}
 	
 	

@@ -101,4 +101,12 @@ public class WhenSettingupGames {
 		fail("Not yet implemented");
 	}
 	
+	@Ignore	
+	@Test
+	public void shouldHaveUniqueNamesForSquares() {
+		MonopolyGame game = new MonopolyGame(2);
+		List<Square> squaers = game.getSquares();
+		assertEquals("Go Square", squares.get(0).getName());
+//		fail("Not yet implemented");
+	}
 }
