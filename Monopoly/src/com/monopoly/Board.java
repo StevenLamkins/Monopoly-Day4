@@ -18,21 +18,45 @@ public class Board {
 		try {
 			List<String> lines = Files.readAllLines(Paths.get("config/BoardInfo.prop"));
 			for (String line : lines) {
+
+				squares.add(createSquare(line));
 				
-				String id = line.split(",")[0].split(":")[0];
-				String squareType = line.split(",")[1].split(":")[1];
-				
-				Square newSquare = new Square(id,squareType);
-				squares.add(newSquare);
 			}//end for each
 		} catch (Exception e) {
 			e.printStackTrace();
 		}//end catch
 	}//end readBoard
+	
+	public Square createSquare(String line){
+		
+		Square newSquare = null;
+		String[] arraySplit = line.split(",");
+		if (arraySplit.length==2){				
+			String id = line.split(",")[0].split(":")[1];
+			String squareType = line.split(",")[1].split(":")[1];
+			newSquare = new Square(id,squareType);
+		}//end if
+		else if (arraySplit.length==3){
+			 String id = arraySplit[0].split(":")[1];
+			 String squareType = arraySplit[1].split(":")[1];
+			 int price = Integer.parseInt(arraySplit[3].split("=")[1]);
+			 newSquare = new Square(id,squareType,price);
+		}//end else if
+		else if (arraySplit.length>3){
+			 String id = arraySplit[0].split(":")[0];
+			 String squareType = arraySplit[1].split(":")[1];
+			 int price = Integer.parseInt(arraySplit[3].split("=")[1]);
+			 int rent = Integer.parseInt(arraySplit[4].split("=")[1]);
+			 String group = arraySplit[5].split("=")[1];
+			 newSquare = new Square(id,squareType,price,rent,group);
+			 
+		}//end else if		
+		return newSquare;
+	}//end createSquare
 
 	public List<Square> getSquares() {
 		return squares;
-	}
+	}//end getSquares
 	
 	
 }//end Board
