@@ -19,4 +19,8 @@ public class Board {
 	public List<Square> getSquares(){
 		return squares;
 	}
+
+	public Square getStartSquare() {
+		return squares.get(0);
+	}
 }

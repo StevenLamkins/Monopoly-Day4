@@ -20,12 +20,13 @@ public class MonopolyGame
 		{
 			throw new IllegalArgumentException("Too few players");
 		}
+		
 		board = new Board(numPlayers);
 		players = new HashSet<>();
 		
 		for (int i = 0; i < numPlayers; i++)
 		{
-			players.add(new Player(i));
+			players.add(new Player(i, board.getStartSquare()));
 		}
 	}
 	

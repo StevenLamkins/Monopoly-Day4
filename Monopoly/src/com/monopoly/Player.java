@@ -3,11 +3,10 @@ package com.monopoly;
 public class Player
 {
   int currentRoll;
-  int currentPosition;
+  Square currentPosition;
   String piece;
   
-  public Player(int token){
-	  currentPosition = 0;
+  public Player(int token, Square startSquare){
 	  
 	  switch(token)
 	  {
@@ -30,6 +29,8 @@ public class Player
 	  
 	  }
 	  
+	  currentPosition = startSquare;
+	  
   }
   
   public void setCurrentRoll(int currentRoll)
@@ -42,7 +43,7 @@ public class Player
 	return currentRoll;
   }
 
-public int getCurrentPosition() 
+public Square getCurrentPosition() 
 {
 	return currentPosition; 
 	

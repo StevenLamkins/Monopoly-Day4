@@ -90,8 +90,10 @@ public class WhenSettingUpGame
 		for (int j = 2; j < 9; j++) {
 			MonopolyGame game = new MonopolyGame(j);
 			Set<Player> players = game.getPlayers();
+			List<Square> squares = game.getSquares();
+			Square goSquare= squares.get(0);
 			for (Player p : players) {
-				assertEquals(0,p.getCurrentPosition());
+				assertEquals(goSquare,p.getCurrentPosition());
 			}
 		}
 	}
