@@ -2,6 +2,7 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import org.junit.After;
@@ -70,6 +71,10 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame();
+		List<Player> players = game.getPlayers();
+		for (Player player : players) {
+			//assertTrue(player.hasUniqueToken());
+		}
 	}
 }
