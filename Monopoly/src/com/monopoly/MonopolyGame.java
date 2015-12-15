@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MonopolyGame {
 	
-	private List<Square> squares = new ArrayList<Square>();
+	private Board board;
 	private List<Player> players = new ArrayList<Player>();
 	public String[] tokens = new String[] {"dog", "wheelbarrow", "top hat", "thimble", "battleship", "car", "boot", "iron"};
 	
@@ -16,27 +16,19 @@ public class MonopolyGame {
 		else if(people > 8){
 			throw new IllegalArgumentException("Too many players");
 		}
-		
-		int count = 0;
-		Square property = new Square();
-		while(count < 40){
-			squares.add(property);
-			count++;
-		}
-		count = 0;
+		board = new Board();
 		Player person;
-		while(count < people){
+		for(int i=0; i < people; i++){
 			person= new Player();
-			person.setToken(tokens[count]);
+			person.setToken(tokens[i]);
 			players.add(person);
-			squares.get(0).addPlayertoSpace(person);
-			count++;
+			board.getSquares().get(0).addPlayertoSpace(person);
 		}
 		
 	}
 
 	public List<Square> getSquares() {
-		return squares;
+		return board.getSquares();
 	}
 
 	public List<Player> getPlayers() {
