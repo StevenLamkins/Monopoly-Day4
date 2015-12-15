@@ -13,13 +13,7 @@ public class MonopolyGame {
 	private Die dieTwo;
 	
 	public MonopolyGame() {
-		this.numberOfPlayers = 2;
-		board = new Board();
-		players = new ArrayList<>();
-		setupPlayers();
-		dieOne = new Die();
-		dieTwo = new Die();
-		
+		this(2);
 	}
 
 	public MonopolyGame(int numberOfPlayers) {
