@@ -4,7 +4,7 @@ public class Player {
 
 	private String token;
 	private Square square;
-	int money, previousRoll, doubleCount;
+	int money, doubleCount;
 	Die die = new Die();
 	
 	Player(String token, Square square){
@@ -47,16 +47,23 @@ public class Player {
 		return success;
 	}
 	
-	public int roll(){
-		return (die.roll()+die.roll());
-	}
-	
 	public boolean takeTurn(){
 		boolean stillInGame = true;
-		int moveCount = roll();
-		for (int i = 0; i < moveCount; i++) {
-			
+		int roll1 = die.roll(12345);
+		int roll2 = die.roll(6789);
+		if (roll1==roll2) {
+			doubleCount++;
+			if (doubleCount==3){
+				//goto jail
+			}
+		}//end if
+		else
+			doubleCount=0;
+		int moveCount = roll1 + roll2;
+		for (int i = 0; i < moveCount; i++) {			
+			square = square.getNextSquare();
 		}
+		if (doubleCount!=0) takeTurn();
 		return stillInGame;
 	}
 	
