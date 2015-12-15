@@ -37,30 +37,49 @@ public class WhenSettingUpGame
 				game.roll();
 			}
 		}
-
-		fail("Not yet implemented");
+		
 
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveCorrectNumberOfPlayers()
 	{
-		fail("Not yet implemented");
+		
+		for (int i = 2; i < 9; i++) {
+			MonopolyGame game = new MonopolyGame(i);
+			assertTrue(game.getPlayers().size() >= 2);
+		}
+		
 	}
 	
-	@Ignore
 	@Test
 	public void shouldErrorWithTooManyPlayers()
 	{
-		fail("Not yet implemented");
+		try
+		{
+			MonopolyGame game = new MonopolyGame(9);
+			fail("Did not throw error");
+		}
+		catch(IllegalArgumentException e)
+		{
+			System.out.println(e.toString());
+		}
+		
 	}
 	
-	@Ignore
 	@Test
 	public void shouldErrorWithTooFewPlayers()
 	{
-		fail("Not yet implemented");
+		try
+		{
+			MonopolyGame game = new MonopolyGame(1);
+			fail("Did not throw error");
+		}
+		catch(IllegalArgumentException e)
+		{
+			System.out.println(e.toString());
+		}
+		
 	}
 	
 	@Ignore
