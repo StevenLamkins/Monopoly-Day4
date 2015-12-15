@@ -19,10 +19,10 @@ public class MonopolyGame {
 		
 		int count = 0;
 		Square property = new Square();
-			while(count < 40){
-				squares.add(property);
-				count++;
-			}
+		while(count < 40){
+			squares.add(property);
+			count++;
+		}
 		count = 0;
 		Player person;
 		while(count < people){
