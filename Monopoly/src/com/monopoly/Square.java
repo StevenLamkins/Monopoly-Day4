@@ -1,0 +1,92 @@
+package com.monopoly;
+
+public enum Square {
+	Go                   (SquareType.GO, SquareGroup.NONE, 0, 0),
+	MediterraneanAvenue  (SquareType.PROPERTY, SquareGroup.PURPLE, 60, 2),
+	CommunityChest1      (SquareType.CHEST, SquareGroup.NONE, 0, 0),
+	BalticAvenue         (SquareType.PROPERTY, SquareGroup.PURPLE, 60, 4),
+	IncomeTax            (SquareType.TAX, SquareGroup.NONE, 0, 0),
+	ReadingRailroad      (SquareType.PROPERTY, SquareGroup.RAILROAD, 200, 0),
+	OrientalAvenue       (SquareType.PROPERTY, SquareGroup.LIGHT_GREEN, 100, 6),
+	Chance1              (SquareType.CHANCE, SquareGroup.NONE, 0, 0),
+	VermontAvenue        (SquareType.PROPERTY, SquareGroup.LIGHT_GREEN, 100, 6),
+	ConnecticutAvenue    (SquareType.PROPERTY, SquareGroup.LIGHT_GREEN, 120, 8),
+	Jail                 (SquareType.JAIL, SquareGroup.NONE, 0, 0),
+	SaintCharlesPlace    (SquareType.PROPERTY, SquareGroup.VIOLET, 140, 10),
+	ElectricCompany      (SquareType.PROPERTY, SquareGroup.UTILITIES, 150, 0),
+	StatesAvenue         (SquareType.PROPERTY, SquareGroup.VIOLET, 140, 10),
+	VirginiaAvenue       (SquareType.PROPERTY, SquareGroup.VIOLET, 160, 12),
+	PennsylvaniaRailroad (SquareType.PROPERTY, SquareGroup.RAILROAD, 200, 0),
+	SaintJamesPlace      (SquareType.PROPERTY, SquareGroup.ORANGE, 180, 14),
+	CommunityChest2      (SquareType.CHEST, SquareGroup.NONE, 0, 0),
+	TennesseeAvenue      (SquareType.PROPERTY, SquareGroup.ORANGE, 180, 14),
+	NewYorkAvenue        (SquareType.PROPERTY, SquareGroup.ORANGE, 200, 16),
+	FreeParking          (SquareType.FREE_PARKING, SquareGroup.NONE, 0, 0),
+	KentuckyAvenue       (SquareType.PROPERTY, SquareGroup.RED, 220, 18),
+	Chance2              (SquareType.CHANCE, SquareGroup.NONE, 0, 0),
+	IndianaAvenue        (SquareType.PROPERTY, SquareGroup.RED, 220, 18),
+	IllinoisAvenue       (SquareType.PROPERTY, SquareGroup.RED, 240, 20),
+	BAndORailroad        (SquareType.PROPERTY, SquareGroup.RAILROAD, 200, 0),
+	AtlanticAvenue       (SquareType.PROPERTY, SquareGroup.YELLOW, 260, 22),
+	VentnorAvenue        (SquareType.PROPERTY, SquareGroup.YELLOW, 260, 22),
+	WaterWorks           (SquareType.PROPERTY, SquareGroup.UTILITIES, 150, 0),
+	MarvinGardens        (SquareType.PROPERTY, SquareGroup.YELLOW, 280, 22),
+	GoToJail             (SquareType.GO_TO_JAIL, SquareGroup.NONE, 0, 0),
+	PacificAvenue        (SquareType.PROPERTY, SquareGroup.DARK_GREEN, 300, 26),
+	NorthCarolinaAvenue  (SquareType.PROPERTY, SquareGroup.DARK_GREEN, 300, 26),
+	CommunityChest3      (SquareType.CHEST, SquareGroup.NONE, 0, 0),
+	PennsylvaniaAvenue   (SquareType.PROPERTY, SquareGroup.DARK_GREEN, 350, 28),
+	ShortLineRailroad    (SquareType.PROPERTY, SquareGroup.RAILROAD, 200, 0),
+	Chance3              (SquareType.CHANCE, SquareGroup.NONE, 0, 0),
+	ParkPlace            (SquareType.PROPERTY, SquareGroup.DARK_BLUE, 350, 35),
+	LuxuryTax            (SquareType.TAX, SquareGroup.NONE, 0, 0),
+	Boardwalk            (SquareType.PROPERTY, SquareGroup.DARK_BLUE, 400, 50);
+	
+	private SquareType type;
+	private SquareGroup group;
+	private int price;
+	private int rent;
+	private int housePrice;
+	private int numHouses;	
+	
+	private Square(SquareType type, SquareGroup group, int price, int rent) {
+		this.type = type;
+		this.group = group;
+		this.price = price;
+		this.rent = rent;
+	}
+	
+	public SquareType getType() {
+		return type;
+	}
+	
+	public SquareGroup getGroup() {
+		return group;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public int getRent() {
+		return rent;
+	}
+	
+	public int getNumHouses() {
+		return numHouses;
+	}
+	
+	public int getHousePrice() {
+		return housePrice;
+	}
+	
+	public int addHouse() {
+		return ++numHouses;
+	}
+	
+	public int removeHouse() {
+		if (numHouses > 0) numHouses--;
+		
+		return numHouses;
+	}
+}
