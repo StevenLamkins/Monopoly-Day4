@@ -1,14 +1,24 @@
 package com.monopoly;
 
-public class Player {
+import com.dicegame.Die1;
 
-	public Player(){
-		
+public class Player {
+	
+	Space location;
+	Token token;
+	
+	public Player(Token token,Die1 die){
+	
+		location = new Space(1);
+	
 	}
 	
-	public Space whereAreYou(){
-		
-		Space square1 = new Space();
-		return square1;
+
+	public Token getToken(){
+		return 
+	}
+	
+	public Space getLocation(){
+		return location;
 	}
 }

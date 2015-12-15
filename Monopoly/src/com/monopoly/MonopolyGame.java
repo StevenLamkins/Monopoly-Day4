@@ -1,37 +1,35 @@
 package com.monopoly;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.dicegame.Die1;
 
 
 public class MonopolyGame {
 	
-	List<Space> board;
+	Board boardgame;
+	Set<Token> piece; 
 	List<Player> gameplayer;
+	int numOfPlayers;
 	Die1 die = new Die1();
 	
-	public MonopolyGame() {
-		board = new ArrayList<Space>(40);
+	public MonopolyGame(int num){
 		
-		for(int i =0;i<40;i++)
-		{
-			Space squares = new Space();
-			board.add(squares);
-		}
+		//start game
+		boardgame = new Board();
 		
-		addPlayers();
+		//creates players
+		numOfPlayers = num;
+		if (numOfPlayers < 2 || numOfPlayers > 8 ) throw new WrongNumberOfPlayers("Wrong Number of Players");
+		else
+			addPlayers();
 	}
-	
-	public List<Space> getSpace() {
 		
-		return board;
-	}
-	
 	public void addPlayers(){
-		gameplayer = new ArrayList<Player>(4);
+		gameplayer = new ArrayList<Player>(numOfPlayers);
 		
-		for(int i =0;i<4;i++)
+		for(int i =0;i<numOfPlayers;i++)
 		{
 			Player player = new Player();
 			gameplayer.add(player);
@@ -39,10 +37,21 @@ public class MonopolyGame {
 		
 	}
 	
+	public void createAllTokens(){
+		piece = new ArrayList<Token>();
+		
+	}
+	
 	public List<Player> getPlayers(){
 		
 		return gameplayer;
 	}
+	
+	public List<Space> getSpaces() {
+		return boardgame.getSpaces();
+	}
+	
+	//public Set<Token> assignToken()
 
 
 }

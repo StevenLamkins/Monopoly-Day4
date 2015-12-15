@@ -1,5 +1,5 @@
 package com.monopoly;
 
-public class UniquePieces {
+public class Cards {
 
 }

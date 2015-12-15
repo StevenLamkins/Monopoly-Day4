@@ -8,10 +8,22 @@ public class Space {
 	public int priceToRentProperty;
 	public String group;
 	
+	
 	public Space ()
 	{
+		
+	}
+	
+	public Space (int position)
+	{
+		
 		//Scanner s = new Scanner
 	}
 	
+
+	public int getPosition() 
+	{
+		return 1;
+	}
 
 }

@@ -23,7 +23,6 @@ public class WhenSettingUpAGame {
 		assertEquals(40, space.size());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveUniqueSpaceName(){
 
@@ -46,6 +45,19 @@ public class WhenSettingUpAGame {
 		MonopolyGame game;
 		try {
 			game = new MonopolyGame(1);
+			fail();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test 	
+	public void shouldErrorWhenMoreThan8Player() {
+		//setup + exercise
+		MonopolyGame game;
+		try {
+			game = new MonopolyGame(9);
 			fail();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
