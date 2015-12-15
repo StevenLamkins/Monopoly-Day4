@@ -82,4 +82,18 @@ public class WhenSettingUpGame {
 		}
 	}
 	
+	@Test
+	public void shouldSetupBoardPropertyID(){
+		List<Square> squares = game.getSquares();
+		for (Square square : squares) {
+			assertNotEquals(square.getId(), "id");
+		}
+	}
+	@Test
+	public void shouldSetupBoardPropertyType(){
+		List<Square> squares = game.getSquares();
+		for (Square square : squares) {
+			assertNotEquals(square.getSquareType(), "squareType");
+		}
+	}
 }
