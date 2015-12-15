@@ -39,15 +39,15 @@ public class Board {
 		else if (arraySplit.length==3){
 			 String id = arraySplit[0].split(":")[1];
 			 String squareType = arraySplit[1].split(":")[1];
-			 int price = Integer.parseInt(arraySplit[3].split("=")[1]);
+			 int price = Integer.parseInt(arraySplit[2].split("=")[1]);
 			 newSquare = new Square(id,squareType,price);
 		}//end else if
 		else if (arraySplit.length>3){
 			 String id = arraySplit[0].split(":")[0];
 			 String squareType = arraySplit[1].split(":")[1];
-			 int price = Integer.parseInt(arraySplit[3].split("=")[1]);
-			 int rent = Integer.parseInt(arraySplit[4].split("=")[1]);
-			 String group = arraySplit[5].split("=")[1];
+			 int price = Integer.parseInt(arraySplit[2].split("=")[1]);
+			 int rent = Integer.parseInt(arraySplit[3].split("=")[1]);
+			 String group = arraySplit[4].split("=")[1];
 			 newSquare = new Square(id,squareType,price,rent,group);			 
 		}//end else if		
 		return newSquare;
