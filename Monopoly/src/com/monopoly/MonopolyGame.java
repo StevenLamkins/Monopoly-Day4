@@ -8,7 +8,8 @@ import java.util.List;
 public class MonopolyGame {
 
 	private List<Player> players;
-	private List<Square> squares;
+	private Board board;
+
 	public enum Token{Dog, Thimble, Iron, Battleship, Wheelbarrow, Pen, Shoe, Tophat, Car};
 	public MonopolyGame(int maxPlayers) {
 		if(maxPlayers > 8)
@@ -19,21 +20,18 @@ public class MonopolyGame {
 		{
 			throw new IllegalArgumentException("Too few players!");
 		}
-		squares = new ArrayList<>();
-		for(int i = 0; i < 40; i++){
-			squares.add(new Square(i));		
-		}
 
-
+		board = new Board();
+		
 		players = new ArrayList<>();
 		Iterator<Token> tokens = EnumSet.allOf(Token.class).iterator();
 		for(int j = 0; j < maxPlayers && tokens.hasNext(); j++){
-			players.add(new Player(squares.get(0), tokens.next()));
+			players.add(new Player(board.getSquares().get(0), tokens.next()));
 		}
 	}
 
 	public List<Square> getSquares() {
-		return squares;
+		return board.getSquares();
 	}
 
 	public List<Player> getPlayers() {
