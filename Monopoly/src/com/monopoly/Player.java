@@ -62,9 +62,22 @@ public class Player {
 		int moveCount = roll1 + roll2;
 		for (int i = 0; i < moveCount; i++) {			
 			square = square.getNextSquare();
-		}
+			//pass go collect $200
+			if (square.getSquareType()=="GO") money+=200;
+		}//end for
 		if (doubleCount!=0) takeTurn();
 		return stillInGame;
 	}
+	
+	public void moveToSquare(String id){
+		Boolean squareFound=false;
+		while(!squareFound){			
+			square = square.getNextSquare();
+			if (square.getId().compareTo(id)==0){
+				squareFound=true;
+			}//end if
+			
+		}//end for
+	}//end moveToSquare
 	
 }//end Player

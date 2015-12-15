@@ -39,5 +39,9 @@ public class Square {
 	public String getId(){
 		return id;
 	}
+
+	public String getSquareType() {
+		return squareType;		
+	}//end getSquareType
 	
 }//end Square
