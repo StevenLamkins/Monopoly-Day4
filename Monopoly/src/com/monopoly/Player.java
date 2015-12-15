@@ -11,10 +11,19 @@ public class Player {
 		this.currentSquare = startSquare;
 		this.token = token;
 	}
+	
+	public void setToken(MonopolyGame.Token token) {
+		this.token = token;
+	}
+
+	public MonopolyGame.Token getToken() {
+		return token;
+	}
 
 	public Square getCurrentSquare() {
 
 		return currentSquare;
 	}
 
+	
 }

@@ -29,31 +29,22 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldHaveCorrectNumberOfPlayers() {
 		// setup + exercise
-		MonopolyGame game = new MonopolyGame();
-		List<Player> players = game.getPlayers();
-
+		MonopolyGame game = new MonopolyGame(5);
 		// verify
-		assertTrue(players.size() >= 2 && players.size() <= 8);
+		assertEquals(5, game.getPlayers().size());
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void shouldErrorWithTooManyPlayers() {
 		// setup + exercise
-		MonopolyGame game = new MonopolyGame();
-		List<Player> players = game.getPlayers();
-
-		// verify
-		assertFalse(players.size() > 8);
+		MonopolyGame game = new MonopolyGame(9);
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void shouldErrorWithTooFewPlayers() {
 		// setup + exercise
-		MonopolyGame game = new MonopolyGame();
-		List<Player> players = game.getPlayers();
-
-		// verify
-		assertFalse(players.size() < 2);
+		MonopolyGame game = new MonopolyGame(1);
+		
 	}
 
 	@Test
@@ -74,7 +65,7 @@ public class WhenSettingUpGame {
 		MonopolyGame game = new MonopolyGame();
 		List<Player> players = game.getPlayers();
 		for (Player player : players) {
-			//assertTrue(player.hasUniqueToken());
+			assertNotNull(player.getToken());
 		}
 	}
 }
