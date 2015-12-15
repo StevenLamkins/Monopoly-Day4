@@ -1,12 +1,16 @@
 package com.monopoly;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
+
+import com.monopoly.exceptions.WrongNumberOfPlayersException;
 
 public class WhenSettingUpTheGame {
 
@@ -39,12 +43,17 @@ public class WhenSettingUpTheGame {
 		}
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
+	public void shouldContain8Pieces() {
+		assertEquals(Piece.values().length, 8);
+	}
+	
+	@Test(expected=WrongNumberOfPlayersException.class)
 	public void shouldErrorWithTooFewPlayers() {
 		new MonopolyGame(1);
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected=WrongNumberOfPlayersException.class)
 	public void shouldErrorWithTooManyPlayers() {
 		new MonopolyGame(9);
 	}
@@ -61,17 +70,28 @@ public class WhenSettingUpTheGame {
 	}
 	
 	@Test
+	public void shouldHave1500ToStart() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		List<Player> players = game.getPlayers();
+		
+		for (Player p : players) {
+			assertEquals(p.getBalance(), 1500);
+		}
+	}
+	
+	@Test
 	public void shouldHaveUniquePiecesForPlayers() {
-		Set<Integer> tokens = new HashSet<>();
+		Set<Piece> pieces = new HashSet<>();
 		
 		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
 		
 		for (Player p : players) {
-			tokens.add(p.getToken());
+			pieces.add(p.getPiece());
 		}
 		
-		assertEquals(tokens.size(), players.size());
+		assertEquals(pieces.size(), players.size());
 	}
 	
 	@Test
