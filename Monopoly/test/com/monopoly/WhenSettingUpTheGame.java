@@ -1,7 +1,6 @@
 package com.monopoly;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -40,24 +39,14 @@ public class WhenSettingUpTheGame {
 		}
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void shouldErrorWithTooFewPlayers() {
-		// Setup + Exercise
-		try {
-			MonopolyGame game = new MonopolyGame(1);
-			fail("Creating game with 1 player didn't fail");
-		} catch (Exception e) {
-		}
+		new MonopolyGame(1);
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void shouldErrorWithTooManyPlayers() {
-		// Setup + Exercise
-		try {
-			MonopolyGame game = new MonopolyGame(9);
-			fail("Creating game with 9 players didn't fail");
-		} catch (Exception e) {
-		}
+		new MonopolyGame(9);
 	}
 	
 	@Test
@@ -67,7 +56,7 @@ public class WhenSettingUpTheGame {
 		List<Player> players = game.getPlayers();
 		
 		for (Player p : players) {
-			assertEquals("Go", game.getPlayerSquareName(p));
+			assertEquals(Square.Go, game.getPlayerSquare(p));
 		}
 	}
 	
@@ -83,6 +72,21 @@ public class WhenSettingUpTheGame {
 		}
 		
 		assertEquals(tokens.size(), players.size());
+	}
+	
+	@Test
+	public void shouldHaveHouseBuildingCostForEachColor() {
+		for (Square s : Square.values()) {
+			switch (s.getGroup()) {
+				case RAILROAD:
+				case UTILITIES:
+				case NONE:
+					break;
+				default:
+					assertTrue(s.getHouseBuildingCost() > 0);
+					break;
+			}
+		}
 	}
 
 }
