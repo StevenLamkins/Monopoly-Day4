@@ -125,15 +125,17 @@ public class Player {
 	private void checkForMonopolies() {
 		List<SquareGroup> monopolies = Square.getMonopolies(getProperties());
 		
-		for (SquareGroup group : monopolies) {			
-			Square square = Square.getSquareWithLeastHousesInGroup(group);
-			int numHouses = square.getType().getNumHouses();
-			int cost = square.getType().getHouseBuildingCost();
-			
-			if (numHouses < 5 && cost < getBalance()) {
-				withdraw(cost);
-				square.getType().addHouse();
-				System.out.println("Placing a house on "+square.name());
+		for (SquareGroup group : monopolies) {
+			if (!group.equals(SquareGroup.RAILROAD) && !group.equals(SquareGroup.UTILITIES)) {
+				Square square = Square.getSquareWithLeastHousesInGroup(group);
+				int numHouses = square.getType().getNumHouses();
+				int cost = square.getType().getHouseBuildingCost();
+				
+				if (numHouses < 5 && cost < getBalance()) {
+					withdraw(cost);
+					square.getType().addHouse();
+					System.out.println("Placing a house on "+square.name());
+				}
 			}
 		}
 	}
