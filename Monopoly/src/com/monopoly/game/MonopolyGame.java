@@ -31,6 +31,11 @@ public class MonopolyGame {
 		this(numPlayers, true);
 	}
 	
+	/**
+	 * Sets up the game, creates the board, players, and dice
+	 * @param numPlayers
+	 * @param takeChances
+	 */
 	public MonopolyGame(int numPlayers, boolean takeChances) {
 		if(numPlayers<2 || numPlayers>8) {
 			throw new WrongNumberOfPlayersException("Incorrect number of players (2-8)");
@@ -81,6 +86,11 @@ public class MonopolyGame {
 		return dieTwo;
 	}
 	
+	/**
+	 * Determines the square in which the given player is currently on
+	 * @param p
+	 * @return square the given player is on
+	 */
 	public Square getPlayerSquare(Player p) {
 		return board.getSquareAt(p.getPosition());
 	}
@@ -93,16 +103,27 @@ public class MonopolyGame {
 		return takeChances;
 	}
 	
-	// For taking chances
+	/**
+	 * For taking chances
+	 * @return true or false, whether chance is successful or not
+	 */
 	public boolean flipCoin() {
 		return dieOne.roll() < 4;
 	}
 	
+	/**
+	 * Adds given square to player's property list, updates owner map
+	 * @param p
+	 * @param square
+	 */
 	public void giveSquareToPlayer(Player p, Square square) {
 		p.addProperty(square);
 		ownerMap.put(square, p);
 	}
 	
+	/**
+	 * Performs the game loop
+	 */
 	public void start() {
 		while (getNumPlayers() > 1) {
 			Iterator<Player> playerIter = players.iterator();

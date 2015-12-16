@@ -50,12 +50,14 @@ public class Player {
 		properties.add(s);
 	}
 	
-	public int withdraw(int amount) {
-		if (amount > balance) {
-			balance = 0;
-		} else {
-			balance -= amount;
-		}
+	/**
+	 * Withdraws the amount from the player's balance
+	 * If the player has insufficient funds, their balance becomes 0
+	 * @param amount
+	 * @return
+	 */
+	public int withdraw(int amount) {		
+		balance = (amount > balance) ? 0 : (balance-amount);
 		
 		return balance;
 	}
@@ -98,6 +100,11 @@ public class Player {
 		jailRollCount = 0;
 	}
 	
+	/**
+	 * Determines rent amount and withdraws from player's balance
+	 * If the player does not have sufficient funds, they lose
+	 * @param square
+	 */
 	private void payRent(Square square) {
 		int rent = square.getRent();
 		Player payee = game.getSquareOwner(square);
@@ -113,6 +120,10 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Determines tax amount and withdraws from player's balance
+	 * @param square
+	 */
 	private void payTax(Square square) {
 		int taxAmount = 0;
 		
@@ -137,12 +148,21 @@ public class Player {
 		System.out.println(this+" paid $"+taxAmount+" in taxes.");
 	}
 	
+	/**
+	 * Withdraws utilities cost from player's balance
+	 * @param square
+	 * @param roll
+	 */
 	private void payUtilities(Square square, int roll) {
 		int cost = roll * 4;
 		withdraw(cost);
 		System.out.println("Paid $"+cost+" in utilities.");
 	}
 	
+	/**
+	 * Buys the given square and gives it to the player
+	 * @param square
+	 */
 	private void buySquare(Square square) {
 		int price = square.getPrice();
 		
@@ -153,12 +173,21 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Sends player to Jail
+	 */
 	private void goToJail() {
 		setInJail(true);
 		setPosition(game.getBoard().getSquarePosition(Square.Jail));
 		System.out.println("Landed on Go To Jail, going to Jail!");
 	}
 	
+	/**
+	 * Checks if player has monopolies, buys houses if so
+	 * @param oldPos
+	 * @param newPos
+	 * @param roll
+	 */
 	private void checkForPassGo(int oldPos, int newPos, int roll) {
 		if ((oldPos + roll) > game.getNumSquares()) {
 			deposit(20); //TODO - increase to $200 once houses can be bought
@@ -166,14 +195,25 @@ public class Player {
 		}
 	}
 	
+	
+	/**
+	 * Checks if player has monopolies, buys houses if so
+	 */
 	private void checkForMonopolies() {
 		List<SquareGroup> monopolies = Square.getMonopolies(getProperties());
 		
 		for (SquareGroup group : monopolies) {
 			System.out.println(this+" has a monopoly for "+group.name());
 		}
+		
+		// Buy houses
 	}
 	
+	/**
+	 * Prints details about the player's move
+	 * @param oldPos
+	 * @param newPos
+	 */
 	private void printMove(int oldPos, int newPos) {
 		String oldSquare = game.getBoard().getSquareAt(oldPos).name();
 		String newSquare = game.getBoard().getSquareAt(newPos).name();
@@ -183,7 +223,14 @@ public class Player {
 	public int takeTurn(Die dieOne, Die dieTwo) {
 		return takeTurn(dieOne, dieTwo, false);
 	}
-
+	
+	/**
+	 * Performs procedure for the player's turn using the given dice
+	 * @param dieOne
+	 * @param dieTwo
+	 * @param suppressReroll
+	 * @return
+	 */
 	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll) {
 		checkForMonopolies();
 		
