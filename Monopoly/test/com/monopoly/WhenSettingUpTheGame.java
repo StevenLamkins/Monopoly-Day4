@@ -10,7 +10,11 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import com.monopoly.board.Square;
 import com.monopoly.exceptions.WrongNumberOfPlayersException;
+import com.monopoly.game.MonopolyGame;
+import com.monopoly.player.Piece;
+import com.monopoly.player.Player;
 
 public class WhenSettingUpTheGame {
 

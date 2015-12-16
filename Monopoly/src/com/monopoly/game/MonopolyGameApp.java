@@ -1,4 +1,4 @@
-package com.monopoly;
+package com.monopoly.game;
 
 public class MonopolyGameApp {
 	public static void main(String args[]) {

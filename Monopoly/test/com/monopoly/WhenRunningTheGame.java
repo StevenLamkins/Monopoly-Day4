@@ -6,6 +6,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.monopoly.board.Square;
+import com.monopoly.board.SquareGroup;
+import com.monopoly.dice.LoadedDie;
+import com.monopoly.game.MonopolyGame;
+import com.monopoly.player.Player;
+
 public class WhenRunningTheGame {
 
 	@Test

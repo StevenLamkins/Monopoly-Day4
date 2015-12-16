@@ -1,4 +1,4 @@
-package com.monopoly;
+package com.monopoly.dice;
 
 public class LoadedDie extends Die {
 	private int loadedValue;

@@ -1,7 +1,12 @@
-package com.monopoly;
+package com.monopoly.player;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.monopoly.board.Square;
+import com.monopoly.board.SquareGroup;
+import com.monopoly.dice.Die;
+import com.monopoly.game.MonopolyGame;
 
 public class Player {
 	private MonopolyGame game;

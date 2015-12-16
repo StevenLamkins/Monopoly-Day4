@@ -1,4 +1,4 @@
-package com.monopoly;
+package com.monopoly.player;
 
 public enum Piece {
 	DOG,

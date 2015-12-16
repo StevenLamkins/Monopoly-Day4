@@ -1,4 +1,4 @@
-package com.monopoly;
+package com.monopoly.game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.monopoly.board.Board;
+import com.monopoly.board.Square;
+import com.monopoly.dice.Die;
 import com.monopoly.exceptions.WrongNumberOfPlayersException;
+import com.monopoly.player.Piece;
+import com.monopoly.player.Player;
 
 public class MonopolyGame {
 	private List<Player> players;
