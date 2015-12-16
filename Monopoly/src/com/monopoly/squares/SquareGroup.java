@@ -1,4 +1,4 @@
-package com.monopoly.board;
+package com.monopoly.squares;
 
 public enum SquareGroup {
 	PURPLE,

@@ -3,10 +3,12 @@ package com.monopoly.player;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.monopoly.board.Square;
-import com.monopoly.board.SquareGroup;
+import com.monopoly.board.Move;
 import com.monopoly.dice.Die;
 import com.monopoly.game.MonopolyGame;
+import com.monopoly.squares.JailSquare;
+import com.monopoly.squares.Square;
+import com.monopoly.squares.SquareGroup;
 
 public class Player {
 	private MonopolyGame game;
@@ -84,7 +86,7 @@ public class Player {
 		return this.inJail;
 	}
 	
-	private void setInJail(boolean inJail) {
+	public void setInJail(boolean inJail) {
 		this.inJail = inJail;
 	}
 	
@@ -100,87 +102,7 @@ public class Player {
 		jailRollCount = 0;
 	}
 	
-	/**
-	 * Determines rent amount and withdraws from player's balance
-	 * If the player does not have sufficient funds, they lose
-	 * @param square
-	 */
-	private void payRent(Square square) {
-		int rent = square.getRent();
-		Player payee = game.getSquareOwner(square);
-		
-		if (rent > balance) {
-			payee.deposit(balance);
-			withdraw(balance);
-			System.out.println("Paying "+rent+" to "+payee+", insufficient funds!");
-		} else {
-			payee.deposit(rent);
-			withdraw(rent);
-			System.out.println("Paying "+rent+" to "+payee+", balance is now "+balance);
-		}
-	}
 	
-	/**
-	 * Determines tax amount and withdraws from player's balance
-	 * @param square
-	 */
-	private void payTax(Square square) {
-		int taxAmount = 0;
-		
-		switch (square) {
-			case IncomeTax:
-				int percentAmt = (int) ((double)getBalance() * 0.1);
-				
-				if (percentAmt < 200) {
-					taxAmount = percentAmt;
-				} else {
-					taxAmount = 200;
-				}	
-				break;
-			case LuxuryTax:
-				taxAmount = 75;
-				break;
-			default:
-				break;
-		}
-		
-		withdraw(taxAmount);
-		System.out.println(this+" paid $"+taxAmount+" in taxes.");
-	}
-	
-	/**
-	 * Withdraws utilities cost from player's balance
-	 * @param square
-	 * @param roll
-	 */
-	private void payUtilities(Square square, int roll) {
-		int cost = roll * 4;
-		withdraw(cost);
-		System.out.println("Paid $"+cost+" in utilities.");
-	}
-	
-	/**
-	 * Buys the given square and gives it to the player
-	 * @param square
-	 */
-	private void buySquare(Square square) {
-		int price = square.getPrice();
-		
-		if (price < balance && (!game.takeChances() || game.flipCoin())) {
-			withdraw(price);
-			game.giveSquareToPlayer(this, square);
-			System.out.println("Buying "+square.name()+", balance is now "+balance);
-		}
-	}
-	
-	/**
-	 * Sends player to Jail
-	 */
-	private void goToJail() {
-		setInJail(true);
-		setPosition(game.getBoard().getSquarePosition(Square.Jail));
-		System.out.println("Landed on Go To Jail, going to Jail!");
-	}
 	
 	/**
 	 * Checks if player has monopolies, buys houses if so
@@ -221,7 +143,7 @@ public class Player {
 	}
 	
 	public int takeTurn(Die dieOne, Die dieTwo) {
-		return takeTurn(dieOne, dieTwo, false);
+		return takeTurn(dieOne, dieTwo, false, true);
 	}
 	
 	/**
@@ -231,7 +153,7 @@ public class Player {
 	 * @param suppressReroll
 	 * @return
 	 */
-	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll) {
+	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll, boolean takeChances) {
 		checkForMonopolies();
 		
 		int rollOne = dieOne.roll();
@@ -252,28 +174,10 @@ public class Player {
 			checkForPassGo(oldPos, newPos, roll);
 			
 			Square square = game.getBoard().getSquareAt(newPos);
+			square.handleMove(new Move(this, square, takeChances, oldPos, newPos, roll));
 			
-			switch (square.getType()) {
-				case PROPERTY:				
-					if (game.getSquareOwner(square) != null) {
-						payRent(square);
-					} else {
-						buySquare(square);
-					}
-					
-					break;
-				case TAX:
-					payTax(square);
-					break;
-				case UTILITIES:
-					payUtilities(square, roll);
-					break;
-				case GO_TO_JAIL:
-					goToJail();
-					wentToJail = true;
-					break;
-				default:
-					break;
+			if (square.equals(Square.GoToJail)) {
+				wentToJail = true;
 			}
 		}
 		
@@ -293,7 +197,7 @@ public class Player {
 					resetJailRollCount();
 				} else if (!suppressReroll) {
 					System.out.println("Rolled doubles, taking another turn.");
-					return roll + takeTurn(dieOne, dieTwo, suppressReroll);
+					return roll + takeTurn(dieOne, dieTwo, suppressReroll, takeChances);
 				}
 			}
 		} else {

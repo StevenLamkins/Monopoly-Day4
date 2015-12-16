@@ -2,33 +2,25 @@ package com.monopoly.game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import com.monopoly.board.Board;
-import com.monopoly.board.Square;
 import com.monopoly.dice.Die;
 import com.monopoly.exceptions.WrongNumberOfPlayersException;
 import com.monopoly.player.Piece;
 import com.monopoly.player.Player;
+import com.monopoly.squares.Square;
 
 public class MonopolyGame {
 	private List<Player> players;
 	private Board board;
-	private Map<Square, Player> ownerMap;
 	private Die dieOne;
 	private Die dieTwo;
-	private boolean takeChances;
 	
 	public MonopolyGame() {
 		this(2);
-	}
-
-	public MonopolyGame(int numPlayers) {
-		this(numPlayers, true);
 	}
 	
 	/**
@@ -36,7 +28,7 @@ public class MonopolyGame {
 	 * @param numPlayers
 	 * @param takeChances
 	 */
-	public MonopolyGame(int numPlayers, boolean takeChances) {
+	public MonopolyGame(int numPlayers) {
 		if(numPlayers<2 || numPlayers>8) {
 			throw new WrongNumberOfPlayersException("Incorrect number of players (2-8)");
 		}
@@ -52,10 +44,10 @@ public class MonopolyGame {
 		}
 		
 		board = new Board();
-		ownerMap = new HashMap<>();
 		dieOne = new Die();
-		dieTwo = new Die();		
-		this.takeChances = takeChances;
+		dieTwo = new Die();
+		
+		Square.setup();
 	}
 	
 	public int getNumSquares() {
@@ -74,10 +66,6 @@ public class MonopolyGame {
 		return board;
 	}
 	
-	public Map<Square, Player> getOwnerMap() {
-		return ownerMap;
-	}
-	
 	public Die getDieOne() {
 		return dieOne;
 	}
@@ -93,32 +81,6 @@ public class MonopolyGame {
 	 */
 	public Square getPlayerSquare(Player p) {
 		return board.getSquareAt(p.getPosition());
-	}
-	
-	public Player getSquareOwner(Square s) {
-		return ownerMap.get(s);
-	}
-	
-	public boolean takeChances() {
-		return takeChances;
-	}
-	
-	/**
-	 * For taking chances
-	 * @return true or false, whether chance is successful or not
-	 */
-	public boolean flipCoin() {
-		return dieOne.roll() < 4;
-	}
-	
-	/**
-	 * Adds given square to player's property list, updates owner map
-	 * @param p
-	 * @param square
-	 */
-	public void giveSquareToPlayer(Player p, Square square) {
-		p.addProperty(square);
-		ownerMap.put(square, p);
 	}
 	
 	/**
