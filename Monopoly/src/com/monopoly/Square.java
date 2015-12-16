@@ -13,6 +13,10 @@ public class Square {
 	public Square getNextSquare() {
 		return nextSquare;
 	}
+	
+	public String getGroup(){
+		return group;
+	}
 
 	public void setNextSquare(Square nextSquare) {
 		this.nextSquare = nextSquare;

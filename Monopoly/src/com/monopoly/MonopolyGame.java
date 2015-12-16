@@ -100,10 +100,10 @@ public class MonopolyGame {
 			StringBuilder output = new StringBuilder();
 			for (Player player : game.getPlayers()) {
 				if(player.getToken().equals("Thimbal") || player.getToken().equals("WheelBarrow")){
-					output.append(player.getToken()+":\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tSquare - " + player.getSquare().getId()+"\n");
+					output.append(player.getToken()+":\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tProperty Count - "+player.ownedProperties.size()+"\tSquare - " + player.getSquare().getId()+ "\n");
 				}
 				else{
-					output.append(player.getToken()+":\t\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tSquare - " + player.getSquare().getId()+"\n");
+					output.append(player.getToken()+":\t\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tProperty Count - "+player.ownedProperties.size()+"\tSquare - " + player.getSquare().getId()+"\n");
 				}
 			}
 			System.out.println(output.toString());

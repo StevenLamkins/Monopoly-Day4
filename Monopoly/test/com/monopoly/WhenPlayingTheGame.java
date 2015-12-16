@@ -25,7 +25,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		currentPlayer.moveToSquare("free parking");
+		currentPlayer.moveToSquare("free parking", false);
 		assertEquals(currentPlayer.getSquare().getId(), "free parking");
 	}
 	
@@ -104,6 +104,19 @@ public class WhenPlayingTheGame {
 		assertEquals(currentPlayer.getMoney(), 1440);
 		assertEquals(currentPlayer.getSquare().getSquareType(),"PROPERTY");
 		assertEquals(currentPlayer.getSquare().getOwner(),currentPlayer);
+	}
+	
+	@Test
+	public void gameShouldAllowPlayerToBuyHouses(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		currentPlayer.moveToSquare("mediteranian avenue", true);
+		currentPlayer.moveToSquare("baltic avenue", true);
+		assertTrue(currentPlayer.ownedProperties.size()==2);
+		assertTrue(currentPlayer.ownedGroups.get("purple")==2);
+		assertTrue(((Property)currentPlayer.getSquare()).isPremiumProperty);
+		assertTrue(((Property)currentPlayer.getSquare()).houseCount==1);
 	}
 
 }

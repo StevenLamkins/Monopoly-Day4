@@ -1,11 +1,18 @@
 package com.monopoly;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Player {
 
 	private String token;
 	private Square square;
 	int money, doubleCount, jailTurnCount, outOfJailFreeCount, previousRoll;
 	boolean isInJail=false;
+	List<Property> ownedProperties = new ArrayList<Property>();
+	Map<String, Integer> ownedGroups = new HashMap<String, Integer>();
 	
 	public boolean isInJail() {
 		return isInJail;
@@ -23,6 +30,46 @@ public class Player {
 	public String getToken(){
 		return token;
 	}//end getToken
+	
+	public void buyProperty(Property property){
+		ownedProperties.add(property);
+		String group = property.getGroup();
+		if(ownedGroups.containsKey(group))
+			ownedGroups.put(group, ownedGroups.get(group)+1);
+		else
+			ownedGroups.put(group, 1);
+		int ownedAmount = ownedGroups.get(group);
+		if(ownedAmount==3 || ((group.equals("purple") || group.equals("darkBlue")) && ownedAmount==2)){
+			attemptHouseBuying();
+		}
+	}
+	
+	public void attemptHouseBuying(){
+		for (Property property : ownedProperties) {
+			String group = property.getGroup();
+			int ownedAmount = ownedGroups.get(group);
+			if(ownedAmount==3 || ((group.equals("purple") || group.equals("darkBlue")) && ownedAmount==2)){
+				property.setPremiumProperty(true);
+				boolean buyable = true;
+				int price=0;
+				if(group.equals("purple") || group.equals("lightGreen") || group.equals("violet"))
+					price=50;
+				else if (group.equals("orange"))
+					price = 100;
+				else if (group.equals("red") || group.equals("yellow"))
+					price = 150;
+				else
+					price = 200;
+				if(money < price){
+					buyable = false;
+				}
+				if(buyable && property.attemptBuyHouse()){
+					money-=price;
+					System.out.println(token+" has purchased a house! This is house number "+property.houseCount );
+				}
+			}
+		}
+	}
 	
 	public void setToken(String token){
 		this.token = token;
@@ -64,6 +111,8 @@ public class Player {
 	public boolean takeTurn(Die die, Boolean buyIfProperty){
 		boolean stillInGame = true;
 		
+		attemptHouseBuying();
+		
 		int roll1 = die.roll();
 		int roll2 = die.roll();
 		
@@ -95,7 +144,7 @@ public class Player {
 		if (roll1==roll2 && !wasInJail) {
 			doubleCount++;
 			if (doubleCount==3){
-				moveToSquare("jail");
+				moveToSquare("jail", false);
 				return stillInGame;
 			}
 		}//end if
@@ -110,7 +159,7 @@ public class Player {
 			}
 		}
 		if(square.getId().equals("go to jail")){
-			moveToSquare("jail");
+			moveToSquare("jail", false);
 			return stillInGame;
 		}
 		else {
@@ -130,7 +179,7 @@ public class Player {
 		return stillInGame;
 	}
 	
-	public void moveToSquare(String id){
+	public void moveToSquare(String id, boolean buyIfProperty){
 		if(id.equals("jail"))
 			isInJail=true;
 		Boolean squareFound=false;
@@ -142,6 +191,8 @@ public class Player {
 				squareFound=true;
 			}
 		}
+		if(squareFound)
+			square.handlePlayerLanding(this, buyIfProperty);
 	}
 	
 }//end Player

@@ -1,11 +1,24 @@
 package com.monopoly;
 
 public class Property extends Square {
-	boolean isOwned=false;
+	boolean isOwned=false, isPremiumProperty=false;
 	int houseCount=0;
 	
 	public Property(String id,String squareType, int price,int rent,String group){
 		super(id,squareType,price,rent,group);
+	}
+	
+	public boolean attemptBuyHouse(){
+		boolean success = true;
+		if(houseCount<5)
+			houseCount++;
+		else
+			success = false;
+		return success;
+	}
+	
+	public void setPremiumProperty(boolean isPremiumProperty){
+		this.isPremiumProperty = isPremiumProperty;
 	}
 	
 	@Override
@@ -18,6 +31,8 @@ public class Property extends Square {
 					if(houseCount!=0){
 						finalPrice = rent*5*houseCount;
 					}
+					else if(isPremiumProperty)
+						finalPrice = finalPrice*2;
 					if(player.getMoney()>=finalPrice){
 						player.removeMoney(finalPrice);
 						owner.addMoney(finalPrice);
@@ -31,6 +46,8 @@ public class Property extends Square {
 				isOwned=true;
 				player.removeMoney(this.price);
 				owner = player;
+				player.buyProperty(this);
+				System.out.println(player.getToken()+ " has purchased "+id);
 			}
 		}
 		return stillInGame;
