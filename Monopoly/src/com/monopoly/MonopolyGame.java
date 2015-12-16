@@ -71,7 +71,7 @@ public class MonopolyGame {
 		for (Player player : players) {
 			dieRoll = 0;
 			for (Die die : dice) {
-				dieRoll += die.roll();
+				dieRoll += die.rollDie(); 
 			}		
 			
 			player.move(dieRoll);

@@ -34,7 +34,7 @@ public class WhenMovingAroundBoard {
 		}	
 	}
 	
-//	@Ignore
+//	@Ignore 
 	@Test
 	public void playerMovesCorrectNumberOfSquares() {
 		boolean flag;

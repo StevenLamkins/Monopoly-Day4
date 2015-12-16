@@ -1,6 +1,8 @@
-package com.monopoly;
+package com.monopoly.run;
 
 import java.util.Scanner;
+
+import com.monopoly.MonopolyGame;
 
 public class MonopolyApp {
 	

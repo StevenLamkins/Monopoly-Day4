@@ -13,6 +13,7 @@ public class WhenSettingupGames {
 	private MonopolyGame game;
 	private final int NUM_OF_PLAYERS = 4;
 	private List<Player> players;
+	private List<Square> squares;
 	
 	@Before
 	public void setup ()
@@ -24,7 +25,7 @@ public class WhenSettingupGames {
 	@Test
 	public void shouldHave40Squares() {
 		// setup + exercise
-		List<Square> squares = game.getSquares();
+		squares = game.getSquares();
 		
 		// verify
 		assertEquals(40, squares.size());
