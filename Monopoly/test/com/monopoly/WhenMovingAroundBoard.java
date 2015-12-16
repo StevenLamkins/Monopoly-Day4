@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 
 public class WhenMovingAroundBoard {
 	
@@ -24,9 +22,8 @@ public class WhenMovingAroundBoard {
 		square4.setNext(firstSquare);
 	}
 	
-	@Ignore
 	@Test
-	public void playerShouldLeaveGoSquare() {
+	public void playersShouldLeaveGoSquareAfterARound() {
 		game.setNumPlayers(8);
 		
 		List<Square> squares = game.getSquares();
@@ -34,8 +31,17 @@ public class WhenMovingAroundBoard {
 		game.playRound();
 		for (Player player: game.getPlayers()) {
 			Square currSquare = player.getPosition();
+			assertNotNull (currSquare);
 			assertNotSame(currSquare, firstSquare);
 		}
+	}
+	
+	@Test
+	public void playersShouldCircleTheBoard() {
+		Player player = new Player(Token.Dog, firstSquare);
+		player.takeTurn(new LoadedDice(4));
+		assertSame (player.getPosition(), firstSquare);
+		
 	}
 	
 	@Test
@@ -57,7 +63,7 @@ public class WhenMovingAroundBoard {
 	
 		for (int i = 1; i < 100; i++) {
 			int rollVal = dice.roll();
-			System.out.println("Roll Value: " + rollVal);
+			//System.out.println("Roll Value: " + rollVal);
 			assertTrue (rollVal <= 12);
 			assertTrue (rollVal >=2);
 		}

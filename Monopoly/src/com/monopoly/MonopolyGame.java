@@ -12,6 +12,7 @@ public class MonopolyGame {
 	private Square goSquare;
 	private List<Square> squares = new ArrayList<>();
 	private List<Player> players = new ArrayList<>();
+	private Dice dice = new Dice();
 	
 	public MonopolyGame() {
 		for (int i = 1; i <= NUM_SQUARES; i++){
@@ -19,9 +20,20 @@ public class MonopolyGame {
 		}
 		goSquare = squares.get(0);
 		
+		linkSquares();
+		
 		for (int i = 0; i < MIN_PLAYERS; i++) {
 			players.add(new Player(Token.values()[i], goSquare));
 		}
+	}
+
+	private void linkSquares() {
+		for (int i = 0; i < squares.size() - 1; i++) {
+			Square currSquare = squares.get(i);
+			Square nextSquare = squares.get(i+1);
+			currSquare.setNext(nextSquare);
+		}
+		squares.get(squares.size()-1).setNext(goSquare);
 	}
 	
 	public List<Square> getSquares() {	
@@ -44,7 +56,9 @@ public class MonopolyGame {
 	}
 
 	public void playRound() {
-		
+		for (Player player : players) {
+			player.takeTurn(dice);
+		}
 		
 	}
 }

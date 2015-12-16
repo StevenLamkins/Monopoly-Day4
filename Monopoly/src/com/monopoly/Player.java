@@ -27,8 +27,13 @@ public class Player {
 	}
 
 	public void takeTurn(Dice dice) {
-		// TODO Auto-generated method stub
-		position = position.getNext();
+		int numSpaces = dice.roll();
+		Square currSquare = position;
+		
+		for (int i = 0; i < numSpaces; i++){
+			currSquare = currSquare.getNext();
+		}
+		position = currSquare;
 	}
 
 }
