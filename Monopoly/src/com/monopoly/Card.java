@@ -67,6 +67,7 @@ public class Card {
 		}
 		else if(goToTypeTarget!=null){
 			System.out.println(player.getToken() + " will be moving to the nearest " + goToTypeTarget);
+			player.moveToNearestType(goToTypeTarget);
 		}
 		else if(goToTarget!=null){
 			System.out.println(player.getToken() + " will be moving to " + goToTarget);
