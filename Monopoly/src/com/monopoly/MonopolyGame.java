@@ -13,6 +13,10 @@ public class MonopolyGame {
 	private Board board;
 	private Die aDie;
 	
+	public Die getaDie() {
+		return aDie;
+	}
+
 	public MonopolyGame() {
 		this(2);
 	}

@@ -9,13 +9,15 @@ public class Player {
 	private Token token;
     private double money;
     
-    public void takeTurn(int numOfSq){
+    public void takeTurn(Die die){
         	
+    	int numOfSq = die.roll();
+    	numOfSq += die.roll();
+    	
     	for (int i=1; i<= numOfSq;i++) {
     		location = location.next();
     	}
-    	//System.out.println("Final location:" + location.getName());
-    }
+    }     
 	
    	public void setMoney(double money) {
 		this.money = money;

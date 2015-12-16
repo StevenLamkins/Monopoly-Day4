@@ -7,6 +7,7 @@ public class Board {
 
 	public Board() {
 		createSquares();
+		linkSquares();
 	}
 
 	private List<Square> squares;
@@ -32,15 +33,20 @@ public class Board {
 	   for (int i = 1; i < 40; i++) {
 			squares.add(new Square("Square" + i));
 	   }
-	   int next = 1;
-	   for (Square sq : squares) {
-		   if (next == 40){
-			   sq.setNextSquare(squares.get(0));
-		   } else {	   
-			   sq.setNextSquare(squares.get(next++));
-		   }
-		}
+	   linkSquares();
 	 }
+
+
+	private void linkSquares() {
+		int next = 1;
+		   for (Square sq : squares) {
+			   if (next == 40){
+				   sq.setNextSquare(squares.get(0));
+			   } else {	   
+				   sq.setNextSquare(squares.get(next++));
+			   }
+			}
+	}
 	
 	public void printBoard() {
 		for (Square sq : squares) {
