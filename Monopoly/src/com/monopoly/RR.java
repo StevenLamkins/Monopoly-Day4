@@ -13,33 +13,39 @@ public class RR extends Square {
 		boolean stillInGame=true;
 		if(buyIfProperty){
 			if(isOwned){
-				if(player!=owner){
-					//rent value to pay
-					int finalPrice = owner.getOwnRRCount() * 25;
-					//pay rent
-					if(player.getMoney()>=finalPrice){
-						System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
-						player.removeMoney(finalPrice);
-						owner.addMoney(finalPrice);
-					}//end if
-					//No money to pay rent, player loses the games
-					else{
-						stillInGame=false;
-					}//end else
-				}//end if player!=owner
+				payRent(player,stillInGame);
 			}//end if isOwned			
-			//buy property
-			//increase ownCount
 			else if(player.getMoney()>=this.price){
-				isOwned=true;
-				player.removeMoney(this.price);
-				owner = player;
-				int ownCount=player.getOwnRRCount();
-				player.setOwnRRCount(++ownCount);
-				System.out.println(player.getToken()+ " has purchased "+id);
+				buyProperty(player);
 			}//end else if
 		}//end if buyIfProperty
 		return stillInGame;
 	}//end handlePlayerLanding
 	
+	public void payRent(Player player, boolean stillInGame){
+		if(player!=owner){
+			//rent value to pay
+			int finalPrice = owner.getOwnRRCount() * 25;
+			//pay rent
+			if(player.getMoney()>=finalPrice){
+				System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
+				player.removeMoney(finalPrice);
+				owner.addMoney(finalPrice);
+			}//end if
+			//No money to pay rent, player loses the games
+			else{
+				stillInGame=false;
+			}//end else
+		}//end if player!=owner
+	}//end payRent
+	
+	public void buyProperty(Player player){
+		isOwned=true;
+		player.removeMoney(this.price);
+		owner = player;
+		int ownCount=player.getOwnRRCount();
+		player.setOwnRRCount(++ownCount);
+		System.out.println(player.getToken()+ " has purchased "+id);
+	}//end buyProperty
+
 }//end RR class
