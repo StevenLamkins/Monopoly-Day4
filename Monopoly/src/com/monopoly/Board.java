@@ -30,7 +30,79 @@ public class Board {
 
 	private void buildSquares() {
 		
-		squares.add(new GoSquare(0));
+		
+		
+		
+		switch(int )
+		{
+			case 0: squares.add(new GoSquare(0));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 2: squares.add(new CC(2, "Community Chest"));
+			break;
+			
+			case 3: squares.add(new Lot(3, "Baltic Avenue"));
+			break;
+			
+			case 4: squares.add(new IncomeTaxSquare(4, "Income Tax"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+		}
+		
 		
 		for (int i =1; i < 40; i++)
 		{

@@ -54,5 +54,8 @@ public class WhenLandingOrPassing {
 		player2.move(12);
 		assertEquals(1700, player2.getMoney());
 	}
+	
+
+
 
 }
