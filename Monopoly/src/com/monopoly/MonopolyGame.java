@@ -50,6 +50,21 @@ public class MonopolyGame {
 	public List<Die> getDice() {
 		return dice;
 	}
+	
+	public void playRound() {
+		for (int i = 0; i < playerList.size(); i++) {
+			playTurn(i);
+		}
+	}
+
+	public void playTurn(int i) {
+		dice.get(0).roll();
+		dice.get(1).roll();
+		int diceSum = dice.get(0).getFaceValue() + dice.get(1).getFaceValue();
+		int oldLocation = playerList.get(i).getLocation().getPosition();
+	    playerList.get(i).setLocation(board.getSquares().get((diceSum + oldLocation) % 40));
+		
+	}
 
 	
 	

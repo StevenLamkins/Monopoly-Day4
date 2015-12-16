@@ -2,27 +2,37 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenMovingAroundBoard {
 
-	@Ignore
 	@Test
 	public void shouldMovePlayersCorrectNumberOfSquares() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame();
+		List<Die> dice = game.getDice();
+		game.playTurn(0);
+		int sum = dice.get(0).getFaceValue() + dice.get(1).getFaceValue();
+		assertEquals(game.getPlayers().get(0).getLocation().getPosition(), sum);
 	}
 
-	@Ignore
 	@Test
 	public void shouldAllowPlayersToCircleBoard() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame();
+		game.getPlayers().get(0).setLocation(game.getSquares().get(39));
+		game.playTurn(0);
+		assertTrue(game.getPlayers().get(0).getLocation().getPosition() < 40);
 	}
 
-	@Ignore
 	@Test
 	public void shouldMovePlayersOffGoSquare() {
-		fail("Not yet implemented");
+		MonopolyGame game = new MonopolyGame(4);
+		game.playRound();
+		for (Player player : game.getPlayers()) {
+			assertFalse(player.getLocation().getPosition() == 0);
+		}
 	}
 
 }

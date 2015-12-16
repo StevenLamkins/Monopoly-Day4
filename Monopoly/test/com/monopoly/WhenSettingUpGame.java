@@ -107,8 +107,6 @@ public class WhenSettingUpGame {
 	public void shouldHaveUniqueSquareNames() {
 		MonopolyGame game = new MonopolyGame();
 		List<Square> squares = game.getSquares();
-
-		//private String[] names = {"Mediterranean", "Baltic", "Oriental", "Vermont", "Connecticut", "St. Charles Place", "States", "Virginia", "St. James Place", "Tennessee", "New York", "Kentucky", "Indiana", "Illinois", "Atlantic", "Ventnor", "Marvin Gardens", "Pacific", "North Carolina", "Pennsylvania", "Park Place", "Boardwalk", "Electric Company", "Water Works", "Reading Railroad", "Pennsylvania Railroad", "B&O Railroad", "Short Line Railroad", "Community Chest", "Income Tax", "Chance", "Jail", "Community Chest", "Free Parking", "Chance", "Go to Jail", "Community Chest", "Chance", "Luxury Tax"};
 		
 		assertEquals("Go", squares.get(0).getName());
 		assertEquals("Mediterranean", squares.get(1).getName());
@@ -116,6 +114,40 @@ public class WhenSettingUpGame {
 		assertEquals("Baltic", squares.get(3).getName());
 		assertEquals("Income Tax", squares.get(4).getName());
 		assertEquals("Reading Railroad", squares.get(5).getName());
+		assertEquals("Oriental", squares.get(6).getName());
+		assertEquals("Chance", squares.get(7).getName());
+		assertEquals("Vermont", squares.get(8).getName());
+		assertEquals("Connecticut", squares.get(9).getName());
+		assertEquals("Jail", squares.get(10).getName());
+		assertEquals("St. Charles Place", squares.get(11).getName());
+		assertEquals("Electric Company", squares.get(12).getName());
+		assertEquals("States", squares.get(13).getName());
+		assertEquals("Virginia", squares.get(14).getName());
+		assertEquals("Pennsylvania Railroad", squares.get(15).getName());
+		assertEquals("St. James Place", squares.get(16).getName());
+		assertEquals("Community Chest", squares.get(17).getName());
+		assertEquals("Tennessee", squares.get(18).getName());
+		assertEquals("New York", squares.get(19).getName());
+		assertEquals("Free Parking", squares.get(20).getName());
+		assertEquals("Kentucky", squares.get(21).getName());
+		assertEquals("Chance", squares.get(22).getName());
+		assertEquals("Indiana", squares.get(23).getName());
+		assertEquals("Illinois", squares.get(24).getName());
+		assertEquals("B&O Railroad", squares.get(25).getName());
+		assertEquals("Atlantic", squares.get(26).getName());
+		assertEquals("Ventnor", squares.get(27).getName());
+		assertEquals("Water Works", squares.get(28).getName());
+		assertEquals("Marvin Gardens", squares.get(29).getName());
+		assertEquals("Go to Jail", squares.get(30).getName());
+		assertEquals("Pacific", squares.get(31).getName());
+		assertEquals("North Carolina", squares.get(32).getName());
+		assertEquals("Community Chest", squares.get(33).getName());
+		assertEquals("Pennsylvania", squares.get(34).getName());
+		assertEquals("Short Line Railroad", squares.get(35).getName());
+		assertEquals("Chance", squares.get(36).getName());
+		assertEquals("Park Place", squares.get(37).getName());
+		assertEquals("Luxury Tax", squares.get(38).getName());
+		assertEquals("Boardwalk", squares.get(39).getName());
 		
 	}
 	

@@ -21,4 +21,8 @@ public class Die {
 		faceValue = randomGenerator.nextInt(this.sides) + 1;
 		return faceValue;		
 	}
+	
+	public int getFaceValue() {
+		return faceValue;
+	}
 }
