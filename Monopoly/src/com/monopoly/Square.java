@@ -1,12 +1,14 @@
 package com.monopoly;
 
-public class Square {
+public  class Square {
 
 	Square nextSpace;
 	private String name;
+	private int position;
 	
-	public Square(String name) {
+	public Square(int position, String name) {
 		this.name = name;
+		this.position = position;
 	}
 	
 	public Square travel(int spaces) {
@@ -28,8 +30,16 @@ public class Square {
 	
 	@Override
 	public String toString() {
+		System.out.println("Marvin is so cool");
 		return name;
 	}
 	
+	public void action(Player player) {
+		//Does nothing
+	}
+
+	public int getPosition() {
+		return position;
+	}
 
 }

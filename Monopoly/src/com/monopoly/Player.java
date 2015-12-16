@@ -5,7 +5,7 @@ public class Player
   int currentRoll;
   Square currentPosition;
   String piece;
-  double money;
+  int money;
   
   public Player(int playerNumber, Square startSquare)
   {
@@ -61,11 +61,20 @@ public class Player
 
   public void move(int spaces) 
   {
+	  Square initialPosition =  currentPosition;
 	  Square temp = currentPosition.travel(spaces);
 	  currentPosition = temp;
+	  
+	  currentPosition.action(this);
+	  Square landingPosition = currentPosition;
+	  
+	  if(landingPosition.getPosition() - initialPosition.getPosition() < 0)
+	  {
+		  addMoney(200);
+	  }
   }
   
-  public double getMoney()
+  public int getMoney()
   {
 	  return money;
   }
@@ -74,6 +83,10 @@ public class Player
 		int rollValue = die1.roll() + die2.roll();
 		move(rollValue);
 	}
+
+public void addMoney(int i) {
+	money = money + i;	
+}
 
   
   

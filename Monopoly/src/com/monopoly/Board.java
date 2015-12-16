@@ -29,10 +29,27 @@ public class Board {
 	}
 
 	private void buildSquares() {
-		for (int i =0; i < 40; i++)
+		
+		squares.add(new GoSquare(0));
+		
+		for (int i =1; i < 40; i++)
 		{
-			Square temp = new Square("Square " + i);
-			squares.add(temp);	
+			if(i == 38)
+			{
+				LuxurySquare luxSquare = new LuxurySquare(38);
+				squares.add(luxSquare);
+			}
+			else if(i==4)
+			{
+				IncomeTaxSquare incomeTaxSquare = new IncomeTaxSquare(4);
+				squares.add(incomeTaxSquare);
+			}
+			else
+			{
+				Square temp = new Square(i,"Square " + i);
+				squares.add(temp);	
+			}
+
 		}
 	}
 	

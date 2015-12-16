@@ -1,11 +1,10 @@
 package com.monopoly;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenPlayerMovesAroundTheBoard {
@@ -58,13 +57,18 @@ public class WhenPlayerMovesAroundTheBoard {
 	
 	
 	@Test
-	public void playerTakesTurn()
+	public void playersTakesTurn()
 	{
 		MonopolyGame game = new MonopolyGame(2);
-		 game.playRound();
-				
-		assertEquals(expectedSquare,testPlayer.getCurrentPosition());
+		game.playRound();
+		List<Player> players = game.getPlayers();
+		Square goSquare = game.getSquares().get(0);
+
+		for(Player currentPlayer : players)
+		{
+			assertNotEquals(goSquare, currentPlayer.currentPosition);
+		}
 	}
 	
-
 }
+
