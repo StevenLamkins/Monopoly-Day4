@@ -108,6 +108,30 @@ public class Player {
 		}
 	}
 	
+	private void payTax(Square square) {
+		int taxAmount = 0;
+		
+		switch (square) {
+			case IncomeTax:
+				int percentAmt = (int) ((double)getBalance() * 0.1);
+				
+				if (percentAmt < 200) {
+					taxAmount = percentAmt;
+				} else {
+					taxAmount = 200;
+				}	
+				break;
+			case LuxuryTax:
+				taxAmount = 75;
+				break;
+			default:
+				break;
+		}
+		
+		withdraw(taxAmount);
+		System.out.println(this+" paid $"+taxAmount+" in taxes.");
+	}
+	
 	private void buySquare(Square square) {
 		int price = square.getPrice();
 		
@@ -138,14 +162,15 @@ public class Player {
 		System.out.println("It is now "+this+"'s turn.");
 		System.out.println("Rolled a "+roll);
 		
+		int oldPos = position;
 		int newPos = (position + roll) % game.getNumSquares();
 		
 		if (!inJail()) {
+			// Handle passing Go
+			System.out.println("Old position: "+oldPos+", New position: "+newPos+" "+game.getBoard().getSquareAt(newPos).name());
 			setPosition(newPos);
 			
-			// Handle passing Go
-			System.out.println("Old position: "+position+", New position: "+newPos+" "+game.getBoard().getSquareAt(newPos).name());
-			if ((position + roll) > game.getNumSquares()) {
+			if ((oldPos + roll) > game.getNumSquares()) {
 				deposit(20); //TODO - increase to $200 once houses can be bought
 				System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
 			}
@@ -162,8 +187,7 @@ public class Player {
 					
 					break;
 				case TAX:
-					withdraw(100);
-					System.out.println(this+" paid $100 in taxes.");
+					payTax(square);
 					break;
 				case UTILITIES:
 					int cost = roll * 4;

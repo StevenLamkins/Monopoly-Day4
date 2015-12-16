@@ -147,7 +147,7 @@ public class WhenRunningTheGame {
 	}
 	
 	@Test
-	public void shouldPayTaxes() {
+	public void shouldPay10PercentIncomeTax() {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
@@ -157,6 +157,36 @@ public class WhenRunningTheGame {
 		
 		assertEquals(Square.IncomeTax, game.getPlayerSquare(p));
 		assertNotEquals(startBal, endBal);
+		assertEquals(startBal-endBal, 150);
+	}
+
+	@Test
+	public void shouldPayMaxIncomeTax() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		p.deposit(1500);
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(1), new LoadedDie(3));
+		int endBal = p.getBalance();
+		
+		assertEquals(Square.IncomeTax, game.getPlayerSquare(p));
+		assertNotEquals(startBal, endBal);
+		assertEquals(startBal-endBal, 200);
+	}
+	
+	@Test
+	public void shouldPayLuxuryTax() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(30), new LoadedDie(8));
+		int endBal = p.getBalance();
+		
+		assertEquals(Square.LuxuryTax, game.getPlayerSquare(p));
+		assertNotEquals(startBal, endBal);
+		assertEquals(startBal-endBal, 75);
 	}
 	
 	@Test
@@ -167,6 +197,22 @@ public class WhenRunningTheGame {
 		p.takeTurn(new LoadedDie(1), new LoadedDie(2));
 		
 		assertEquals(p, game.getSquareOwner(Square.BalticAvenue));
+	}
+	
+	@Test
+	public void shouldPayRentOnAnotherPlayersSquare() {
+		MonopolyGame game = new MonopolyGame(2, false);
+		
+		Player p1 = game.getPlayers().get(0);
+		p1.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(p1, game.getSquareOwner(Square.BalticAvenue));
+		assertEquals(startBal-endBal, Square.BalticAvenue.getRent());
 	}
 	
 	@Test
@@ -213,5 +259,7 @@ public class WhenRunningTheGame {
 		assertTrue(monopolies.contains(SquareGroup.VIOLET));
 		assertFalse(monopolies.contains(SquareGroup.ORANGE));
 	}
+	
+	
 
 }
