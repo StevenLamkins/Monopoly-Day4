@@ -156,8 +156,33 @@ public class Board {
 			case 30:squares.add(new GoToJail(30));
 			break;
 			
-			case 31:
+			case 31:squares.add(new Lot(31,"Pacific Avenue"));
+			break;
 			
+			case 32:squares.add(new Lot(32,"North Carolina Avenue"));
+			break;
+			
+			case 33:squares.add(new CommunityChest(33));
+			break;
+			
+			case 34:squares.add(new Lot(34,"Pennsylvania Avenue"));
+			break;
+			
+			case 35:squares.add(new RailRoad(35,"Shortline Railroad"));
+			break;
+			
+			case 36:squares.add(new Chance(36));
+			break;
+			
+			case 37:squares.add(new Lot(37,"Park Place"));
+			break;
+			
+			case 38:squares.add(new LuxurySquare(38));
+			break;
+			
+			case 39:squares.add(new Lot(39,"Boardwalk"));
+			break;
+	
 				
 }
 	}
