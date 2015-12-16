@@ -53,17 +53,17 @@ public class Square {
 		boolean stillPlaying=true;
 		if(id.equals("income tax")){
 			if(player.money>2000)
-				player.removeMoney((int) (player.money*.1));
-			else if(player.money>=200)
 				player.removeMoney(200);
 			else
-				stillPlaying = false;
+				player.removeMoney((int) (player.money*.1));
+			System.out.println(player.getToken()+ " Paying income tax! new money: "+player.money);
 		}
 		else if(id.equals("luxury tax")){
 			if(player.money>=75)
 				player.removeMoney(75);
 			else
 				stillPlaying = false;
+			System.out.println(player.getToken()+ " Paying luxury tax! new money: "+player.money);
 		}
 		return stillPlaying;
 	}
