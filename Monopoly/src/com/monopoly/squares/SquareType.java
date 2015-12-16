@@ -41,6 +41,10 @@ public abstract class SquareType {
 		numGoPasses++;
 	}
 	
+	public static double getMultiplier() {
+		return (double) numGoPasses * 0.25;
+	}
+	
 	public final SquareGroup getGroup() {
 		return group;
 	}
@@ -50,7 +54,7 @@ public abstract class SquareType {
 	}
 	
 	public final int getRent() {
-		return (int) (rent + (rent * 1.25) * numHouses) * (int) (0.25 * (double)numGoPasses);
+		return (int) (rent + (rent * 1.25) * numHouses) * (int) getMultiplier();
 	}
 	
 	public final int getNumHouses() {

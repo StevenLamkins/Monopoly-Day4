@@ -146,9 +146,19 @@ public class Player {
 	 * @param newPos
 	 */
 	private void printMove(int oldPos, int newPos) {
-		String oldSquare = game.getBoard().getSquareAt(oldPos).name();
-		String newSquare = game.getBoard().getSquareAt(newPos).name();
-		System.out.println("Moved from "+oldSquare+" ("+oldPos+") to "+newSquare+"("+newPos+")");
+		Square newSquare = game.getBoard().getSquareAt(newPos);
+		Square oldSquare = game.getBoard().getSquareAt(oldPos);
+		Player owner = Square.getSquareOwner(newSquare);
+		int numHouses = newSquare.getType().getNumHouses();
+		
+		System.out.println(String.format(
+			"Moved from %s (%s) to %s (%s, Owned by %s with %s houses)",
+			oldSquare.name(),
+			oldPos,
+			newSquare.name(),
+			newPos,
+			owner != null ? owner.toString() : "",
+			numHouses));
 	}
 	
 	public int takeTurn(Die dieOne, Die dieTwo) {
@@ -163,7 +173,7 @@ public class Player {
 	 * @return
 	 */
 	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll, boolean takeChances) {
-		System.out.println("--- Turn #"+(++turnCount)+"---------------------------------------");
+		System.out.println("--- Turn #"+(++turnCount)+" --- Multiplier is "+SquareType.getMultiplier()+" ---------------------------------");
 		System.out.println("It is now "+this+"'s turn.");
 		printStatus();
 		checkForMonopolies();
