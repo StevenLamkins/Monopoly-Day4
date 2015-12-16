@@ -72,4 +72,10 @@ public class WhenMovingAroundBoard {
 		assertEquals(3, player.takeTurn());
 		
 	}
+	
+	@Test
+	public void playDistanceGame()
+	{
+		game.playDistanceGame();
+	}
 }

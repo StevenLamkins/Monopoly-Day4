@@ -43,4 +43,52 @@ public class MonopolyGame {
 	public List<Die> getDice() {
 		return dice;
 	}
+	
+	public void  playRound() {
+		for (Player player : players) {
+			player.takeTurn();
+		}
+	}
+	
+	public void playDistanceGame() {
+		for (int index = 0; index < 10; ++index)
+		{
+			playRound();
+		}
+		List<Player> winners = new ArrayList<Player>();
+		int winPosition = getDistanceGameWinners(winners);
+		showDistanceGameWinners(winners, winPosition);
+	}
+
+	private int getDistanceGameWinners(List<Player> winners) {
+		int winPosition = -1;
+		winners.clear();
+		for (Player player : players) 
+		{
+			int playerPosition = player.getPosition();
+			// New single winner, clear winner list and set new winning score
+			if (playerPosition > winPosition)
+			{
+				winners.clear();
+				winners.add(player);
+				winPosition = playerPosition;
+			}
+			// Tied winner, add them to the list
+			else if (playerPosition == winPosition)
+			{
+				winners.add(player);
+			}
+		}
+		return winPosition;
+	}
+	
+	private void showDistanceGameWinners(List<Player> winners, int winPosition) {
+		System.out.println("Winning player(s) at position " + winPosition);
+		for (Player winner : winners)
+		{
+			System.out.println("  " + winner);
+		}
+	}
+
+	
 }
