@@ -119,7 +119,7 @@ public class WhenSettingUpGame {
 		Board board = new Board();
 		Player player = new Player(board.getStartSquare(), 1);		
 		
-		assertEquals(1500.0, player.getAccountBalance());
+		assertEquals(1500.0, player.getAccountBalance(), 0.001);
 	}
 	
 }

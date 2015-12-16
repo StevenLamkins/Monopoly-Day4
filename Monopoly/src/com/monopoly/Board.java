@@ -1,6 +1,7 @@
 package com.monopoly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Board {
@@ -24,10 +25,22 @@ public class Board {
 
 	private void buildSquares() {
 		squares = new ArrayList<>();
-		squares.add(new Square("Go"));
-		for (int i = 1; i < 40; i++) {			
-			squares.add(new Square("Square" + i));			
+		squares.add(new GoSquare("Go"));
+		for (int i = 1; i < 40; i++) {	
+			if(i == 38)
+			{
+				squares.add(new LuxeryTaxSquare("Luxury Tax " + (i)));
+			}else if(i == 4)
+			{
+				squares.add(new IncomeTax("Square" + i));
+			}
+			else
+			{
+				squares.add(new BlankSquare("Square" + i));
+			}
+			System.out.println(squares.get(i).getName());
 		}
+		
 	}
 
 	public List<Square> getSquares() {

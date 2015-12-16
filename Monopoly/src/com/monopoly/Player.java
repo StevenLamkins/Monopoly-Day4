@@ -40,14 +40,20 @@ public class Player {
 			setSquare(getSquare().getNextSquare());
 		}
 		
+		getSquare().landOn(this);
+		
 	}
 
 	private void setSquare(Square square) {
 		this.square = square;		
 	}
 
-	public Object getAccountBalance() {
+	public double getAccountBalance() {
 		return accountBalance;
+	}
+
+	public void incrementAccount(double amount) {
+		accountBalance += amount;		
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.monopoly;
 
-public class Square {
+public abstract class Square {
 	
 	private String name;
 	private Square nextSquare;
@@ -21,4 +21,6 @@ public class Square {
 	public Object getName() {
 		return name;
 	}
+	
+	public abstract void landOn(Player player);
 }
