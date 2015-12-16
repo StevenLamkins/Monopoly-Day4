@@ -63,7 +63,7 @@ public class Board {
 				squares.add(new LuxuryTaxSquare());
 				break;
 			default:
-				squares.add(new LotSquare ("Property", i*10, i));
+				squares.add(new LotSquare ("Property", (i+1)*10, i+1));
 				break;
 			}
 		}

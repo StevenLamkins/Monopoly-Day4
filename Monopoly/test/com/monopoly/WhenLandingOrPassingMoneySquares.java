@@ -64,7 +64,7 @@ public class WhenLandingOrPassingMoneySquares {
 		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
 		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
 		
-		assertEquals(1110, testPlayer.getMoney());
+		assertEquals(1100, testPlayer.getMoney());
 		
 	}
 	
@@ -75,12 +75,12 @@ public class WhenLandingOrPassingMoneySquares {
 		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
 		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
 		
-		assertEquals(1110, testPlayer.getMoney());
+		assertEquals(1100, testPlayer.getMoney());
 		
 		Player testPlayer2 = new Player(Token.Dog, board.getSquares().get(36));
 		testPlayer2.takeTurn(new LoadedDie(1), new LoadedDie(2));
-		assertEquals(1461, testPlayer2.getMoney());
-		assertEquals(1149, testPlayer.getMoney());
+		assertEquals(1460, testPlayer2.getMoney());
+		assertEquals(1150, testPlayer.getMoney());
 
 	}
 }
