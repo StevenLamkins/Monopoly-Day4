@@ -23,7 +23,7 @@ public class WhenLandingOnProperty
 	{
 		player.move(3);
 		Property currentProperty = (Property)player.getCurrentPosition();
-		assertEquals(player, currentProperty.getOwner());
+		fail();
 	}
 	
 	@Ignore

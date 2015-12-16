@@ -32,12 +32,31 @@ public abstract class Property extends Square
 		return price;
 	}
 	
-	public void setRent(int rent) {
+	public void setRent(int rent) 
+	{
 		this.rent = rent;
 	}
 	
-	public int getRent() {
+	public int getRent()
+	{
 		return rent;
+	}
+	
+	
+	public void action(Player player)
+	{
+		if(getOwner() == null && (player.getMoney() > price) )
+		{
+			player.buy(this);
+		}
+		else if(getOwner() != null)
+		{
+			player.payRent(this);
+		}
+		else
+		{
+			//Do Nothing
+		}
 	}
 
 }

@@ -72,6 +72,7 @@ public class Player
 	  {
 		  addMoney(200);
 	  }
+	  
   }
   
   public int getMoney()
@@ -87,6 +88,18 @@ public class Player
 
 public void addMoney(int i) {
 	money = money + i;	
+}
+
+public void buy(Property property)
+{
+	money = money - property.getPrice();
+	property.setOwner(this);
+}
+
+public void payRent(Property property)
+{
+	money = money - property.getRent();
+	property.getOwner().addMoney(property.getRent());
 }
 
   
