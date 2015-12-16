@@ -15,7 +15,7 @@ public class PropertySquare extends Square {
 	@Override
 	public void landOn(Player player) {
 
-		if (player.getAccountBalance() >= price) {
+		if (owner == null && player.getAccountBalance() >= price) {
 			player.debit(price);
 			owner = player;
 		}
