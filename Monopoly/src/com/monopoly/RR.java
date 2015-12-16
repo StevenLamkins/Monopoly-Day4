@@ -18,6 +18,7 @@ public class RR extends Square {
 					int finalPrice = owner.getOwnRRCount() * 25;
 					//pay rent
 					if(player.getMoney()>=finalPrice){
+						System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
 						player.removeMoney(finalPrice);
 						owner.addMoney(finalPrice);
 					}//end if
@@ -34,7 +35,8 @@ public class RR extends Square {
 				player.removeMoney(this.price);
 				owner = player;
 				int ownCount=player.getOwnRRCount();
-				player.setOwnRRCount(++ownCount);				
+				player.setOwnRRCount(++ownCount);
+				System.out.println(player.getToken()+ " has purchased "+id);
 			}//end else if
 		}//end if buyIfProperty
 		return stillInGame;

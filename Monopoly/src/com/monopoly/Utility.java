@@ -27,6 +27,7 @@ public class Utility extends Square {
 					}//end ownCount==2
 					//pay rent
 					if(player.getMoney()>=finalPrice){
+						System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
 						player.removeMoney(finalPrice);
 						owner.addMoney(finalPrice);
 					}//end if					
@@ -41,7 +42,8 @@ public class Utility extends Square {
 				isOwned=true;
 				ownCount++;
 				player.removeMoney(this.price);
-				owner = player;				
+				owner = player;
+				System.out.println(player.getToken()+ " has purchased "+id);				
 			}//end else if player.getMoney()>=this.price
 		}//end if buyIfProperty
 		return stillInGame;
