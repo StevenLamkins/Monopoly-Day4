@@ -1,4 +1,6 @@
-package com.monopoly;
+package com.monopoly.squares;
+
+import com.monopoly.Player;
 
 public class Square {
 	private int position;
@@ -10,6 +12,11 @@ public class Square {
 		this.name = name;
 	}
 
+	public void landOn(Player player)
+	{
+		return;
+	}
+	
 	public int getPosition() {
 		return position;
 	}
@@ -30,6 +37,11 @@ public class Square {
 	public String toString()
 	{
 		return getName();
+	}
+
+	public void pass(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

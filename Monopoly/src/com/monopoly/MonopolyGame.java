@@ -5,6 +5,8 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 
+import com.monopoly.squares.Square;
+
 public class MonopolyGame {
 
 	private List<Player> players = new ArrayList<>();

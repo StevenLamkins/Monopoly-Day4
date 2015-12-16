@@ -3,6 +3,7 @@ package com.monopoly;
 import java.util.List;
 
 import com.monopoly.MonopolyGame.Token;
+import com.monopoly.squares.Square;
 
 public class Player {
 
@@ -69,7 +70,12 @@ public class Player {
 	public void move(int value) {
 		for(int i = 0; i < value; i++)
 		{
+			if(i > 0)
+			{
+				square.pass(this);
+			}
 			square = square.getNextSquare();
 		}
+		square.landOn(this);
 	}
 }
