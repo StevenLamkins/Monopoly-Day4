@@ -33,6 +33,9 @@ public class Square {
 		return name;
 	}
 	
+	public boolean getOwnable() {
+		return false;
+	}
 	@Override
 	public String toString()
 	{

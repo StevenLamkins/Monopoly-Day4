@@ -1,18 +1,22 @@
 package com.monopoly;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.monopoly.MonopolyGame.Token;
+import com.monopoly.squares.Property;
 import com.monopoly.squares.Square;
 
 public class Player {
 
 	private List<Die> dice;
 	private Square square;
+	private List<Property> properties;
 	private Token token;
 	private int money;
 	
 	public Player(Square square, Token token, List<Die> dice) {
+		this.properties = new ArrayList<>();
 		this.money = 1500;
 		this.dice = dice;
 		this.square = square;
@@ -78,4 +82,29 @@ public class Player {
 		}
 		square.landOn(this);
 	}
+
+	public void purchase(Property property)
+	{
+		if(money > property.getValue())
+		{
+			property.setOwner(this);
+			properties.add(property);
+			setMoney(money - property.getValue());
+		}
+	}
+	
+	public List<Property> getProperties() {
+		return properties;
+	}
+
+	public void pay(Player owner, int rent) {
+		
+		int amount = rent;
+		if(this.getMoney() < rent)
+			amount = this.getMoney();
+		
+		this.setMoney(this.getMoney() - rent);
+		owner.setMoney(owner.getMoney() + amount);
+	}
+	
 }
