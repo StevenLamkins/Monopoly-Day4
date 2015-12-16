@@ -20,5 +20,7 @@ public class Square {
 	public void setNextSquare(Square nextSquare) {
 		this.nextSquare = nextSquare;
 	}
+	
+	public void landOn (Player player) {};
 
 }

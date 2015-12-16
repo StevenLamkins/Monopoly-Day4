@@ -14,6 +14,10 @@ public class Player {
 		this.money = 1500;
 	}
 
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	public Square getLocation() {
 		return location;
 	}
@@ -36,6 +40,8 @@ public class Player {
 		for (int i = 0; i < rollValue; i++) {
 			location = location.getNextSquare();
 		}
+		
+		location.landOn(this);
 	}
 
 }
