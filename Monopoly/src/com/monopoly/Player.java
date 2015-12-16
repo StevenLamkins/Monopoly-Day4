@@ -7,7 +7,8 @@ public class Player
   String piece;
   double money;
   
-  public Player(int playerNumber, Square startSquare){
+  public Player(int playerNumber, Square startSquare)
+  {
 	  
 	  
 	  switch(playerNumber)
@@ -68,6 +69,12 @@ public class Player
   {
 	  return money;
   }
+  
+  public void takeTurn(Die die1, Die die2) {
+		int rollValue = die1.roll() + die2.roll();
+		move(rollValue);
+	}
+
   
   
 

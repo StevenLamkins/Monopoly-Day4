@@ -45,4 +45,13 @@ public class MonopolyGame
 		return players;
 	}
 	
+	public void playRound()
+	{
+		Die die1 = new Die();
+		Die die2 = new Die();
+		for (Player player : players) {
+			player.takeTurn(die1, die2);
+		}
+	}
+	
 }

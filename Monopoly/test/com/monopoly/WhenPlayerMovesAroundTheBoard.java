@@ -45,13 +45,24 @@ public class WhenPlayerMovesAroundTheBoard {
 	}
 	
 	@Test
-	public void playerLeavesGo(){
+	public void playerLeavesGo()
+	{
 		MonopolyGame game = new MonopolyGame(2);
 		Player testPlayer = game.getPlayers().get(0);
 		
 		Square expectedSquare = game.getSquares().get(1);
 		testPlayer.move(1);
 		
+		assertEquals(expectedSquare,testPlayer.getCurrentPosition());
+	}
+	
+	
+	@Test
+	public void playerTakesTurn()
+	{
+		MonopolyGame game = new MonopolyGame(2);
+		 game.playRound();
+				
 		assertEquals(expectedSquare,testPlayer.getCurrentPosition());
 	}
 	
