@@ -69,7 +69,7 @@ public class Board {
 			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
 			break;
 			
-			case 2: squares.add(new CC(2, "Community Chest"));
+			case 2: squares.add(new CommunityChest(2));
 			break;
 			
 			case 3: squares.add(new Lot(3, "Baltic Avenue"));
@@ -114,11 +114,49 @@ public class Board {
 			case 16:squares.add(new Lot(16,"St. James Place"));
 			break;
 			
-			case 17:squares.add(new CC(17,"CommunityChest"));
+			case 17:squares.add(new CommunityChest(17));
 			break;
 			
+			case 18:squares.add(new Lot(18,"Tennessee Avenue"));
+			break;
 			
+			case 19:squares.add(new Lot(19,"New York Avenue"));
+			break;
 			
+			case 20:squares.add(new FreeParking(20));
+			break;
+			
+			case 21:squares.add(new Lot(21,"Kentucky Avenue"));
+			break;
+			
+			case 22:squares.add(new Chance(22));
+			break;
+			
+			case 23:squares.add(new Lot(23,"Indiana Avenue"));
+			break;
+			
+			case 24:squares.add(new Lot(24,"Illinois Avenue"));
+			break;
+			
+			case 25:squares.add(new RailRoad(25,"B&O RailRoad"));
+			break;
+			
+			case 26:squares.add(new Lot(26,"Atlantic Avenue"));
+			break;
+			
+			case 27:squares.add(new Lot(27,"Vetnor Avenue"));
+			break;
+			
+			case 28:squares.add(new Utilities(28,"Water Works"));
+			break;
+			
+			case 29:squares.add(new Lot(29,"Marvin Gardens"));
+			break;
+			
+			case 30:squares.add(new GoToJail(30));
+			break;
+			
+			case 31:
 			
 				
 }
