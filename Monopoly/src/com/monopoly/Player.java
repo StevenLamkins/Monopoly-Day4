@@ -30,12 +30,13 @@ public class Player {
 		int numSpaces = dice.roll();
 		Square currSquare = position;
 		
-		for (int i = 0; i < numSpaces; i++){
+		for (int i = 1; i <= numSpaces-1; i++){
 			currSquare = currSquare.getNext();
+			currSquare.passedBy(this);
 		}
-		position = currSquare;
+		position = currSquare.getNext();
 		
-		currSquare.landedOnBy(this);
+		position.landedOnBy(this);
 	}
 
 	public void decrementBalance(int amount) {

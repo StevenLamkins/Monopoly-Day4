@@ -2,15 +2,14 @@ package com.monopoly;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class WhenLandingOnTaxSquares {
 	
-	Square firstSquare  = new Square();
-	Square square2 = new Square();
-	Square square3 = new LuxuryTaxSquare();
-	Square square4 = new Square();
+	Square firstSquare  = new Square("First");
+	Square square2 = new Square("2");
+	Square square3 = new LuxuryTaxSquare("Luxury");
+	Square square4 = new IncomeTaxSquare("IncomeTax");
 	
 	@Before
 	public void setupSquares() {
@@ -22,11 +21,44 @@ public class WhenLandingOnTaxSquares {
 
 	@Test
 	public void shouldChargeLuxuryTax() {
+		
 		Player player = new Player(Token.Boot, firstSquare);
 		
 		player.takeTurn(new LoadedDice(2));
 		
 		assertEquals (1425, player.getBalance());
 	}
+	
+	@Test
+	public void shouldPay10PercentforLandingOnIncomeTaxIfPoor1500() { //<2000
+		
+		Player player = new Player (Token.Iron, firstSquare);
+		
+		player.takeTurn(new LoadedDice(3));
+		
+		assertEquals (1500-150, player.getBalance());
+		
+	}
+	
+	@Test
+	public void shouldPay10PercentForLandingOnIncomeTaxIf1900 () {
+		
+		Player player = new Player(Token.Racecar, firstSquare);
+		player.incrementBalance(400);
+		
+		player.takeTurn(new LoadedDice(3));
+		
+		assertEquals (1900-190, player.getBalance());
+	}
 
+	@Test
+	public void shouldPay200ForLandingOnIncomeTaxIfRich () {
+		
+		Player player = new Player(Token.Racecar, firstSquare);
+		player.incrementBalance(1500);
+		
+		player.takeTurn(new LoadedDice(3));
+		
+		assertEquals (2800, player.getBalance());
+	}
 }

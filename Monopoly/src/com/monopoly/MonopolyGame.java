@@ -14,7 +14,7 @@ public class MonopolyGame {
 	
 	public MonopolyGame() {
 		for (int i = 1; i <= NUM_SQUARES; i++){
-			squares.add(new Square());
+			squares.add(new Square(""+i));
 		}
 		goSquare = squares.get(0);
 		

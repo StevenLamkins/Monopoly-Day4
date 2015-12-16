@@ -9,10 +9,10 @@ import org.junit.*;
 public class WhenMovingAroundBoard {
 	
 	MonopolyGame game = new MonopolyGame();
-	Square firstSquare  = new Square();
-	Square square2 = new Square();
-	Square square3 = new Square();
-	Square square4 = new Square();
+	Square firstSquare  = new Square("1");
+	Square square2 = new Square("2");
+	Square square3 = new Square("3");
+	Square square4 = new Square("4");
 	
 	@Before
 	public void setupSquares() {
@@ -46,8 +46,8 @@ public class WhenMovingAroundBoard {
 	
 	@Test
 	public void playerShouldMoveWhenTakingTurn() {
-		Square square1 = new Square();
-		Square square2 = new Square();
+		Square square1 = new Square("1");
+		Square square2 = new Square("2");
 		square1.setNext(square2);
 		square2.setNext(square1);
 		Player player = new Player(Token.Dog, square1);
