@@ -13,7 +13,52 @@ public class WhenSettingUpGame {
 	private MonopolyGame game;
 	private List<Player> players;
 	private List<Square> squares;
+	private Die[] dice;
 	
+	
+	
+	@Test
+	public void whichPlayerGoesNext() {
+		
+		//setup
+        int currentPlayerPosition =1;
+		game = new MonopolyGame(8);
+		players =  game.getPlayers();
+        Player currentPlayer = players.get(currentPlayerPosition);
+        //verify
+		assertEquals(currentPlayerPosition +1, Integer.parseInt(currentPlayer.getToken().substring(5)));
+
+
+	}
+
+	@Test
+	public void shoulPlayerHas1500() {
+		
+		//setup
+
+		game = new MonopolyGame(2);
+		players =  game.getPlayers();
+
+
+		for (Player p :players) {
+			//verify
+			assertEquals(1500, p.getFund());
+		}
+
+	}
+	@Test
+	public void shouldHaveTwoDice() {
+		
+		//setup
+
+		game = new MonopolyGame(2);
+		dice = game.getDice();
+		
+
+		//verify
+	    assertEquals(2, dice.length);
+
+	}
 
 	
 	@Test
@@ -22,7 +67,6 @@ public class WhenSettingUpGame {
 		//setup
 
 		game = new MonopolyGame(2);
-		players =  game.getPlayers();
 		squares =  game.getSquares();
 		
 		//verify
@@ -37,7 +81,6 @@ public class WhenSettingUpGame {
 
 		game = new MonopolyGame(2);
 		players =  game.getPlayers();
-		squares =  game.getSquares();
 		//verify
 		assertTrue(players.size() == 2);
 		
@@ -48,7 +91,6 @@ public class WhenSettingUpGame {
 		//setup
 		game = new MonopolyGame(9);
 		players =  game.getPlayers();
-		squares =  game.getSquares();
 
 		
         //verify
@@ -61,7 +103,6 @@ public class WhenSettingUpGame {
 		//setup
 		game = new MonopolyGame(1);
 		players =  game.getPlayers();
-		squares =  game.getSquares();
 
 		
         //verify
@@ -75,13 +116,12 @@ public class WhenSettingUpGame {
 		//setup
 		game = new MonopolyGame(2);
 		players =  game.getPlayers();
-		squares =  game.getSquares();
 
 		
         //verify
 		for (Player p : players)
 		{
-		   assertEquals("Go", p.isOnGo());
+		   assertTrue( p.isOnGo());
 		}
 
 		
@@ -95,14 +135,13 @@ public class WhenSettingUpGame {
 		//setup
 		game = new MonopolyGame(2);
 		players =  game.getPlayers();
-		squares =  game.getSquares();
 		
        //verify
 		int counter =1;
 		for (Player p : players)
 		{
 			
-		   assertEquals("king"+counter, p.getToken());
+		   assertEquals("TOKEN"+counter, p.getToken());
 		   counter++;
 		}
 
