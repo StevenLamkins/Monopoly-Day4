@@ -27,7 +27,7 @@ public class Board {
 	private void createSquares() {
 		squares = new ArrayList<>();
 		squares.add(new GoSquare());
-		for (int i = 1; i < 40; i++) {
+		for (int i = 1; i < 39; i++) {
 			if (i == 38) {
 				squares.add(new LuxTaxSquare());
 			} 

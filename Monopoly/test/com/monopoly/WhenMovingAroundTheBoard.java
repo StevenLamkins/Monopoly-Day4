@@ -31,8 +31,8 @@ public class WhenMovingAroundTheBoard {
 		MonopolyGame game = new MonopolyGame(4);
 
 		List<Player> players = game.getPlayers();
-		players.get(0).takeTurn(new LoadedDie(2));
-		assertEquals("Square4", players.get(0).getLocation().getName());
+		players.get(0).takeTurn(new LoadedDie(3));
+		assertEquals("Square6", players.get(0).getLocation().getName());
 
 	}
 
