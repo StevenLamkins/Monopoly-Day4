@@ -2,14 +2,18 @@ package com.monopoly;
 
 public class GoSquare extends Square {
 
-	public GoSquare(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public GoSquare() {
+		super("Go Square");
+	}
+	 
+	@Override
+	public void landOnBy(Player player) {
+		player.credit(200);
 	}
 	
 	@Override
-	public void landOn (Player player) {
-		player.setMoney(player.getMoney()  + 200);
-		
+	public void passOverBy(Player player) {
+		player.credit(200);
 	}
+
 }

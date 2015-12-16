@@ -2,14 +2,13 @@ package com.monopoly;
 
 public class LuxuryTaxSquare extends Square {
 
-	public LuxuryTaxSquare(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public LuxuryTaxSquare() {
+		super("Luxury Tax Square");
 	}
 	
 	@Override
-	public void landOn (Player player) {
-		player.setMoney(player.getMoney() - 75);
+	public void landOnBy(Player player) {
+		player.debit(75);
 	}
-
+ 
 }
