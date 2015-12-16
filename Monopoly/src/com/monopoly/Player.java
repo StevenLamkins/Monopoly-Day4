@@ -54,10 +54,11 @@ public class Player
 	return piece;
   }
 
-public void move(int spaces) {
-	Square temp = currentPosition.travel(spaces);
-	currentPosition = temp;
-}
+  public void move(int spaces) 
+  {
+	  Square temp = currentPosition.travel(spaces);
+	  currentPosition = temp;
+  }
   
   
 	

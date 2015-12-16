@@ -18,12 +18,14 @@ public class WhenPlayerMovesAroundTheBoard {
 			List<Player> players = game.getPlayers();
 			List<Square> squares = game.getSquares();
 			Player testPlayer = players.get(x-1);
+			Square expectedSquare;
 			
-			fail("NEED TO FIX");
-			testPlayer.move(49);
-			Square expectedSquare = squares.get(9);
-			assertEquals(expectedSquare,
-			testPlayer.getCurrentPosition());
+			
+			testPlayer.move(45);
+			expectedSquare = squares.get(5);
+			assertEquals(expectedSquare, testPlayer.getCurrentPosition());
+			
+
 				
 			
 		}
