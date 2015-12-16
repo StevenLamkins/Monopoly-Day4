@@ -296,21 +296,55 @@ public class WhenRunningTheGame {
 		assertEquals(startBal+200, endBal); //TODO fix once Go amount is adjusted
 	}
 	
-	@Ignore
 	@Test
 	public void shouldBuyHouseIfMonopolyExists() {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
 		Square.setSquareOwner(p, Square.OrientalAvenue);
-		Square.setSquareOwner(p, Square.ConnecticutAvenue);
 		Square.setSquareOwner(p, Square.VermontAvenue);
+		Square.setSquareOwner(p, Square.ConnecticutAvenue);
 		
 		p.takeTurn(game.getDieOne(), game.getDieTwo());
 		
-		assertTrue(Square.hasHouses(Square.OrientalAvenue)
-				|| Square.hasHouses(Square.ConnecticutAvenue)
-				|| Square.hasHouses(Square.VermontAvenue));
+		assertTrue(Square.hasHouses(Square.OrientalAvenue));
+	}
+	
+	@Test
+	public void shouldBuySecondHouseIfFirstExists() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		Square.setSquareOwner(p, Square.OrientalAvenue);
+		Square.setSquareOwner(p, Square.VermontAvenue);
+		Square.setSquareOwner(p, Square.ConnecticutAvenue);
+		
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		
+		assertTrue((Square.hasHouses(Square.OrientalAvenue) && Square.hasHouses(Square.VermontAvenue)));
+	}
+	
+	@Test
+	public void shouldNotBuyHousesAfterPropertyIsFilled() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		p.deposit(10000);
+		Square.setSquareOwner(p, Square.ParkPlace);
+		Square.setSquareOwner(p, Square.Boardwalk);
+		
+		for (int i=0; i<10; i++) {
+			p.takeTurn(game.getDieOne(), game.getDieTwo());
+		}
+		
+		assertEquals(Square.ParkPlace.getType().getNumHouses(), 5);
+		assertEquals(Square.Boardwalk.getType().getNumHouses(), 5);
+		
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		
+		assertEquals(Square.ParkPlace.getType().getNumHouses(), 5);
+		assertEquals(Square.Boardwalk.getType().getNumHouses(), 5);
 	}
 	
 	@Test
