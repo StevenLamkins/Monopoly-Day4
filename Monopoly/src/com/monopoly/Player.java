@@ -1,33 +1,41 @@
 package com.monopoly;
 
+import com.dicegame.Die;
 
 public class Player {
 
-	private Square currentSquare;
-	
-	private MonopolyGame.Token token;
-	
-	public Player(Square startSquare, MonopolyGame.Token token) {
+	private Square location;
+	private Token token;
+	private int money;
 
-		this.currentSquare = startSquare;
+	public Player(Token token, Square startSquare) {
+		this.location = startSquare;
 		this.token = token;
-	}
-	
-	public void setToken(MonopolyGame.Token token) {
-		this.token = token;
+		this.money = 1500;
 	}
 
-	public MonopolyGame.Token getToken() {
+	public Square getLocation() {
+		return location;
+	}
+
+	public Token getToken() {
 		return token;
 	}
 
-	public Square getCurrentSquare() {
-
-		return currentSquare;
+	public int getMoney() {
+		return money;
 	}
 
-	public void setCurrentSquare(Square currentSquare) {
-		this.currentSquare = currentSquare;
+	public void takeTurn(Die die1, Die die2) {
+		int rollValue = die1.roll() + die2.roll();
+		move(rollValue);
+	}
+
+	private void move(int rollValue) {
+		
+		for (int i = 0; i < rollValue; i++) {
+			location = location.getNextSquare();
+		}
 	}
 
 }

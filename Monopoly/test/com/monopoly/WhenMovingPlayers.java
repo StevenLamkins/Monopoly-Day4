@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.dicegame.Die;
@@ -13,40 +13,36 @@ public class WhenMovingPlayers {
 
 	@Test
 	public void shouldLeaveGoSquare() {
-
-		
-		// setup + exercise
 		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
-		Square goSquare = game.getGoSquare();
+		Square goSquare = game.getSquares().get(0);
 		
 		game.playRound();
 		
 		for (Player player : players) {
-			assertNotEquals(goSquare, player.getCurrentSquare());
+			assertNotEquals(goSquare, player.getLocation());
 		}
-
 	}
-
+	
 	@Test
-	public void shouldMovePlayerCorrectNumberOfSquare() {
-		MonopolyGame game = new MonopolyGame(8);
-		List<Player> players = game.getPlayers();
-		Square goSquare = game.getGoSquare();
+	public void shouldMovePlayerCorrectNumberOfSquares() {
+		Board board = new Board();
+		Player testPlayer = new Player(Token.Battleship, board.getStartSquare());
+		Square expectedLocation = board.getSquares().get(5);
 		
-		game.playRound();
+		testPlayer.takeTurn(new LoadedDie(3), new LoadedDie(2));
 		
-		for (Player player : players) {
-			assertNotEquals(goSquare, player.getCurrentSquare());
-		}
-		
-		
-		fail("Not yet implemented");
+		assertEquals(expectedLocation, testPlayer.getLocation());
 	}
 
 	@Test
 	public void shouldCircleTheBoard() {
-		fail("Not yet implemented");
+		Board board = new Board();
+		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(37));
+		Square expectedLocation = board.getSquares().get(2);
+		
+		testPlayer.takeTurn(new LoadedDie(3), new LoadedDie(2));
+		
+		assertEquals(expectedLocation, testPlayer.getLocation());
 	}
-
 }

@@ -5,63 +5,44 @@ import java.util.List;
 
 import com.dicegame.Die;
 
+
 public class MonopolyGame {
 
 	private Board board;
-
-	private List<Player> players = new ArrayList<>();
-
-	public enum Token {
-		Dog, Wheelbarrow, TopHat, Thimble, BattleShip, Racecar, Boot, Iron
-	}
-
-	public MonopolyGame() {
-		this(2);
-	}
-
+	private List<Player> players;
+	private Die die1;
+	private Die die2;
+	
 	public MonopolyGame(int numberOfPlayers) {
+		
+		if (numberOfPlayers > 8) throw new WrongNumberOfPlayersException("Too many!");
+		if (numberOfPlayers < 2) throw new WrongNumberOfPlayersException("Too few!");
 		board = new Board();
-		setupPlayers(numberOfPlayers);
-	}
-
-	private void setupPlayers(int numberOfPlayers) {
-		if (numberOfPlayers < 2)
-			throw new IllegalArgumentException();
-		if (numberOfPlayers > 8)
-			throw new IllegalArgumentException();
+		players = new ArrayList<>();
+		die1 = new Die();
+		die2 = new Die();
+		
 		for (int i = 0; i < numberOfPlayers; i++) {
-			Player player = new Player(board.getSquares().get(0),
-					Token.values()[i]);
-			players.add(player);
+			Token token = Token.values()[i];
+			players.add(new Player(token, board.getStartSquare()));
 		}
+		
 	}
-
+	
 	public List<Square> getSquares() {
-
+		
 		return board.getSquares();
 	}
 
 	public List<Player> getPlayers() {
-
 		return players;
 	}
 
-	public Square getGoSquare() {
-
-		return board.getSquares().get(0);
-	}
-
 	public void playRound() {
-		Die dice = new Die();
-		
 		for (Player player : players) {
-			int faceValue = dice.rollDice();
-			Square newLocation = null;
-			for (int move = 0; move < faceValue; move++){
-				 newLocation = getSquares().get(move);
-			}
-			player.setCurrentSquare(newLocation);
+			player.takeTurn(die1, die2);
 		}
-		
 	}
+	
+	
 }

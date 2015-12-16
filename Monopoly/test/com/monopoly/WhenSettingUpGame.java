@@ -1,27 +1,17 @@
 package com.monopoly;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.util.Enumeration;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-import com.dicegame.Die;
-
 public class WhenSettingUpGame {
-	/*
-	 * @Before public void setUp() throws Exception { }
-	 * 
-	 * @After public void tearDown() throws Exception { }
-	 */
 
 	@Test
 	public void shouldHave40Squares() {
 		// setup + exercise
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(4);
 		List<Square> squares = game.getSquares();
 
 		// verify
@@ -30,45 +20,72 @@ public class WhenSettingUpGame {
 
 	@Test
 	public void shouldHaveCorrectNumberOfPlayers() {
-		// setup + exercise
-		MonopolyGame game = new MonopolyGame(5);
-		// verify
-		assertEquals(5, game.getPlayers().size());
+		MonopolyGame game = new MonopolyGame(4);
+
+		List<Player> players = game.getPlayers();
+
+		assertEquals(4, players.size());
 	}
 
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected = WrongNumberOfPlayersException.class)
 	public void shouldErrorWithTooManyPlayers() {
-		// setup + exercise
-		MonopolyGame game = new MonopolyGame(9);
+		new MonopolyGame(9);
 	}
 
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected = WrongNumberOfPlayersException.class)
 	public void shouldErrorWithTooFewPlayers() {
-		// setup + exercise
-		MonopolyGame game = new MonopolyGame(1);
-		
+		new MonopolyGame(1);
 	}
 
 	@Test
 	public void shouldStartPlayersOnGo() {
-		// setup + exercise
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(8);
+
 		List<Square> squares = game.getSquares();
+		Square goSquare = squares.get(0);
 		List<Player> players = game.getPlayers();
 
 		for (Player player : players) {
-			Square currentSquare = player.getCurrentSquare();
-			assertEquals(currentSquare, squares.get(0));
-			Die die;
+			assertEquals(goSquare, player.getLocation());
 		}
 	}
 
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
-		MonopolyGame game = new MonopolyGame();
+		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
+
+		assertEquals(Token.Dog, players.get(0).getToken());
+		assertEquals(Token.Iron, players.get(1).getToken());
+		assertEquals(Token.Shoe, players.get(2).getToken());
+		assertEquals(Token.Racecar, players.get(3).getToken());
+	}
+
+	@Test
+	public void shouldHaveUniqueNamesForSquares() {
+		MonopolyGame game = new MonopolyGame(2);
+		List<Square>	 squares = game.getSquares();
+
+		assertEquals("Go Square", squares.get(0).getName());
+		assertEquals("Square 1", squares.get(1).getName());
+		assertEquals("Square 2", squares.get(2).getName());
+		assertEquals("Square 3", squares.get(3).getName());
+		assertEquals("Square 39", squares.get(39).getName());
+	}
+	
+	@Test
+	public void shouldStartPlayersWith1500() {
+		MonopolyGame game = new MonopolyGame(8);
+		List<Player> players = game.getPlayers();
+		
 		for (Player player : players) {
-			assertNotNull(player.getToken());
+			assertEquals(1500, player.getMoney());
 		}
 	}
+	
+	
+	
+	
+	
+	
 }

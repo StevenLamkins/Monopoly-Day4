@@ -5,19 +5,35 @@ import java.util.List;
 
 public class Board {
 	
-	final int NUMBER_OF_SQUARES = 40;
-	private List<Square> squares = new ArrayList<>();
-	
-	
-	public Board () {
-		for (int i = 0; i < NUMBER_OF_SQUARES; i++) {
-			squares.add(new Square());
+	private List<Square> squares;
+
+	public Board() {
+		buildSquares();
+		linkSquares();
+	}
+
+	private void linkSquares() {
+		for (int i = 0; i < squares.size() - 1; i++) {
+			Square nextSquare = squares.get(i+1);
+			squares.get(i).setNextSquare(nextSquare);
+		}
+		
+		squares.get(squares.size()-1).setNextSquare(getStartSquare());
+	}
+
+	private void buildSquares() {
+		squares = new ArrayList<>();
+		squares.add(new Square("Go Square"));
+		for (int i = 1; i < 40; i++) {
+			squares.add(new Square("Square " + i));
 		}
 	}
-	
+
 	public List<Square> getSquares() {
 		return squares;
 	}
 
-
+	public Square getStartSquare() {
+		return squares.get(0);
+	}
 }
