@@ -112,7 +112,7 @@ public class Player {
 	 */
 	private void checkForPassGo(int oldPos, int newPos, int roll) {
 		if ((oldPos + roll) > game.getNumSquares()) {
-			deposit(20); //TODO - increase to $200 once houses can be bought
+			deposit(200); //TODO - increase to $200 once houses can be bought
 			System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
 		}
 	}

@@ -1,6 +1,7 @@
 package com.monopoly.squares;
 
 import com.monopoly.board.Move;
+import com.monopoly.player.Player;
 
 public class GoSquare extends SquareType {
 	
@@ -10,6 +11,8 @@ public class GoSquare extends SquareType {
 	
 	@Override
 	public void handleMove(Move move) {
-		
+		Player player = move.getPlayer();
+		player.deposit(200); //TODO - increase to $200 once houses can be bought
+		System.out.println(player+" landed on Go! Receive $200, balance is now "+player.getBalance());
 	}
 }
