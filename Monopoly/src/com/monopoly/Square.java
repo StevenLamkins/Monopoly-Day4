@@ -4,7 +4,7 @@ public class Square {
 
 	private String name;
 	private Square nextSquare;
-	private int price;
+	
 
 	public Square(String name) {
 		this.name = name;
@@ -36,12 +36,5 @@ public class Square {
 		return nextSquare;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 }

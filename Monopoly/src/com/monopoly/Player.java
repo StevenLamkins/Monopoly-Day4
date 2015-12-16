@@ -32,9 +32,20 @@ public class Player {
 		}
 		location = location.next();
 		location.landOnBy(this);
-    	
+		if (location instanceof PropSquare) {
+			buyProperty((PropSquare)location);
+		}
+      	
 	}     
 	
+	public void buyProperty(PropSquare property){
+		
+		int propertyValue = property.getPrice();
+		if((money >= propertyValue) && !property.isOwned()){
+			debit(propertyValue);
+			property.setOwner(this);
+		}
+	}
 
 	public void setToken(Token token) {
 		this.token = token;
