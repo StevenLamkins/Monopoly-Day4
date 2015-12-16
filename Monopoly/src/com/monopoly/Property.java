@@ -29,11 +29,12 @@ public class Property extends Square {
 				if(player!=owner){
 					int finalPrice=rent;
 					if(houseCount!=0){
-						finalPrice = rent*5*houseCount;
+						finalPrice = rent*10*houseCount;
 					}
 					else if(isPremiumProperty)
 						finalPrice = finalPrice*2;
 					if(player.getMoney()>=finalPrice){
+						System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
 						player.removeMoney(finalPrice);
 						owner.addMoney(finalPrice);
 					}
