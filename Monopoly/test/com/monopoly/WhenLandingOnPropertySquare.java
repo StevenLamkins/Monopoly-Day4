@@ -71,4 +71,28 @@ public class WhenLandingOnPropertySquare {
   		assertEquals(10, player.getAccountBalance(), 0.001);
   		assertNotEquals(player, ((PropertySquare)player.getSquare()).getOwner());
 	}
+	
+	@Test
+	public void playerShouldPaysRentToOwner() {
+		Board board = new Board();	
+
+		Player player = new Player(board.getSquares().get(0), 1);
+		Player player2 = new Player(board.getSquares().get(0), 2);
+		
+		Die die1 = new LoadedDie(2);
+		Die die2 = new LoadedDie(4);
+		List<Die> dice = new ArrayList<>();
+		dice.add(die1);
+		dice.add(die2);		
+  		player.takeTurn(dice);
+  		player2.takeTurn(dice);
+  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
+  		((PropertySquare)player.getSquare()).getPrice();		
+  		 
+  		assertEquals(1436,player.getAccountBalance(), 0.001);
+  		assertEquals(1494, player2.getAccountBalance(), 0.001);
+
+	}
+	
+	
 }

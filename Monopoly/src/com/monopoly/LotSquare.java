@@ -1,13 +1,12 @@
 package com.monopoly;
 
 public class LotSquare extends PropertySquare {
-	
-	private int rent;
+
 	private Group group;
 
 	public LotSquare(String name, int rent, int price, Group group) {
-		super(name, price);
-		this.rent = rent;
+		super(name, rent, price);
+
 		this.group = group;
 	}
 

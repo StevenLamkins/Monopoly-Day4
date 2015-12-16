@@ -4,10 +4,12 @@ public class PropertySquare extends Square {
 
 	private Player owner;
 	private int price;
+	private int rent;
 
-	public PropertySquare(String name, int price) {
+	public PropertySquare(String name, int rent, int price) {
 		super(name);
 		this.price = price;
+		this.rent = rent;
 		owner = null;
 
 	}
@@ -18,6 +20,11 @@ public class PropertySquare extends Square {
 		if (owner == null && player.getAccountBalance() >= price) {
 			player.debit(price);
 			owner = player;
+		}
+		else if (owner != null)
+		{
+			player.debit(rent);
+			owner.credit(rent);
 		}
 	}
 

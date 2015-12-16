@@ -35,6 +35,9 @@ public class Board {
 			case 3:
 				squares.add(new LotSquare("Baltic Avenue", 2,  60, Group.DarkBlue));
 				break;
+			case 6:
+				squares.add(new LotSquare("Continental Ave", i,  (i+1)*10, Group.Cyan));
+				break;
 			case 4:
 				squares.add(new IncomeTax("Square" + i));
 				break;	
