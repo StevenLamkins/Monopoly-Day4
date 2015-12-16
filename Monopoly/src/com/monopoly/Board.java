@@ -23,8 +23,11 @@ public class Board {
 
 	private void buildSquares() {
 		squares = new ArrayList<>();
-		squares.add(new Square("Go Square"));
+		squares.add(new GoSquare("Go Square"));
 		for (int i = 1; i < 40; i++) {
+			if (i == 38) {
+				squares.add(new LuxuryTaxSquare("Luxury Tax"));
+			}
 			squares.add(new Square("Square " + i));
 		}
 	}

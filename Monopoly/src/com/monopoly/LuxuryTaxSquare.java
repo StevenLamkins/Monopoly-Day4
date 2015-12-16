@@ -1,15 +1,15 @@
 package com.monopoly;
 
-public class GoSquare extends Square {
+public class LuxuryTaxSquare extends Square {
 
-	public GoSquare(String name) {
+	public LuxuryTaxSquare(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public void landOn (Player player) {
-		player.setMoney(player.getMoney()  + 200);
-		
+		player.setMoney(player.getMoney() - 75);
 	}
+
 }
