@@ -70,7 +70,7 @@ public class WhenMovingPlayers {
 			System.out.println("Square " + square.getName() + " NextSquare " + square.getNextSquare().getName());
 		}		
 		
-		assertEquals(player.getSquare().getName(), "Square5");		
+		assertEquals(player.getSquare().getName(), "RailRoad Square 5");		
 
 	}
 

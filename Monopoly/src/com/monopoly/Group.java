@@ -1,5 +1,5 @@
 package com.monopoly;
 
 public enum Group {
-	DarkBlue, Cyan, Purple, Orange, red, Yellow, Green, NavyBlue
+	DarkBlue, Cyan, Purple, Orange, red, Yellow, Green, NavyBlue, Railroad, Utility
 }

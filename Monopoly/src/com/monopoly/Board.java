@@ -32,21 +32,23 @@ public class Board {
 			case 0:
 				squares.add(new GoSquare("Go"));
 				break;
-			case 3:
-				squares.add(new LotSquare("Baltic Avenue", 2,  60, Group.DarkBlue));
-				break;
-			case 6:
-				squares.add(new LotSquare("Continental Ave", i,  (i+1)*10, Group.Cyan));
+			case 1: case 3:	case 6: case 8: case 9: case 11: case 13: case 14:
+			case 16: case 18: case 19: case 21: case 23: case 24: case 26: case 27:
+			case 29: case 31: case 32: case 34: case 37: case 39:
+				squares.add(new LotSquare("Lot Square i", i,  (i+1)*10, Group.Cyan));
 				break;
 			case 4:
-				squares.add(new IncomeTax("Square" + i));
-				break;	
+				squares.add(new IncomeTax("Square " + i));
+				break;
+			case 5: case 15: case 25: case 359:
+				squares.add(new LotSquare("RailRoad Square " + i, 25,  200, Group.Railroad));
+				break;
 			case 38:
 				squares.add(new LuxeryTaxSquare("Luxury Tax " + (i)));
 				break;				
 
 			default:
-				squares.add(new BlankSquare("Square" + i));
+				squares.add(new BlankSquare("Square " + i));
 				break;
 			}
 		

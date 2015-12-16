@@ -1,17 +1,15 @@
 package com.monopoly;
 
-public class PropertySquare extends Square {
+public abstract class  PropertySquare extends Square {
 
 	private Player owner;
 	private int price;
-	private int rent;
 
-	public PropertySquare(String name, int rent, int price) {
+
+	public PropertySquare(String name, int price) {
 		super(name);
 		this.price = price;
-		this.rent = rent;
 		owner = null;
-
 	}
 
 	@Override
@@ -23,8 +21,8 @@ public class PropertySquare extends Square {
 		}
 		else if (owner != null)
 		{
-			player.debit(rent);
-			owner.credit(rent);
+			player.debit(getRent());
+			owner.credit(getRent());
 		}
 	}
 
@@ -41,7 +39,9 @@ public class PropertySquare extends Square {
 
 	public int getPrice() {
 		return price;
-
 	}
+	public abstract int getRent();
+	
+	public abstract Group getGroup();
 
 }
