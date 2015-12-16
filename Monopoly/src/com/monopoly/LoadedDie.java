@@ -2,13 +2,14 @@ package com.monopoly;
 
 public class LoadedDie extends Die{
 
-	public LoadedDie(int randomSeed) {
-		super(randomSeed);
+	public LoadedDie(int faceValue) {
+		super(5353);
+		this.setFaceValue(faceValue);
 	}
 	
-	public int roll(int roll)
+	@Override
+	public int roll()
 	{
-		this.setFaceValue(roll);
 		return this.getFaceValue();
 	}
 

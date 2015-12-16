@@ -7,7 +7,9 @@ import com.monopoly.squares.GoSquare;
 import com.monopoly.squares.IncomeTaxSquare;
 import com.monopoly.squares.LuxuryTaxSquare;
 import com.monopoly.squares.Property;
+import com.monopoly.squares.RailroadProperty;
 import com.monopoly.squares.Square;
+import com.monopoly.squares.UtilityProperty;
 
 public class Board {
 	
@@ -32,10 +34,28 @@ public class Board {
 		for(int i = 1; i < 40; i++){
 			switch(i){
 				case 1: 
-					squares.add(new Property(i, "Mediterranean Avenue", 60, 2));
+					squares.add(new Property(i, "Mediterranean Avenue", "Purple", 60, 2));
 					break;
 				case 4: 
 					squares.add(new IncomeTaxSquare(i, "Income Tax"));	
+					break;
+				case 5:
+					squares.add(new RailroadProperty(i, "Reading Railroad", "Railroad", 200, 25));
+					break;
+				case 12:
+					squares.add(new UtilityProperty(i, "Electric Company", "Utilities", 150, 4));
+					break;
+				case 28:
+					squares.add(new UtilityProperty(i, "Water Works", "Utilities", 150, 4));
+					break;
+				case 15:
+					squares.add(new RailroadProperty(i, "Pennsylvania Railroad", "Railroad", 200, 25));
+					break;
+				case 25:
+					squares.add(new RailroadProperty(i, "Short Line", "Railroad", 200, 25));
+					break;
+				case 35:
+					squares.add(new RailroadProperty(i, "Reading Railroad", "Railroad", 200, 25));
 					break;
 				case 38:
 					squares.add(new LuxuryTaxSquare(i, "Luxury Tax"));

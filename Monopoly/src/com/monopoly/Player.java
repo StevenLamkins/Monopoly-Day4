@@ -71,6 +71,10 @@ public class Player {
 		return total;
 	}
 
+	public int getLastRoll() {
+		return dice.get(0).getFaceValue() + dice.get(1).getFaceValue();
+	}
+	
 	public void move(int value) {
 		for(int i = 0; i < value; i++)
 		{
@@ -87,8 +91,7 @@ public class Player {
 	{
 		if(money > property.getValue())
 		{
-			property.setOwner(this);
-			properties.add(property);
+			property.purchase(this);
 			setMoney(money - property.getValue());
 		}
 	}

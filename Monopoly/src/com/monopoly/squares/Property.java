@@ -6,10 +6,12 @@ public class Property extends Square{
 	private int value;
 	private int rent;
 	private Player owner;
+	private String group;
 	
-	public Property(int position, String name, int value, int rent) {
+	public Property(int position, String name, String group, int value, int rent) {
 		super(position, name);
 		this.owner = null;
+		this.group = group;
 		this.value = value;
 		this.rent = rent;
 	}
@@ -23,8 +25,12 @@ public class Property extends Square{
 			player.purchase(this);
 		}
 		else {
-			player.pay(owner, rent);
+			player.pay(owner, calculateRent(player));
 		}
+	}
+
+	protected int calculateRent(Player player) {
+		return rent;
 	}
 
 	public boolean getOwnable() {
@@ -38,13 +44,22 @@ public class Property extends Square{
 	public int getRent() {
 		return rent;
 	}
+	
+	protected void setRent(int newRent) {
+		this.rent = newRent;
+	}
 
 	public Player getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Player owner) {
+	public void purchase(Player owner) {
 		this.owner = owner;
+		this.owner.getProperties().add(this);
+	}
+	
+	public String getGroup() {
+		return group;
 	}
 
 }
