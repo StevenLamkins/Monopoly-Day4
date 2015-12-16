@@ -48,12 +48,10 @@ public class MonopolyGame {
 	private void setupPlayers() {
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Token token = Token.values()[i];
-			Player aPlayer = new Player(board.getStartSquare(), token);			
-			
+			Player aPlayer = new Player(board.getStartSquare(), token);
 			players.add(aPlayer);
 		}
 	}
-
 
 	public void playRound() {
 		for (Player player : players) {

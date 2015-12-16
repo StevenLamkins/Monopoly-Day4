@@ -6,12 +6,21 @@ public class Square {
 	private Square nextSquare;
 	private int price;
 
-	public void setNextSquare(Square nextSquare) {
-		this.nextSquare = nextSquare;
-	}
-
 	public Square(String name) {
 		this.name = name;
+	}
+
+	public void landOnBy(Player aPlayer) {
+		aPlayer.credit(0);
+
+	}
+	
+	public void passBy(Player aPlayer) {
+		aPlayer.credit(0);
+	}
+
+	public void setNextSquare(Square nextSquare) {
+		this.nextSquare = nextSquare;
 	}
 
 	public String getName() {
@@ -30,7 +39,7 @@ public class Square {
 	public int getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(int price) {
 		this.price = price;
 	}

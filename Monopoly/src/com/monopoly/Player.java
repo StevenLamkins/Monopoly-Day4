@@ -14,31 +14,28 @@ public class Player {
 	private Square location;
 	private Token token;
     private int money;
+    private int rolledValue;
     
     public void takeTurn(Die die){
         	
-    	int numOfSq = die.roll();
-    	numOfSq += die.roll();
+    	rolledValue = die.roll();
+    	rolledValue += die.roll();
     	
-    	move(numOfSq);
-    	balanceMoney();
+    	move(rolledValue);
+    	
     }
 
-	private void balanceMoney() {
-		System.out.println("Location name: " + location.getName());
-		money += location.getPrice();
-	}
-
 	private void move(int numOfSq) {
-		for (int i=1; i<= numOfSq;i++) {
-    		location = location.next();
-    	}
+		for (int i=0; i< numOfSq - 1 ;i++) {
+			location = location.next();
+			location.passBy(this);
+		}
+		location = location.next();
+		location.landOnBy(this);
+    	
 	}     
 	
-   	public void setMoney(int money) {
-		this.money = money;
-	}
-    
+
 	public void setToken(Token token) {
 		this.token = token;
 	}
@@ -57,5 +54,19 @@ public class Player {
 
 	public int getMoney() {
 		return money;
+	}
+
+	public void credit(int amount) {
+		this.money += amount;
+		
+	}
+	
+	public void debit(int amount){
+		this.money -= amount;
+	}
+
+	public int getLastRoll() {
+		
+		return rolledValue;
 	}
 }
