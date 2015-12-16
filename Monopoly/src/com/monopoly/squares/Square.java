@@ -16,7 +16,7 @@ public enum Square {
 	CommunityChest1      (new ChestSquare(SquareGroup.NONE, 0, 0)),
 	BalticAvenue         (new PropertySquare(SquareGroup.PURPLE, 60, 4)),
 	IncomeTax            (new TaxSquare(SquareGroup.NONE, 0, 0)),
-	ReadingRailroad      (new PropertySquare(SquareGroup.RAILROAD, 200, 0)),
+	ReadingRailroad      (new RailroadSquare(SquareGroup.RAILROAD, 200, 0)),
 	OrientalAvenue       (new PropertySquare(SquareGroup.LIGHT_GREEN, 100, 6)),
 	Chance1              (new ChanceSquare(SquareGroup.NONE, 0, 0)),
 	VermontAvenue        (new PropertySquare(SquareGroup.LIGHT_GREEN, 100, 6)),
@@ -26,7 +26,7 @@ public enum Square {
 	ElectricCompany      (new UtilitySquare(SquareGroup.UTILITIES, 150, 0)),
 	StatesAvenue         (new PropertySquare(SquareGroup.VIOLET, 140, 10)),
 	VirginiaAvenue       (new PropertySquare(SquareGroup.VIOLET, 160, 12)),
-	PennsylvaniaRailroad (new PropertySquare(SquareGroup.RAILROAD, 200, 0)),
+	PennsylvaniaRailroad (new RailroadSquare(SquareGroup.RAILROAD, 200, 0)),
 	SaintJamesPlace      (new PropertySquare(SquareGroup.ORANGE, 180, 14)),
 	CommunityChest2      (new ChestSquare(SquareGroup.NONE, 0, 0)),
 	TennesseeAvenue      (new PropertySquare(SquareGroup.ORANGE, 180, 14)),
@@ -36,7 +36,7 @@ public enum Square {
 	Chance2              (new ChanceSquare(SquareGroup.NONE, 0, 0)),
 	IndianaAvenue        (new PropertySquare(SquareGroup.RED, 220, 18)),
 	IllinoisAvenue       (new PropertySquare(SquareGroup.RED, 240, 20)),
-	BAndORailroad        (new PropertySquare(SquareGroup.RAILROAD, 200, 0)),
+	BAndORailroad        (new RailroadSquare(SquareGroup.RAILROAD, 200, 0)),
 	AtlanticAvenue       (new PropertySquare(SquareGroup.YELLOW, 260, 22)),
 	VentnorAvenue        (new PropertySquare(SquareGroup.YELLOW, 260, 22)),
 	WaterWorks           (new UtilitySquare(SquareGroup.UTILITIES, 150, 0)),
@@ -46,7 +46,7 @@ public enum Square {
 	NorthCarolinaAvenue  (new PropertySquare(SquareGroup.DARK_GREEN, 300, 26)),
 	CommunityChest3      (new ChestSquare(SquareGroup.NONE, 0, 0)),
 	PennsylvaniaAvenue   (new PropertySquare(SquareGroup.DARK_GREEN, 350, 28)),
-	ShortLineRailroad    (new PropertySquare(SquareGroup.RAILROAD, 200, 0)),
+	ShortLineRailroad    (new RailroadSquare(SquareGroup.RAILROAD, 200, 0)),
 	Chance3              (new ChanceSquare(SquareGroup.NONE, 0, 0)),
 	ParkPlace            (new PropertySquare(SquareGroup.DARK_BLUE, 350, 35)),
 	LuxuryTax            (new TaxSquare(SquareGroup.NONE, 0, 0)),
@@ -111,6 +111,13 @@ public enum Square {
 		ownerMap.put(square, p);
 	}
 	
+	public static int getNumRailroadsOwned(Player p) {
+		return (getSquareOwner(Square.BAndORailroad) == p ? 1 : 0) +
+			   (getSquareOwner(Square.PennsylvaniaRailroad) == p ? 1 : 0) +
+			   (getSquareOwner(Square.ReadingRailroad) == p ? 1 : 0) +
+			   (getSquareOwner(Square.ShortLineRailroad) == p ? 1 : 0);
+	}
+	
 	private SquareType type;
 	private int boardPosition;
 	
@@ -132,5 +139,9 @@ public enum Square {
 	
 	public void handleMove(Move move) {
 		type.handleMove(move);
+	}
+
+	public static boolean hasHouses(Square square) {
+		return square.getType().getNumHouses() > 0;
 	}
 }

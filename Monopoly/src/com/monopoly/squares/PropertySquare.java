@@ -25,7 +25,7 @@ public class PropertySquare extends SquareType {
 		} else {
 			payee.deposit(amount);
 			player.withdraw(amount);
-			System.out.println("Paying "+amount+" to "+payee+", balance is now "+balance);
+			System.out.println("Paying "+amount+" to "+payee+", balance is now "+player.getBalance());
 		}
 	}
 	

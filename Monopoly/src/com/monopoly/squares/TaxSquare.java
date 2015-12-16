@@ -34,7 +34,7 @@ public class TaxSquare extends PropertySquare {
 		}
 		
 		player.withdraw(taxAmount);
-		System.out.println(this+" paid $"+taxAmount+" in taxes.");
+		System.out.println(player+" paid $"+taxAmount+" in taxes.");
 	}
 	
 	@Override
