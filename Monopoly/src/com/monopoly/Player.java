@@ -53,4 +53,15 @@ public class Player {
 		money -= amount;
 	}
 
+	public void purchase( int price) {
+	
+		money -= price;
+		
+	}
+
+	public void rent(int rent) {
+		money -= rent;
+		
+	}
+
 }

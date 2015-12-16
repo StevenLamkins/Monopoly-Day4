@@ -29,14 +29,41 @@ public class Board {
 			case 0:
 				squares.add(new GoSquare());
 				break;
+			case 2:
+			case 17:
+			case 33:
+				squares.add(new CommunitySquare ("Community Square"));
+				break;
 			case 4:
 				squares.add(new IncomeTaxSquare());
+				break;
+			case 6:
+			case 15:
+			case 25:
+			case 35:
+				squares.add(new RailRoadSquare("Rail Road"));
+				break;
+			case 7: 
+			case 22:
+			case 36:
+				squares.add(new ChanceSquare("Chance"));
+				break;
+			case 10:
+			case 30:
+				squares.add(new JailSquare("Jail"));
+				break;
+			case 12:
+			case 28:
+				squares.add(new UtilitySquare("Utility"));
+				break;
+			case 20: 
+				squares.add(new FreeParkingSquare("Free Parking"));
 				break;
 			case 38: 
 				squares.add(new LuxuryTaxSquare());
 				break;
 			default:
-				squares.add(new Square("Square " + i));
+				squares.add(new LotSquare ("Property", i*10, i));
 				break;
 			}
 		}
