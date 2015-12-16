@@ -17,6 +17,15 @@ public class Player {
 	public boolean isInJail() {
 		return isInJail;
 	}
+	
+	public void loseGame(){
+		for (Property property : ownedProperties) {
+			property.isOwned=false;
+			property.isPremiumProperty=false;
+			property.houseCount=0;
+			property.owner=null;
+		}
+	}
 
 	Player(String token, Square square){
 		this.token=token;

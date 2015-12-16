@@ -76,7 +76,7 @@ public class MonopolyGame {
 	}
 	
 	public void runRound(){
-		if(players.size()>2){
+		if(players.size()>=2){
 			List<Player> removeThese = new ArrayList<Player>();
 			Iterator<Player> playerIterator = players.iterator();
 			while(playerIterator.hasNext()){
@@ -87,6 +87,7 @@ public class MonopolyGame {
 			}
 			for (Player player : removeThese) {
 				System.out.println("Player " + player.getToken() + " Eliminated!");
+				player.loseGame();
 				players.remove(player);
 			}
 		}
