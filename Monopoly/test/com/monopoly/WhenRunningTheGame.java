@@ -1,9 +1,14 @@
 package com.monopoly;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.monopoly.dice.LoadedDie;
@@ -266,6 +271,61 @@ public class WhenRunningTheGame {
 		assertFalse(monopolies.contains(SquareGroup.ORANGE));
 	}
 	
+	@Test
+	public void shouldBePaidToPassGo() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(40), new LoadedDie(1), false, false);
+		int endBal = p.getBalance();
+		
+		int cost = Square.MediterraneanAvenue.getType().getPrice();
+		assertEquals(startBal+200-cost, endBal); //TODO fix once Go amount is adjusted
+	}
 	
-
+	@Test
+	public void shouldBePaidToLandOnGo() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(40), new LoadedDie(0), false, false);
+		int endBal = p.getBalance();
+		
+		assertEquals(startBal+200, endBal); //TODO fix once Go amount is adjusted
+	}
+	
+	@Ignore
+	@Test
+	public void shouldBuyHouseIfMonopolyExists() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		Square.setSquareOwner(p, Square.OrientalAvenue);
+		Square.setSquareOwner(p, Square.ConnecticutAvenue);
+		Square.setSquareOwner(p, Square.VermontAvenue);
+		
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		
+		assertTrue(Square.hasHouses(Square.OrientalAvenue)
+				|| Square.hasHouses(Square.ConnecticutAvenue)
+				|| Square.hasHouses(Square.VermontAvenue));
+	}
+	
+	@Test
+	public void shouldPay25ForOneRailroad() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p1 = game.getPlayers().get(0);
+		Square.setSquareOwner(p1, Square.ReadingRailroad);
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(3), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(startBal-25, endBal);
+	}
+	
 }
