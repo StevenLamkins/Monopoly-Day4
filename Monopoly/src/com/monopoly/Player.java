@@ -5,8 +5,10 @@ public class Player
   int currentRoll;
   Square currentPosition;
   String piece;
+  double money;
   
   public Player(int playerNumber, Square startSquare){
+	  
 	  
 	  switch(playerNumber)
 	  {
@@ -29,6 +31,8 @@ public class Player
 	  
 	  }
 	  
+	  
+	  money = 1500;
 	  currentPosition = startSquare;
 	  
   }
@@ -60,7 +64,12 @@ public class Player
 	  currentPosition = temp;
   }
   
+  public double getMoney()
+  {
+	  return money;
+  }
   
-	
+  
+
 
 }

@@ -1,10 +1,7 @@
 package com.monopoly;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 
 public class MonopolyGame
@@ -24,7 +21,7 @@ public class MonopolyGame
 			throw new IllegalArgumentException("Too few players");
 		}
 		
-		board = new Board(numPlayers);
+		board = new Board();
 		players = new ArrayList<>();
 		
 		for (int i = 0; i < numPlayers; i++)

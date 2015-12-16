@@ -7,7 +7,7 @@ public class Board {
 	List<Square> squares;
 	
 	
-	public Board(int numPlayers)
+	public Board()
 	{
 		squares = new ArrayList<>();
 		
