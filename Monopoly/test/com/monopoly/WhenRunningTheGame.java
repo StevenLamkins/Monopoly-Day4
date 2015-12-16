@@ -196,6 +196,26 @@ public class WhenRunningTheGame {
 	}
 	
 	@Test
+	public void shouldNotBeAbleToBuyLuxuryTax() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		p.takeTurn(new LoadedDie(30), new LoadedDie(8));
+		
+		assertEquals(Square.getSquareOwner(Square.LuxuryTax), null);
+	}
+	
+	@Test
+	public void shouldNotBeAbleToBuyIncomeTax() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		p.takeTurn(new LoadedDie(1), new LoadedDie(3));
+		
+		assertEquals(Square.getSquareOwner(Square.IncomeTax), null);
+	}
+	
+	@Test
 	public void shouldBeAbleToBuyProperty() {
 		MonopolyGame game = new MonopolyGame(2);
 		
@@ -406,6 +426,38 @@ public class WhenRunningTheGame {
 		int endBal = p2.getBalance();
 		
 		assertEquals(startBal-200, endBal);
+	}
+	
+	@Test
+	public void shouldNotBeAbleToBuyHousesForRailroads() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		Square.setSquareOwner(p, Square.ReadingRailroad);
+		Square.setSquareOwner(p, Square.PennsylvaniaRailroad);
+		Square.setSquareOwner(p, Square.BAndORailroad);
+		Square.setSquareOwner(p, Square.ShortLineRailroad);
+		
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		
+		assertTrue(!Square.hasHouses(Square.ReadingRailroad)
+				&& !Square.hasHouses(Square.PennsylvaniaRailroad)
+				&& !Square.hasHouses(Square.BAndORailroad)
+				&& !Square.hasHouses(Square.ShortLineRailroad));
+	}
+	
+	@Test
+	public void shouldNotBeAbleToBuyHousesForUtilities() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		Square.setSquareOwner(p, Square.ElectricCompany);
+		Square.setSquareOwner(p, Square.WaterWorks);
+		
+		p.takeTurn(game.getDieOne(), game.getDieTwo());
+		
+		assertTrue(!Square.hasHouses(Square.ElectricCompany)
+				&& !Square.hasHouses(Square.WaterWorks));
 	}
 	
 	@Test
