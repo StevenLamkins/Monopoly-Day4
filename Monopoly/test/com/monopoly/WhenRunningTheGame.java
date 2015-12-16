@@ -1,14 +1,9 @@
 package com.monopoly;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.monopoly.dice.LoadedDie;
@@ -187,7 +182,7 @@ public class WhenRunningTheGame {
 	}
 	
 	@Test
-	public void shouldPayLuxuryTax() {
+	public void shouldPay75ForLuxuryTax() {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
@@ -411,6 +406,50 @@ public class WhenRunningTheGame {
 		int endBal = p2.getBalance();
 		
 		assertEquals(startBal-200, endBal);
+	}
+	
+	@Test
+	public void shouldPay4TimesRollForUtilities() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p1 = game.getPlayers().get(0);
+		Square.setSquareOwner(p1, Square.ElectricCompany);
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(10), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(startBal-endBal, 48);
+	}
+	
+	@Test
+	public void shouldNotPayRentForOwnProperty() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		Square.setSquareOwner(p, Square.BalticAvenue);
+		
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		int endBal = p.getBalance();
+		
+		assertEquals(startBal, endBal);
+	}
+	
+	@Test
+	public void shouldNotBuyPropertyThatPlayerCannotAfford() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p = game.getPlayers().get(0);
+		p.withdraw(p.getBalance()-1);
+		
+		int startBal = p.getBalance();
+		p.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		int endBal = p.getBalance();
+		
+		assertEquals(startBal, endBal);
+		assertNull(Square.getSquareOwner(Square.BalticAvenue));
 	}
 	
 }
