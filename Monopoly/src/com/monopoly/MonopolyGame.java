@@ -86,7 +86,7 @@ public class MonopolyGame {
 				}
 			}
 			for (Player player : removeThese) {
-				System.out.println("Player " + player.getToken() + " Eliminated! Lost on square " + player.getSquare());
+				System.out.println("Player " + player.getToken() + " Eliminated! Lost on square " + player.getSquare().getId());
 				player.loseGame();
 				players.remove(player);
 			}
@@ -98,8 +98,8 @@ public class MonopolyGame {
 	}
 	
 	public static void main(String[] args) {
-		MonopolyGame game = new MonopolyGame(4);
-//		Scanner keyboard = new Scanner(System.in);
+		MonopolyGame game = new MonopolyGame(8);
+		Scanner keyboard = new Scanner(System.in);
 		int counter = 0;
 		while(game.getGameRunning()){
 			StringBuilder output = new StringBuilder();
@@ -118,6 +118,7 @@ public class MonopolyGame {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+//			keyboard.next();
 			game.runRound();
 		}
 	}//end main

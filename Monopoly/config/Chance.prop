@@ -1,0 +1,16 @@
+goTo:GO,yes
+goTo:illinois avenue,yes
+goTo:st charles place,yes
+goToType:UTILITY,no
+goToType:RR,no
+goToType:RR,no
+earn:50
+jailFree:
+moveBack:3,no
+goTo:jail
+fixHouses:
+lose:15
+goTo:reading railroad,yes
+goTo:board walk,no
+earn:150
+earn:100

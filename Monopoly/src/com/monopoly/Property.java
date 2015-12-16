@@ -27,20 +27,7 @@ public class Property extends Square {
 		if(buyIfProperty){
 			if(isOwned){
 				if(player!=owner){
-					int finalPrice=rent;
-					if(houseCount!=0){
-						finalPrice = rent*10*houseCount;
-					}
-					else if(isPremiumProperty)
-						finalPrice = finalPrice*2;
-					if(player.getMoney()>=finalPrice){
-						System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
-						player.removeMoney(finalPrice);
-						owner.addMoney(finalPrice);
-					}
-					else{
-						stillInGame=false;
-					}
+					stillInGame = handlePayment(player);
 				}
 			}
 			else if(player.getMoney()>=this.price){
@@ -50,6 +37,25 @@ public class Property extends Square {
 				player.buyProperty(this);
 				System.out.println(player.getToken()+ " has purchased "+id);
 			}
+		}
+		return stillInGame;
+	}
+	
+	private boolean handlePayment(Player player){
+		boolean stillInGame = true;
+		int finalPrice=rent;
+		if(houseCount!=0){
+			finalPrice = rent*10*houseCount;
+		}
+		else if(isPremiumProperty)
+			finalPrice = finalPrice*2;
+		if(player.getMoney()>=finalPrice){
+			System.out.println("Player " + player.getToken() + " Paying owner " +owner.getToken() + " rent "+finalPrice);
+			player.removeMoney(finalPrice);
+			owner.addMoney(finalPrice);
+		}
+		else{
+			stillInGame=false;
 		}
 		return stillInGame;
 	}

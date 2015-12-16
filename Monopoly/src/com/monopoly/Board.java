@@ -10,6 +10,7 @@ public class Board {
 	
 	int BOARD_SQUARE_COUNT=40;
 	List<Square> squares = new ArrayList<>();
+	List<Card> chanceDeck = new ArrayList<>();
 	
 	public Board(){
 		readBoard();
