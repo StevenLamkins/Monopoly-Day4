@@ -48,17 +48,18 @@ public class MonopolyGame {
 	private void setupPlayers() {
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Token token = Token.values()[i];
-			Player aPlayer = new Player();
-			aPlayer.setLocation(board.getStartSquare());
-			aPlayer.setMoney(1500);
-			aPlayer.setToken(token);
+			Player aPlayer = new Player(board.getStartSquare(), token);			
 			
 			players.add(aPlayer);
 		}
 	}
 
 
-
+	public void playRound() {
+		for (Player player : players) {
+			player.takeTurn(aDie);
+		}
+	}
 	
 	
 }

@@ -1,11 +1,11 @@
 package com.monopoly;
 
 public class Square {
-	
+
 	private String name;
 	private Square nextSquare;
+	private int price;
 
-		
 	public void setNextSquare(Square nextSquare) {
 		this.nextSquare = nextSquare;
 	}
@@ -23,8 +23,16 @@ public class Square {
 	}
 
 	public Square next() {
-		
+
 		return nextSquare;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

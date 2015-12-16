@@ -29,7 +29,7 @@ public class Board {
 
 	private void createSquares() {
 	   squares = new ArrayList<>();
-	   squares.add(new Square("Go Square"));
+	   squares.add(new GoSquare("Go Square"));
 	   for (int i = 1; i < 40; i++) {
 			squares.add(new Square("Square" + i));
 	   }

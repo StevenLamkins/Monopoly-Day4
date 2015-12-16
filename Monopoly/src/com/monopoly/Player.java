@@ -5,21 +5,37 @@ import com.dicegame.Die;
 
 public class Player {
 
+	public Player(Square location, Token token) {
+		this.location = location;
+		this.token = token;
+		this.money = 1500;
+	}
+
 	private Square location;
 	private Token token;
-    private double money;
+    private int money;
     
     public void takeTurn(Die die){
         	
     	int numOfSq = die.roll();
     	numOfSq += die.roll();
     	
-    	for (int i=1; i<= numOfSq;i++) {
+    	move(numOfSq);
+    	balanceMoney();
+    }
+
+	private void balanceMoney() {
+		System.out.println("Location name: " + location.getName());
+		money += location.getPrice();
+	}
+
+	private void move(int numOfSq) {
+		for (int i=1; i<= numOfSq;i++) {
     		location = location.next();
     	}
-    }     
+	}     
 	
-   	public void setMoney(double money) {
+   	public void setMoney(int money) {
 		this.money = money;
 	}
     
@@ -39,7 +55,7 @@ public class Player {
 		this.location = location;
 	}
 
-	public double getMoney() {
+	public int getMoney() {
 		return money;
 	}
 }
