@@ -39,7 +39,10 @@ public class WhenMovingPlayers {
 		dice.add(new LoadedDie(6,dieValue2));
 
 		player.takeTurn(dice);
-		assertEquals(player.getSquare().getName(), "Square7");		
+		
+		Square expectedSquare = board.getSquares().get(7);
+		assertEquals(player.getSquare(), expectedSquare);
+	
 
 	}
 	
