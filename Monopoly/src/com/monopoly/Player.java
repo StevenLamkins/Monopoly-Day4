@@ -82,6 +82,7 @@ public class Player
   public void takeTurn(Die die1, Die die2) {
 		int rollValue = die1.roll() + die2.roll();
 		move(rollValue);
+		currentRoll = rollValue;
 	}
 
 public void addMoney(int i) {

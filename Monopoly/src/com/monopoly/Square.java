@@ -42,4 +42,8 @@ public  class Square {
 		return position;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 }

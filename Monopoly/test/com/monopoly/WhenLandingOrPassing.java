@@ -17,8 +17,7 @@ public class WhenLandingOrPassing {
 		player = game.getPlayers().get(0);
 	}
 	
-	
-	@Test
+	@Test 
 	public void landOnGoGet200() {
 		player.move(40);
 		assertEquals(1700, player.getMoney());
