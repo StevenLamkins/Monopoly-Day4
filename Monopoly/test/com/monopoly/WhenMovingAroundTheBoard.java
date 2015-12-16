@@ -36,7 +36,7 @@ public class WhenMovingAroundTheBoard {
 
 	}
 
-	@Test
+	@Test     
 	public void playersShouldMoveMoveArroundTheBoard() {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
