@@ -59,7 +59,18 @@ public class WhenLandingOrPassingMoneySquares {
 	}
 	
 	@Test
-	public void shouldLandOnLotProperty() {
+	public void shouldPurchaseUnownedAndAffordableProperty() {
+		Board board = new Board();
+		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
+		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		
+		assertEquals(1110, testPlayer.getMoney());
+		
+	}
+	
+
+	@Test
+	public void shouldPayRentToOwned() {
 		Board board = new Board();
 		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
 		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
