@@ -20,11 +20,12 @@ public class RailroadSquare extends PropertySquare {
 
 	@Override
 	public void handleMove(Move move) {
-		Player player = move.getPlayer();
 		Square square = move.getSquare();
+		Player player = move.getPlayer();
+		Player payee = Square.getSquareOwner(square);
 		
-		if (Square.getSquareOwner(square) != null) {
-			Player payee = Square.getSquareOwner(square);
+		
+		if (payee != null && payee != player) {
 			payRent(player, payee, getRent(payee));
 		} else {
 			buySquare(player, square, move.getTakeChances());

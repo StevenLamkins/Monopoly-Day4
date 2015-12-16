@@ -3,6 +3,7 @@ package com.monopoly.squares;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,7 +53,7 @@ public enum Square {
 	LuxuryTax            (new TaxSquare(SquareGroup.NONE, 0, 0)),
 	Boardwalk            (new PropertySquare(SquareGroup.DARK_BLUE, 400, 50));
 	
-	private static Map<SquareGroup, Set<Square>> monopolyMap;
+	private static Map<SquareGroup, LinkedHashSet<Square>> monopolyMap;
 	private static Map<Square, Player> ownerMap;
 	
 	public static void setup() {
@@ -63,7 +64,7 @@ public enum Square {
 			SquareGroup group = s.getType().getGroup();
 			
 			if (!monopolyMap.containsKey(group)) {
-				monopolyMap.put(group, new HashSet<Square>());
+				monopolyMap.put(group, new LinkedHashSet<Square>());
 			}
 			
 			monopolyMap.get(group).add(s);
@@ -90,11 +91,26 @@ public enum Square {
 			
 			if (playerSquares != null && playerSquares.containsAll(squares)) {
 				monopolies.add(group);
-				System.out.println("FOUND MONOPOLY "+group.name());
 			}
 		}
 		
 		return monopolies;
+	}
+	
+	public static Square getSquareWithLeastHousesInGroup(SquareGroup group) {
+		Square square = null;
+		int minNumHouses = Integer.MAX_VALUE;
+		
+		for (Square s : monopolyMap.get(group)) {
+			int numHouses = s.getType().getNumHouses();
+			
+			if (numHouses < minNumHouses) {
+				minNumHouses = numHouses;
+				square = s;
+			}
+		}
+		
+		return square;
 	}
 	
 	public static Player getSquareOwner(Square s) {

@@ -23,11 +23,12 @@ public class UtilitySquare extends PropertySquare {
 	
 	@Override
 	public void handleMove(Move move) {
-		Player player = move.getPlayer();
 		Square square = move.getSquare();
+		Player player = move.getPlayer();
+		Player payee = Square.getSquareOwner(square);
 		
-		if (Square.getSquareOwner(square) != null) {
-			payUtilities(move.getSquare(),move.getPlayer(),move.getRoll());
+		if (payee != null && payee != player) {
+			payUtilities(square, player, move.getRoll());
 		} else {
 			buySquare(player, square, move.getTakeChances());
 		}

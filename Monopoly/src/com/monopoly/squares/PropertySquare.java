@@ -21,7 +21,7 @@ public class PropertySquare extends SquareType {
 		if (amount > balance) {
 			payee.deposit(balance);
 			player.withdraw(balance);
-			System.out.println("Paying "+amount+" to "+payee+", insufficient funds!");
+			System.out.println("Paying "+amount+" to "+payee+", insufficient funds! Had "+balance);
 		} else {
 			payee.deposit(amount);
 			player.withdraw(amount);
@@ -46,11 +46,12 @@ public class PropertySquare extends SquareType {
 
 	@Override
 	public void handleMove(Move move) {
-		Player player = move.getPlayer();
 		Square square = move.getSquare();
+		Player player = move.getPlayer();
+		Player payee = Square.getSquareOwner(square);
 		
-		if (Square.getSquareOwner(square) != null) {
-			payRent(player, Square.getSquareOwner(square), getRent());
+		if (payee != null && payee != player) {
+			payRent(player, payee, getRent());
 		} else {
 			buySquare(player, square, move.getTakeChances());
 		}

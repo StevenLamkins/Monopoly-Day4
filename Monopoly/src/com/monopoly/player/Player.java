@@ -2,11 +2,11 @@ package com.monopoly.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.monopoly.board.Move;
 import com.monopoly.dice.Die;
 import com.monopoly.game.MonopolyGame;
-import com.monopoly.squares.JailSquare;
 import com.monopoly.squares.Square;
 import com.monopoly.squares.SquareGroup;
 
@@ -78,7 +78,7 @@ public class Player {
 		doubleCount++;
 	}
 	
-	private void resetDoubleCount() {
+	public void resetDoubleCount() {
 		doubleCount = 0;
 	}
 	
@@ -112,11 +112,10 @@ public class Player {
 	 */
 	private void checkForPassGo(int oldPos, int newPos, int roll) {
 		if ((oldPos + roll) > game.getNumSquares()) {
-			deposit(200); //TODO - increase to $200 once houses can be bought
+			deposit(200);
 			System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
 		}
 	}
-	
 	
 	/**
 	 * Checks if player has monopolies, buys houses if so
@@ -124,11 +123,17 @@ public class Player {
 	private void checkForMonopolies() {
 		List<SquareGroup> monopolies = Square.getMonopolies(getProperties());
 		
-		for (SquareGroup group : monopolies) {
-			System.out.println(this+" has a monopoly for "+group.name());
+		for (SquareGroup group : monopolies) {			
+			Square square = Square.getSquareWithLeastHousesInGroup(group);
+			int numHouses = square.getType().getNumHouses();
+			int cost = square.getType().getHouseBuildingCost();
+			
+			if (numHouses < 5 && cost < getBalance()) {
+				withdraw(cost);
+				square.getType().addHouse();
+				System.out.println("Placing a house on "+square.name());
+			}
 		}
-		
-		// Buy houses
 	}
 	
 	/**
@@ -154,6 +159,9 @@ public class Player {
 	 * @return
 	 */
 	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll, boolean takeChances) {
+		System.out.println("--------------------------------------------");
+		System.out.println("It is now "+this+"'s turn.");
+		printStatus();
 		checkForMonopolies();
 		
 		int rollOne = dieOne.roll();
@@ -161,8 +169,6 @@ public class Player {
 		int roll = rollOne + rollTwo;
 		boolean wentToJail = false;		
 		
-		System.out.println("--------------------------------------------");
-		System.out.println("It is now "+this+"'s turn.");
 		System.out.println("Rolled a "+roll);
 		
 		int oldPos = position;
@@ -184,6 +190,7 @@ public class Player {
 		// Rolled doubles
 		if (rollOne == rollTwo) {
 			incrementDoubleCount();
+			System.out.println("Rolled doubles! "+getDoubleCount());
 			
 			if (getDoubleCount() == 3) {
 				System.out.println("Rolled doubles 3 times, going to Jail!");
@@ -196,7 +203,7 @@ public class Player {
 					setInJail(false);
 					resetJailRollCount();
 				} else if (!suppressReroll) {
-					System.out.println("Rolled doubles, taking another turn.");
+					System.out.println("Taking another turn because doubles were rolled.");
 					return roll + takeTurn(dieOne, dieTwo, suppressReroll, takeChances);
 				}
 			}
@@ -211,9 +218,41 @@ public class Player {
 					System.out.println("3 turns with no doubles while in Jail, player is fined $50 and free! Balance is now "+getBalance());
 				}
 			}
+			
+			resetDoubleCount();
 		}
 		
 		return roll;
+	}
+	
+	public void printStatus() {
+		// PRINT BALANCE
+		System.out.println("Balance:    "+getBalance());
+		// PRINT MONOPOLIES
+		List<SquareGroup> monopolies = Square.getMonopolies(getProperties());
+		System.out.print("Monopolies: ");
+		
+		for (int i=0; i<monopolies.size(); i++) {
+			System.out.print(monopolies.get(i).name());
+			
+			if (i < monopolies.size()-1) {
+				System.out.print(", ");
+			}
+		}
+		
+		// PRINT OWNED PROPERTIES
+		List<Square> properties = getProperties();
+		System.out.print("\nProperties: ");
+		
+		for (int i=0; i<properties.size(); i++) {
+			System.out.print(properties.get(i).name());
+			
+			if (i < properties.size()-1) {
+				System.out.print(", ");
+			} else {
+				System.out.println();
+			}
+		}
 	}
 	
 	@Override

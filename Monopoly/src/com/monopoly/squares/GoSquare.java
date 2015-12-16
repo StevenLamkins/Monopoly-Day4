@@ -12,7 +12,7 @@ public class GoSquare extends SquareType {
 	@Override
 	public void handleMove(Move move) {
 		Player player = move.getPlayer();
-		player.deposit(200); //TODO - increase to $200 once houses can be bought
+		player.deposit(200);
 		System.out.println(player+" landed on Go! Receive $200, balance is now "+player.getBalance());
 	}
 }

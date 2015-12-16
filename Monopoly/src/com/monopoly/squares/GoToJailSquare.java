@@ -16,6 +16,7 @@ public class GoToJailSquare extends PropertySquare {
 	private void goToJail(Player player) {
 		player.setInJail(true);
 		player.setPosition(Square.Jail.getBoardPosition());
+		player.resetDoubleCount();
 		System.out.println("Landed on Go To Jail, going to Jail!");
 	}
 
