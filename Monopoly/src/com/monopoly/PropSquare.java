@@ -9,6 +9,14 @@ public abstract class PropSquare extends Square {
 		super(name);
 		this.price = price;
 	}
+	
+	@Override
+	public void landOnBy(Player aPlayer) {
+		if((aPlayer.getMoney() >= price) && !isOwned()){
+			aPlayer.debit(price);
+			owner = aPlayer;
+		}
+	}
 
 	public boolean isOwned() {
 
