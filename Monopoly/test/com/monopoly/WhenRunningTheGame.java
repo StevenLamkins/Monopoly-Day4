@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.monopoly.board.Square;
-import com.monopoly.board.SquareGroup;
 import com.monopoly.dice.LoadedDie;
 import com.monopoly.game.MonopolyGame;
 import com.monopoly.player.Player;
+import com.monopoly.squares.Square;
+import com.monopoly.squares.SquareGroup;
 
 public class WhenRunningTheGame {
 
@@ -77,8 +77,8 @@ public class WhenRunningTheGame {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
-		int numMoved = p.takeTurn(new LoadedDie(6), new LoadedDie(6), true);
-		numMoved += p.takeTurn(game.getDieOne(), game.getDieTwo(), true);
+		int numMoved = p.takeTurn(new LoadedDie(6), new LoadedDie(6), true, true);
+		numMoved += p.takeTurn(game.getDieOne(), game.getDieTwo(), true, true);
 		
 		assertEquals(game.getBoard().getSquareAt(numMoved), game.getPlayerSquare(p));
 	}
@@ -108,9 +108,9 @@ public class WhenRunningTheGame {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
-		p.takeTurn(new LoadedDie(2), new LoadedDie(2), true);
-		p.takeTurn(new LoadedDie(4), new LoadedDie(4), true);
-		p.takeTurn(new LoadedDie(6), new LoadedDie(6), true);
+		p.takeTurn(new LoadedDie(2), new LoadedDie(2), true, true);
+		p.takeTurn(new LoadedDie(4), new LoadedDie(4), true, true);
+		p.takeTurn(new LoadedDie(6), new LoadedDie(6), true, true);
 		
 		assertEquals(Square.Jail, game.getPlayerSquare(p));
 	}
@@ -124,7 +124,7 @@ public class WhenRunningTheGame {
 		
 		assertEquals(Square.Jail, game.getPlayerSquare(p));
 		
-		p.takeTurn(new LoadedDie(6), new LoadedDie(6), true);
+		p.takeTurn(new LoadedDie(6), new LoadedDie(6), true, true);
 		p.takeTurn(new LoadedDie(1), new LoadedDie(3));
 		
 		assertEquals(Square.VirginiaAvenue, game.getPlayerSquare(p));
@@ -197,37 +197,37 @@ public class WhenRunningTheGame {
 	
 	@Test
 	public void shouldBeAbleToBuyProperty() {
-		MonopolyGame game = new MonopolyGame(2, false);
+		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
-		p.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		p.takeTurn(new LoadedDie(1), new LoadedDie(2), false, false);
 		
-		assertEquals(p, game.getSquareOwner(Square.BalticAvenue));
+		assertEquals(p, Square.getSquareOwner(Square.BalticAvenue));
 	}
 	
 	@Test
 	public void shouldPayRentOnAnotherPlayersSquare() {
-		MonopolyGame game = new MonopolyGame(2, false);
+		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p1 = game.getPlayers().get(0);
-		p1.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		p1.takeTurn(new LoadedDie(1), new LoadedDie(2), false, false);
 		
 		Player p2 = game.getPlayers().get(1);
 		int startBal = p2.getBalance();
-		p2.takeTurn(new LoadedDie(1), new LoadedDie(2));
+		p2.takeTurn(new LoadedDie(1), new LoadedDie(2), false, false);
 		int endBal = p2.getBalance();
 		
-		assertEquals(p1, game.getSquareOwner(Square.BalticAvenue));
-		assertEquals(startBal-endBal, Square.BalticAvenue.getRent());
+		assertEquals(p1, Square.getSquareOwner(Square.BalticAvenue));
+		assertEquals(startBal-endBal, Square.BalticAvenue.getType().getRent());
 	}
 	
 	@Test
 	public void shouldDoNothingOnFreeParking() {
-		MonopolyGame game = new MonopolyGame(2, false);
+		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
 		int startBal = p.getBalance();
-		p.takeTurn(new LoadedDie(18), new LoadedDie(2));
+		p.takeTurn(new LoadedDie(18), new LoadedDie(2), false, false);
 		int endBal = p.getBalance();
 		
 		assertEquals(startBal, endBal);
@@ -236,12 +236,12 @@ public class WhenRunningTheGame {
 	
 	@Test
 	public void shouldBuyHouseWithMonopoly() {
-		MonopolyGame game = new MonopolyGame(2, false);
+		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
-		game.giveSquareToPlayer(p, Square.OrientalAvenue);
-		game.giveSquareToPlayer(p, Square.VermontAvenue);
-		game.giveSquareToPlayer(p, Square.ConnecticutAvenue);
+		Square.setSquareOwner(p, Square.OrientalAvenue);
+		Square.setSquareOwner(p, Square.VermontAvenue);
+		Square.setSquareOwner(p, Square.ConnecticutAvenue);
 		p.takeTurn(new LoadedDie(1), new LoadedDie(1)); //Extra turn to buy at the start of
 		
 		//assertTrue(); //Should have 1 house (if could afford)
@@ -249,16 +249,16 @@ public class WhenRunningTheGame {
 	
 	@Test
 	public void shouldBeAbleToDetectMonopolies() {
-		MonopolyGame game = new MonopolyGame(2, false);
+		MonopolyGame game = new MonopolyGame(2);
 		
 		Player p = game.getPlayers().get(0);
-		game.giveSquareToPlayer(p, Square.OrientalAvenue);
-		game.giveSquareToPlayer(p, Square.SaintCharlesPlace);
-		game.giveSquareToPlayer(p, Square.StatesAvenue);
-		game.giveSquareToPlayer(p, Square.ConnecticutAvenue);
-		game.giveSquareToPlayer(p, Square.VirginiaAvenue);
-		game.giveSquareToPlayer(p, Square.VermontAvenue);
-		game.giveSquareToPlayer(p, Square.SaintJamesPlace);
+		Square.setSquareOwner(p, Square.OrientalAvenue);
+		Square.setSquareOwner(p, Square.SaintCharlesPlace);
+		Square.setSquareOwner(p, Square.StatesAvenue);
+		Square.setSquareOwner(p, Square.ConnecticutAvenue);
+		Square.setSquareOwner(p, Square.VirginiaAvenue);
+		Square.setSquareOwner(p, Square.VermontAvenue);
+		Square.setSquareOwner(p, Square.SaintJamesPlace);
 		
 		List<SquareGroup> monopolies = Square.getMonopolies(p.getProperties());
 		assertTrue(monopolies.contains(SquareGroup.LIGHT_GREEN));

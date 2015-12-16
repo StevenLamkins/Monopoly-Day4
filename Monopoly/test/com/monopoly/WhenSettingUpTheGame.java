@@ -10,11 +10,12 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.monopoly.board.Square;
 import com.monopoly.exceptions.WrongNumberOfPlayersException;
 import com.monopoly.game.MonopolyGame;
 import com.monopoly.player.Piece;
 import com.monopoly.player.Player;
+import com.monopoly.squares.Square;
+import com.monopoly.squares.SquareType;
 
 public class WhenSettingUpTheGame {
 
@@ -101,13 +102,15 @@ public class WhenSettingUpTheGame {
 	@Test
 	public void shouldHaveHouseBuildingCostForEachColor() {
 		for (Square s : Square.values()) {
-			switch (s.getGroup()) {
+			SquareType square = s.getType();
+			
+			switch (square.getGroup()) {
 				case RAILROAD:
 				case UTILITIES:
 				case NONE:
 					break;
 				default:
-					assertTrue(s.getHouseBuildingCost() > 0);
+					assertTrue(square.getHouseBuildingCost() > 0);
 					break;
 			}
 		}
