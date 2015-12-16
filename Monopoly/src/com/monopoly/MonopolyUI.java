@@ -1,6 +1,7 @@
 package com.monopoly;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MonopolyUI {
 	private MonopolyGame game;
@@ -12,19 +13,26 @@ public class MonopolyUI {
 	
 	public void startLoop()
 	{
-		boolean loop = true;
 		System.out.print("How many players? ");
 		game = new MonopolyGame(scanner.nextInt());
 		scanner.nextLine();
-		while(loop)
+		while(true)
 		{
-			System.out.println("Take turn? ");
-			String input = scanner.nextLine();
-			game.playRound();
-			for(Player player : game.getPlayers())
+			System.out.print("Take turn? y or n: ");
+			String input = scanner.next();
+			if (input.startsWith("n") || input.startsWith("N")) 
 			{
-				System.out.println(player.getToken() + " has " + player.getMoney() + " money.");
+				break;
+			}
+			else if (input.startsWith("y") || input.startsWith("Y")) 
+			{
+				game.playRound();
+				for(Player player : game.getPlayers())
+				{
+					System.out.println(player + " is at " + player.getSquare() + " and has $" + player.getMoney());
+				}
 			}
 		}
+		System.out.println("Bye!");
 	}
 }

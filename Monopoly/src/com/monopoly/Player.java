@@ -47,18 +47,18 @@ public class Player {
 
 	public int takeTurn() {
 		int value = rollDice();
-		System.out.println(getToken() + " rolled " + value);
+		//System.out.println(getToken() + " rolled " + value);
 		int roll = 1;
 		while(dice.get(0).getFaceValue() == dice.get(1).getFaceValue() && roll < 3)
 		{
-			System.out.println(toString() + " rolled doubles, rolling again");
+			//System.out.println(toString() + " rolled doubles, rolling again");
 			int rollValue = rollDice();
-			System.out.println(toString() + " rolled " + rollValue);
+			//System.out.println(toString() + " rolled " + rollValue);
 			value += rollValue;
 			roll++;
 		}
 		move(value);
-		System.out.println(toString() + " moved to " + getSquare());
+		//System.out.println(toString() + " moved to " + getSquare());
 		return roll;
 	}
 	
