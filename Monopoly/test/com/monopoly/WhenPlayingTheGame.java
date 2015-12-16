@@ -66,7 +66,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		Die die = new Die(6, 1, true);
+		Die die = new Die(6, 3, true);
 		currentPlayer.takeTurn(die, false);
 		assertEquals(currentPlayer.getSquare().getId(), "jail");
 		die = new Die(6, 1, false);
@@ -117,6 +117,24 @@ public class WhenPlayingTheGame {
 		assertTrue(currentPlayer.ownedGroups.get("purple")==2);
 		assertTrue(((Property)currentPlayer.getSquare()).isPremiumProperty);
 		assertTrue(((Property)currentPlayer.getSquare()).houseCount==1);
+	}
+	
+	@Test
+	public void gameShouldCausePlayerToLoseMoneyOnIncomeTax(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		currentPlayer.moveToSquare("income tax", true);
+		assertEquals(currentPlayer.getMoney(),1300);
+	}
+	
+	@Test
+	public void gameShouldCausePlayerToLoseMoneyOnLuxuryTax(){
+		MonopolyGame game = new MonopolyGame(4);
+		List<Player> players = game.getPlayers();
+		Player currentPlayer = players.get(0);
+		currentPlayer.moveToSquare("luxury tax", true);
+		assertEquals(currentPlayer.getMoney(),1425);
 	}
 
 }

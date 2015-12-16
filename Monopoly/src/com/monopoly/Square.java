@@ -50,7 +50,22 @@ public class Square {
 	}
 	
 	public boolean handlePlayerLanding(Player player, boolean buyIfProperty){
-		return true;
+		boolean stillPlaying=true;
+		if(id.equals("income tax")){
+			if(player.money>2000)
+				player.removeMoney((int) (player.money*.1));
+			else if(player.money>=200)
+				player.removeMoney(200);
+			else
+				stillPlaying = false;
+		}
+		else if(id.equals("luxury tax")){
+			if(player.money>=75)
+				player.removeMoney(75);
+			else
+				stillPlaying = false;
+		}
+		return stillPlaying;
 	}
 
 	public Player getOwner() {

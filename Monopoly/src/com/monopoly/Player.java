@@ -32,10 +32,16 @@ public class Player {
 	}//end getToken
 	
 	public void buyProperty(Property property){
-		ownedProperties.add(property);
+		if(ownedProperties.contains(property))
+			System.out.println("Why is this happening");
+		else
+			ownedProperties.add(property);
 		String group = property.getGroup();
-		if(ownedGroups.containsKey(group))
+		if(ownedGroups.containsKey(group)){
+			System.out.println("Group " + group + " moving from " + ownedGroups.get(group));
 			ownedGroups.put(group, ownedGroups.get(group)+1);
+			System.out.println("Group " + group + " moving from " + ownedGroups.get(group));
+		}
 		else
 			ownedGroups.put(group, 1);
 		int ownedAmount = ownedGroups.get(group);
@@ -65,7 +71,7 @@ public class Player {
 				}
 				if(buyable && property.attemptBuyHouse()){
 					money-=price;
-					System.out.println(token+" has purchased a house! This is house number "+property.houseCount );
+					System.out.println("********************"+token+" has purchased a house! This is house number "+property.houseCount +"********************");
 				}
 			}
 		}
