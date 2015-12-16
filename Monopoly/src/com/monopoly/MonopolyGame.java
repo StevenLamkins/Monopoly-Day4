@@ -86,7 +86,7 @@ public class MonopolyGame {
 				}
 			}
 			for (Player player : removeThese) {
-				System.out.println("Player " + player.getToken() + " Eliminated!");
+				System.out.println("Player " + player.getToken() + " Eliminated! Lost on square " + player.getSquare());
 				player.loseGame();
 				players.remove(player);
 			}
