@@ -231,4 +231,14 @@ public class Player {
 		square.handlePlayerLanding(this, buyIfProperty);
 	}
 	
+	public void moveToNearestType(String squareType){
+		boolean squareFound=false;
+		while(!squareFound){
+			square = square.getNextSquare();
+			if(square.getSquareType().equals(squareType))
+				squareFound=true;
+		}
+		square.handlePlayerLanding(this, true);
+	}
+	
 }//end Player

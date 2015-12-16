@@ -34,7 +34,7 @@ public class Card {
 	public boolean drawThisCard(Player player){
 		boolean stillInGame = true;
 		if(fixHouses){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " needs to fix his houses up!");
 			for (Property property : player.ownedProperties) {
 				if(property.houseCount*50<=player.money)
 					player.removeMoney(property.houseCount*50);
@@ -43,7 +43,7 @@ public class Card {
 			}
 		}
 		else if (jailFree){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " Has earned a get out of jail free card!");
 			player.addOutOfJailCard();
 		}
 		else if(backThree){
@@ -51,7 +51,7 @@ public class Card {
 			player.moveSpaces(37, true, false);
 		}
 		else if(payFifty){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " needs to pay everyone 50$");
 			if((MonopolyGame.players.size()-1)*50 <= player.money){
 				for (Player player2 : MonopolyGame.players) {
 					if(player2!=player){
@@ -62,14 +62,14 @@ public class Card {
 			}
 		}
 		else if(moneyAmount!=null){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " Will be changing his money by " + moneyAmount);
 			player.addMoney(Integer.valueOf(moneyAmount));
 		}
 		else if(goToTypeTarget!=null){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " will be moving to the nearest " + goToTypeTarget);
 		}
 		else if(goToTarget!=null){
-			System.out.println(player.getToken());
+			System.out.println(player.getToken() + " will be moving to " + goToTarget);
 			player.moveToSquare(goToTarget, true, true);
 		}
 		return stillInGame;
