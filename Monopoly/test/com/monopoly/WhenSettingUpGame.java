@@ -8,6 +8,8 @@ import java.util.Random;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.monopoly.squares.Square;
+
 public class WhenSettingUpGame {
 
 	private static final int STARTING_BALANCE = 1500;

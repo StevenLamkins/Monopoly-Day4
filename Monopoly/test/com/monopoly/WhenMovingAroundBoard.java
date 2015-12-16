@@ -28,7 +28,7 @@ public class WhenMovingAroundBoard {
 
 	@Test
 	public void shouldMovePlayersOffGoSquare() {
-		MonopolyGame game = new MonopolyGame(4);
+		MonopolyGame game = new MonopolyGame(8);
 		game.playRound();
 		for (Player player : game.getPlayers()) {
 			assertFalse(player.getLocation().getPosition() == 0);
@@ -36,3 +36,5 @@ public class WhenMovingAroundBoard {
 	}
 
 }
+
+// testPlayer.takeTurn(new Die(){public int roll(){return 2;}});
