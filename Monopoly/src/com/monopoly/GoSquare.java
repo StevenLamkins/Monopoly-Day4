@@ -14,6 +14,7 @@ public class GoSquare extends Square {
 		 
 		currentBalance = player.getMoney();
 		player.setMoney(currentBalance + 200);	
+		player.setEarned200(true);
 		}
 	
 	@Override
@@ -22,6 +23,7 @@ public class GoSquare extends Square {
 		 
 		currentBalance = player.getMoney();
 		player.setMoney(currentBalance + 200);	
+		player.setEarned200(true);
 	}
 	
 }

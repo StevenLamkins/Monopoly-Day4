@@ -38,21 +38,20 @@ public class Player {
 		
 		for(int i = 0; i < dieRoll; i++) {
 			
-			passOver(location);
-			
 			location += 1;
+			passOver(location);
 			
 			if (location > 39)
 			{
 				location = 0;	
-				earned200 = true;
+				
 			}
 			
 			spaceMove += 1;
 		}
 
 		arrived(location);
-		earned200 = false;	
+		setEarned200(false);
 	}
 	
 	/*
@@ -105,6 +104,11 @@ public class Player {
 		{
 			return false;
 		}
+	}
+
+	public void setEarned200(boolean earned200) {
+		this.earned200 = earned200;
+		
 	}
 
 }

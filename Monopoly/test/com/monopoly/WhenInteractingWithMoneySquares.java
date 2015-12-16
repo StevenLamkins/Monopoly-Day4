@@ -86,7 +86,8 @@ public class WhenInteractingWithMoneySquares {
 		assertEquals(1350 , playerBalance);
 	}
 	
-	@Ignore
+	//NEED TO FIX THIS - giving 1500 not 1700
+	//@Ignore
 	@Test
 	public void shouldCollect200ForPassingGo() {
 		//Set player location
