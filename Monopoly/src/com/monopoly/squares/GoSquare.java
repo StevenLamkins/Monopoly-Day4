@@ -14,5 +14,7 @@ public class GoSquare extends SquareType {
 		Player player = move.getPlayer();
 		player.deposit(200);
 		System.out.println(player+" landed on Go! Receive $200, balance is now "+player.getBalance());
+		
+		SquareType.incrementNumGoPasses();
 	}
 }

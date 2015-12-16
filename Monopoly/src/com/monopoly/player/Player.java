@@ -9,8 +9,10 @@ import com.monopoly.dice.Die;
 import com.monopoly.game.MonopolyGame;
 import com.monopoly.squares.Square;
 import com.monopoly.squares.SquareGroup;
+import com.monopoly.squares.SquareType;
 
 public class Player {
+	private static int turnCount;
 	private MonopolyGame game;
 	private Piece piece;
 	private int balance;
@@ -102,8 +104,6 @@ public class Player {
 		jailRollCount = 0;
 	}
 	
-	
-	
 	/**
 	 * Checks if player has monopolies, buys houses if so
 	 * @param oldPos
@@ -114,6 +114,8 @@ public class Player {
 		if ((oldPos + roll) > game.getNumSquares()) {
 			deposit(200);
 			System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
+			
+			SquareType.incrementNumGoPasses();
 		}
 	}
 	
@@ -159,7 +161,7 @@ public class Player {
 	 * @return
 	 */
 	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll, boolean takeChances) {
-		System.out.println("--------------------------------------------");
+		System.out.println("--- Turn #"+(++turnCount)+"---------------------------------------");
 		System.out.println("It is now "+this+"'s turn.");
 		printStatus();
 		checkForMonopolies();

@@ -3,6 +3,7 @@ package com.monopoly.squares;
 import com.monopoly.board.Move;
 
 public abstract class SquareType {
+	private static int numGoPasses;
 	protected SquareGroup group;
 	protected int price;
 	protected int rent;
@@ -36,6 +37,10 @@ public abstract class SquareType {
 		}
 	}
 	
+	public static void incrementNumGoPasses() {
+		numGoPasses++;
+	}
+	
 	public final SquareGroup getGroup() {
 		return group;
 	}
@@ -45,7 +50,7 @@ public abstract class SquareType {
 	}
 	
 	public final int getRent() {
-		return (int) (rent + (rent * 1.25) * numHouses);
+		return (int) (rent + (rent * 1.25) * numHouses) * (int) (0.25 * (double)numGoPasses);
 	}
 	
 	public final int getNumHouses() {
