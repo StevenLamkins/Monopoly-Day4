@@ -78,7 +78,7 @@ public class WhenRunningTheGame {
 		
 		Player p = game.getPlayers().get(0);
 		int numMoved = p.takeTurn(new LoadedDie(6), new LoadedDie(6), true);
-		numMoved += p.takeTurn(game.getDieOne(), game.getDieTwo());
+		numMoved += p.takeTurn(game.getDieOne(), game.getDieTwo(), true);
 		
 		assertEquals(game.getBoard().getSquareAt(numMoved), game.getPlayerSquare(p));
 	}
