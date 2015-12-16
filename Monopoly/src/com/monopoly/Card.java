@@ -1,5 +1,77 @@
 package com.monopoly;
 
-public class Card {
+import java.util.List;
 
+public class Card {
+	String goToTarget, goToTypeTarget, moneyAmount;
+	boolean fixHouses, jailFree, backThree, payFifty;
+	
+	public Card(String input){
+		String[] split = input.split(":");
+		if(split[0].equals("goTo")){
+			goToTarget = split[1].split(",")[0];
+		}
+		else if(split[0].equals("goToType")){
+			goToTypeTarget = split[1].split(",")[0];
+		}
+		else if(split[0].equals("money")){
+			moneyAmount = split[1];
+		}
+		else if(split[0].equals("fixHouses")){
+			fixHouses=true;
+		}
+		else if(split[0].equals("jailFree")){
+			jailFree=true;
+		}
+		else if(split[0].equals("backThree")){
+			backThree=true;
+		}
+		else if(split[0].equals("payAllFifty")){
+			payFifty=true;
+		}
+	}
+	
+	public boolean drawThisCard(Player player){
+		boolean stillInGame = true;
+		if(fixHouses){
+			System.out.println(player.getToken());
+			for (Property property : player.ownedProperties) {
+				if(property.houseCount*50<=player.money)
+					player.removeMoney(property.houseCount*50);
+				else
+					stillInGame = false;
+			}
+		}
+		else if (jailFree){
+			System.out.println(player.getToken());
+			player.addOutOfJailCard();
+		}
+		else if(backThree){
+			System.out.println(player.getToken());
+			player.moveSpaces(37, true, false);
+		}
+		else if(payFifty){
+			System.out.println(player.getToken());
+			if((MonopolyGame.players.size()-1)*50 <= player.money){
+				for (Player player2 : MonopolyGame.players) {
+					if(player2!=player){
+						player2.addMoney(50);
+						player.removeMoney(50);
+					}
+				}
+			}
+		}
+		else if(moneyAmount!=null){
+			System.out.println(player.getToken());
+			player.addMoney(Integer.valueOf(moneyAmount));
+		}
+		else if(goToTypeTarget!=null){
+			System.out.println(player.getToken());
+		}
+		else if(goToTarget!=null){
+			System.out.println(player.getToken());
+			player.moveToSquare(goToTarget, true, true);
+		}
+		return stillInGame;
+	}
 }

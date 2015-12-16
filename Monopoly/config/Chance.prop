@@ -1,16 +1,17 @@
-goTo:GO,yes
-goTo:illinois avenue,yes
-goTo:st charles place,yes
-goToType:UTILITY,no
-goToType:RR,no
-goToType:RR,no
-earn:50
+goTo:GO
+goTo:illinois avenue
+goTo:st charles place
+goToType:UTILITY
+goToType:RR
+goToType:RR
+money:50
 jailFree:
-moveBack:3,no
+backThree:
 goTo:jail
 fixHouses:
-lose:15
-goTo:reading railroad,yes
-goTo:board walk,no
-earn:150
-earn:100
+money:-15
+goTo:reading railroad
+goTo:board walk
+payAllFifty:
+money:150
+money:100

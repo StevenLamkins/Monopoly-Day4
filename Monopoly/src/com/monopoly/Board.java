@@ -10,7 +10,7 @@ public class Board {
 	
 	int BOARD_SQUARE_COUNT=40;
 	List<Square> squares = new ArrayList<>();
-	List<Card> chanceDeck = new ArrayList<>();
+	static Deck deck = new Deck();
 	
 	public Board(){
 		readBoard();
@@ -45,7 +45,11 @@ public class Board {
 		if (arraySplit.length==2){				
 			String id = arraySplit[0].split(":")[1];
 			 String squareType = arraySplit[1].split(":")[1];
-			newSquare = new Square(id,squareType);
+			 if(squareType.equals("CHANCE")){
+				 newSquare = new Chance(id,squareType);
+			 }else{
+				 newSquare = new Square(id,squareType);
+			 }
 		}//end if
 		else if (arraySplit.length==3){
 			 String id = arraySplit[0].split(":")[1];

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MonopolyGame {
 
 	Board board = new Board();
-	List<Player> players = new ArrayList<Player>();
+	static List<Player> players = new ArrayList<Player>();
 	Die die = new Die();
 	Boolean gameRunning=true;
 	

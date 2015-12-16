@@ -168,7 +168,7 @@ public class Player {
 		if (roll1==roll2 && !wasInJail) {
 			doubleCount++;
 			if (doubleCount==3){
-				moveToSquare("jail", false);
+				moveToSquare("jail", false, false);
 				return stillInGame;
 			}
 		}//end if
@@ -183,7 +183,7 @@ public class Player {
 			}
 		}
 		if(square.getId().equals("go to jail")){
-			moveToSquare("jail", false);
+			moveToSquare("jail", false, false);
 			return stillInGame;
 		}
 		else {
@@ -203,7 +203,7 @@ public class Player {
 		return stillInGame;
 	}
 	
-	public void moveToSquare(String id, boolean buyIfProperty){
+	public void moveToSquare(String id, boolean buyIfProperty, boolean passGo){
 		if(id.equals("jail"))
 			isInJail=true;
 		Boolean squareFound=false;
@@ -211,12 +211,24 @@ public class Player {
 		while(!squareFound && counter<41){			
 			counter++;
 			square = square.getNextSquare();
+			if(passGo && square.getId().equals("GO")){
+				money+=200;
+			}
 			if (square.getId().equals(id)){
 				squareFound=true;
 			}
 		}
 		if(squareFound)
 			square.handlePlayerLanding(this, buyIfProperty);
+	}
+	
+	public void moveSpaces(int count, boolean buyIfProperty, boolean passGo){
+		for (int i = 0; i < count; i++) {
+			square = square.getNextSquare();
+			if(passGo && square.getId().equals("GO"))
+				money+=200;
+		}
+		square.handlePlayerLanding(this, buyIfProperty);
 	}
 	
 }//end Player

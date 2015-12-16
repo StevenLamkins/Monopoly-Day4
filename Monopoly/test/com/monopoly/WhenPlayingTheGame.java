@@ -25,7 +25,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		currentPlayer.moveToSquare("free parking", false);
+		currentPlayer.moveToSquare("free parking", false, false);
 		assertEquals(currentPlayer.getSquare().getId(), "free parking");
 	}
 	
@@ -111,8 +111,8 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		currentPlayer.moveToSquare("mediteranian avenue", true);
-		currentPlayer.moveToSquare("baltic avenue", true);
+		currentPlayer.moveToSquare("mediteranian avenue", true, false);
+		currentPlayer.moveToSquare("baltic avenue", true, false);
 		assertTrue(currentPlayer.ownedProperties.size()==2);
 		assertTrue(currentPlayer.ownedGroups.get("purple")==2);
 		assertTrue(((Property)currentPlayer.getSquare()).isPremiumProperty);
@@ -124,7 +124,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		currentPlayer.moveToSquare("income tax", true);
+		currentPlayer.moveToSquare("income tax", true, false);
 		assertEquals(currentPlayer.getMoney(),1300);
 	}
 	
@@ -133,7 +133,7 @@ public class WhenPlayingTheGame {
 		MonopolyGame game = new MonopolyGame(4);
 		List<Player> players = game.getPlayers();
 		Player currentPlayer = players.get(0);
-		currentPlayer.moveToSquare("luxury tax", true);
+		currentPlayer.moveToSquare("luxury tax", true, false);
 		assertEquals(currentPlayer.getMoney(),1425);
 	}
 
