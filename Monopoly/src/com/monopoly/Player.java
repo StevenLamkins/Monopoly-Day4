@@ -1,5 +1,9 @@
 package com.monopoly;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
 public class Player {
 
 	private static final int INITIAL_BALANCE = 1500;
@@ -45,6 +49,11 @@ public class Player {
 
 	public void incrementBalance(int amount) {
 		balance += amount;		
+	}
+
+	public int getlastRoll() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -2,12 +2,11 @@ package com.monopoly;
 
 public class IncomeTaxSquare extends Square {
 	
-	private static final int RICH_GUY_INCOME_TAX = 200;
 	private static final double INCOME_TAX_PERCENT = 0.10;
-	private static final int INCOME_TAX_THRESHOLD = 2000;
+	private static final int INCOME_TAX_THRESHOLD = 200;
 
-	public IncomeTaxSquare(String name) {
-		super(name);
+	public IncomeTaxSquare(String name, int squareNumber) {
+		super(name, squareNumber);
 	}
 
 	@Override
@@ -15,11 +14,9 @@ public class IncomeTaxSquare extends Square {
 		
 		int playerBalance = player.getBalance();
 		
-		if (playerBalance < INCOME_TAX_THRESHOLD) {
-			player.decrementBalance((int)(playerBalance * INCOME_TAX_PERCENT));
-		} else {
-			player.decrementBalance(RICH_GUY_INCOME_TAX);
-		}
+		int taxAmount = (int)(playerBalance * INCOME_TAX_PERCENT);
+		if (taxAmount > INCOME_TAX_THRESHOLD) taxAmount = INCOME_TAX_THRESHOLD;
+		player.decrementBalance(taxAmount);
 	}
 
 }

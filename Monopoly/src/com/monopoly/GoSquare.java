@@ -4,8 +4,8 @@ public class GoSquare extends Square {
 	
 	private static final int SALARY_AMOUNT = 200;
 
-	public GoSquare(String name) {
-		super(name);
+	public GoSquare(String name, int squareNumber) {
+		super(name, squareNumber);
 	}
 
 	@Override

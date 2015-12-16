@@ -6,10 +6,10 @@ import org.junit.*;
 
 public class WhenLandingOnTaxSquares {
 	
-	Square firstSquare  = new Square("First");
-	Square square2 = new Square("2");
-	Square square3 = new LuxuryTaxSquare("Luxury");
-	Square square4 = new IncomeTaxSquare("IncomeTax");
+	Square firstSquare  = new Square("First", 1);
+	Square square2 = new Square("2", 2);
+	Square square3 = new LuxuryTaxSquare("Luxury", 3);
+	Square square4 = new IncomeTaxSquare("IncomeTax", 4);
 	
 	@Before
 	public void setupSquares() {

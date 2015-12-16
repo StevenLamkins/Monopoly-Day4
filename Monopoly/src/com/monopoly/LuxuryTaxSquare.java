@@ -4,8 +4,8 @@ public class LuxuryTaxSquare extends Square {
 	
 	private static final int LUXURY_TAX_AMOUNT = 75;
 
-	public LuxuryTaxSquare(String name) {
-		super(name);
+	public LuxuryTaxSquare(String name, int squareNumber) {
+		super(name, squareNumber);
 	}
 
 	@Override

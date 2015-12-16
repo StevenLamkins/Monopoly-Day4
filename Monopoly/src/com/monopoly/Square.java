@@ -4,9 +4,11 @@ public class Square {
 	
 	protected Square next;
 	private String name;
+	protected int squareNumber;
 	
-	public Square(String name) {
+	public Square(String name, int squareNumber) {
 		this.name = name;
+		this.squareNumber = squareNumber;
 	}
 	
 	public void setNext(Square nextSquare) {
@@ -24,6 +26,10 @@ public class Square {
 
 	public void passedBy(Player player) {
 		// No-op for base class
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

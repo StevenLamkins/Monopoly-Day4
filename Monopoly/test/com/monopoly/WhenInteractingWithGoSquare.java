@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class WhenInteractingWithGoSquare {
 
-	Square firstSquare  = new GoSquare("Go");
-	Square square2 = new Square("2");
-	Square square3 = new Square("3");
-	Square square4 = new Square("4");
+	Square firstSquare  = new GoSquare("Go",1);
+	Square square2 = new Square("2", 2);
+	Square square3 = new Square("3", 3);
+	Square square4 = new Square("4", 4);
 	
 	@Before
 	public void setupSquares() {

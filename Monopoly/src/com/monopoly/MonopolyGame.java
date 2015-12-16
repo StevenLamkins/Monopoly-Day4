@@ -14,7 +14,7 @@ public class MonopolyGame {
 	
 	public MonopolyGame() {
 		for (int i = 1; i <= NUM_SQUARES; i++){
-			squares.add(new Square(""+i));
+			squares.add(new Square("Square"+i, i));
 		}
 		goSquare = squares.get(0);
 		
@@ -23,6 +23,10 @@ public class MonopolyGame {
 		for (int i = 0; i < MIN_PLAYERS; i++) {
 			players.add(new Player(Token.values()[i], goSquare));
 		}
+	}
+
+	public MonopolyGame(int numPlayers) {
+		// TODO Auto-generated constructor stub
 	}
 
 	private void linkSquares() {
