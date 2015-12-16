@@ -31,7 +31,7 @@ public class Die {
 		return faceValue;
 	}//end get FaceValue
 	
-	public int roll(int seed){
+	public int roll(){
 		int returnValue;
 		if (loadedDiceValue!=0){
 			if(alwaysDoubles)
@@ -43,7 +43,7 @@ public class Die {
 			noDoubles=!noDoubles;
 		} 
 		else{
-			Random rand = new Random(seed);
+			Random rand = new Random();
 			faceValue = rand.nextInt(maxValue)+1;
 			returnValue = faceValue;
 		}

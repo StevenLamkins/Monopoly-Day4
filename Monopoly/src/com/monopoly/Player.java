@@ -4,7 +4,7 @@ public class Player {
 
 	private String token;
 	private Square square;
-	int money, doubleCount, jailTurnCount, outOfJailFreeCount;
+	int money, doubleCount, jailTurnCount, outOfJailFreeCount, previousRoll;
 	boolean isInJail=false;
 	
 	public boolean isInJail() {
@@ -39,6 +39,10 @@ public class Player {
 	public int getMoney() {
 		return money;
 	}
+	
+	public int getPreviousRoll() {
+		return previousRoll;
+	}
 
 	public void addMoney(int money) {
 		this.money+=money;
@@ -60,8 +64,8 @@ public class Player {
 	public boolean takeTurn(Die die, Boolean buyIfProperty){
 		boolean stillInGame = true;
 		
-		int roll1 = die.roll(12345);
-		int roll2 = die.roll(6789);
+		int roll1 = die.roll();
+		int roll2 = die.roll();
 		
 		boolean wasInJail=false;
 		if(isInJail){
@@ -117,7 +121,11 @@ public class Player {
 			
 		if (doubleCount!=0) {
 			takeTurn(die, buyIfProperty);
-		}			
+			previousRoll += moveCount;
+		}
+		else{
+			previousRoll = moveCount;
+		}
 		
 		return stillInGame;
 	}

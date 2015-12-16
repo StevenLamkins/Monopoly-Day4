@@ -1,15 +1,22 @@
 package com.monopoly;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class MonopolyGame {
 
 	Board board = new Board();
 	List<Player> players = new ArrayList<Player>();
 	Die die = new Die();
+	Boolean gameRunning=true;
 	
+	public Boolean getGameRunning() {
+		return gameRunning;
+	}
+
 	public MonopolyGame (int playerCount){
 		if (playerCount<2){
 			throw new IllegalArgumentException("Too few players");
@@ -73,17 +80,41 @@ public class MonopolyGame {
 			Iterator<Player> playerIterator = players.iterator();
 			while(playerIterator.hasNext()){
 				Player player = playerIterator.next();
-				if(!player.takeTurn(die, true))
+				if(!player.takeTurn(die, true)){
+					System.out.println("Player " + player.getToken() + " Eliminated!");
 					players.remove(player);
+				}
 			}
 		}
 		else{
 			System.out.println("The game is over! The " + players.get(0).getToken() + " has won!");
+			gameRunning = false;
 		}
 	}
 	
 	public static void main(String[] args) {
-		
+		MonopolyGame game = new MonopolyGame(8);
+		Scanner keyboard = new Scanner(System.in);
+		int counter = 0;
+		while(game.getGameRunning()){
+			StringBuilder output = new StringBuilder();
+			for (Player player : game.getPlayers()) {
+				if(player.getToken().equals("Thimbal") || player.getToken().equals("WheelBarrow")){
+					output.append(player.getToken()+":\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tSquare - " + player.getSquare().getId()+"\n");
+				}
+				else{
+					output.append(player.getToken()+":\t\t\tPrevious Roll - " + player.getPreviousRoll() + "\tMoney - "+player.getMoney() + "\tSquare - " + player.getSquare().getId()+"\n");
+				}
+			}
+			System.out.println(output.toString());
+			System.out.println("Turn: " + counter++ + "--------------------------------ENTER TO CONTINUE---------------------------------------");
+			try {
+				System.in.read();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			game.runRound();
+		}
 	}//end main
 	
 	
