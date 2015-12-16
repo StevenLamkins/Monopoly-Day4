@@ -32,75 +32,9 @@ public class Board {
 		
 		
 		
-		
-		switch(int )
+		for (int i =1; i < 40; i++)
 		{
-			case 0: squares.add(new GoSquare(0));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 2: squares.add(new CC(2, "Community Chest"));
-			break;
-			
-			case 3: squares.add(new Lot(3, "Baltic Avenue"));
-			break;
-			
-			case 4: squares.add(new IncomeTaxSquare(4, "Income Tax"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
-			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
-			break;
-			
+			checkCase(i);
 		}
 		
 		
@@ -123,6 +57,71 @@ public class Board {
 			}
 
 		}
+	}
+
+	private void checkCase(int i) {
+		
+		switch( i )
+		{
+			case 0: squares.add(new GoSquare(0));
+			break;
+			
+			case 1: squares.add(new Lot(1, "Mediteranean Avenue"));
+			break;
+			
+			case 2: squares.add(new CC(2, "Community Chest"));
+			break;
+			
+			case 3: squares.add(new Lot(3, "Baltic Avenue"));
+			break;
+			
+			case 4: squares.add(new IncomeTaxSquare(4));
+			break;
+			
+			case 5: squares.add(new RailRoad(5, "Reading Railroad"));
+			break;
+			
+			case 6: squares.add(new Lot(6,"Oriental Avenue") );
+			break;
+			
+			case 7: squares.add(new Chance(7));
+			break;
+			
+			case 8:squares.add(new Lot(8,"Vermont Avenue"));
+			break;
+			
+			case 9:squares.add(new Lot(9,"Connecticut Avenue"));
+			break;
+			
+			case 10:squares.add(new Jail(10));
+			break;
+			
+			case 11:squares.add(new Lot(11,"Saint Charles Place"));
+			break;
+			
+			case 12:squares.add(new Utilities(12,"Electric Company"));
+			break;
+			
+			case 13:squares.add(new Lot(13,"States Avenue"));
+			break;
+			
+			case 14:squares.add(new Lot(14,"Virgnia Avenue"));
+			break;
+				
+			case 15:squares.add(new RailRoad(15,"Pennsylvania Railroad"));
+			break;
+			
+			case 16:squares.add(new Lot(16,"St. James Place"));
+			break;
+			
+			case 17:squares.add(new CC(17,"CommunityChest"));
+			break;
+			
+			
+			
+			
+				
+}
 	}
 	
 	public List<Square> getSquares(){
