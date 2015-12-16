@@ -50,10 +50,12 @@ public class PropertySquare extends SquareType {
 		Player player = move.getPlayer();
 		Player payee = Square.getSquareOwner(square);
 		
-		if (payee != null && payee != player) {
-			payRent(player, payee, getRent());
-		} else {
-			buySquare(player, square, move.getTakeChances());
+		if (payee != player) {
+			if (payee != null) {
+				payRent(player, payee, getRent());
+			} else {
+				buySquare(player, square, move.getTakeChances());
+			}
 		}
 	}
 }
