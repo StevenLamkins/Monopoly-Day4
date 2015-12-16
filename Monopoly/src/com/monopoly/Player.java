@@ -26,7 +26,7 @@ public class Player {
 		return balance;
 	}
 
-	public void takeTurn() {
+	public void takeTurn(Dice dice) {
 		// TODO Auto-generated method stub
 		position = position.getNext();
 	}
