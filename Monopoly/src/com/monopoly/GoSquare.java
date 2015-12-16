@@ -9,7 +9,7 @@ public class GoSquare extends Square {
 
 	@Override
 	public void landOn(Player player) {
-		// do nothing
+		player.incrementAccount(200);
 		
 	}
 

@@ -36,16 +36,17 @@ public class Player {
 	}
 
 	private void movePlayer(int moveCount) {
-		for (int i = 0; i < moveCount; i++) {
-			setSquare(getSquare().getNextSquare());
-			if (getSquare() instanceof GoSquare) {
+		for (int i = 0; i < moveCount -1; i++) {
+			step();
 				getSquare().passOver(this);
-			}
 		}
-
-		// final destination
+		step();
 		getSquare().landOn(this);
 
+	}
+
+	private void step() {
+		setSquare(getSquare().getNextSquare());
 	}
 
 	private void setSquare(Square square) {
@@ -59,5 +60,15 @@ public class Player {
 	public void incrementAccount(double amount) {
 		accountBalance += amount;
 	}
+	
+	public void credit(double amount) {
+		accountBalance += amount;
+	}
+	
+	public void debit(double amount) {
+		System.out.println("Hit this point3");
+		accountBalance -= amount;
+	}
+	
 
 }

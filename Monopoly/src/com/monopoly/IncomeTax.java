@@ -9,13 +9,9 @@ public class IncomeTax extends Square {
 
 	@Override
 	public void landOn(Player player) {
-
-		if (player.getAccountBalance() >= 2000) {
-			player.incrementAccount(-200);
-		} else {
-
-			player.incrementAccount(-(player.getAccountBalance() * .1));
-		}
+		
+		double amount = Math.min(200, (player.getAccountBalance() * .1));
+		player.incrementAccount(-amount);
 
 	}
 

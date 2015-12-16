@@ -25,18 +25,28 @@ public class Board {
 	private void buildSquares() {
 		squares = new ArrayList<>();
 		squares.add(new GoSquare("Go"));
-		for (int i = 1; i < 40; i++) {	
-			if(i == 38)
-			{
-				squares.add(new LuxeryTaxSquare("Luxury Tax " + (i)));
-			}else if(i == 4)
-			{
+		for (int i = 1; i < 40; i++) {
+			
+			
+			switch (i) {
+			case 0:
+				squares.add(new GoSquare("Go"));
+				break;
+			case 3:
+				squares.add(new LotSquare("Baltic Avenue", 2,  60, Group.DarkBlue));
+				break;
+			case 4:
 				squares.add(new IncomeTax("Square" + i));
-			}
-			else
-			{
+				break;	
+			case 38:
+				squares.add(new LuxeryTaxSquare("Luxury Tax " + (i)));
+				break;				
+
+			default:
 				squares.add(new BlankSquare("Square" + i));
+				break;
 			}
+		
 			System.out.println(squares.get(i).getName());
 		}
 		
