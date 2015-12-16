@@ -137,6 +137,12 @@ public class Player {
 		System.out.println(this+" paid $"+taxAmount+" in taxes.");
 	}
 	
+	private void payUtilities(Square square, int roll) {
+		int cost = roll * 4;
+		withdraw(cost);
+		System.out.println("Paid $"+cost+" in utilities.");
+	}
+	
 	private void buySquare(Square square) {
 		int price = square.getPrice();
 		
@@ -147,16 +153,39 @@ public class Player {
 		}
 	}
 	
-	public int takeTurn(Die dieOne, Die dieTwo) {
-		return takeTurn(dieOne, dieTwo, false);
+	private void goToJail() {
+		setInJail(true);
+		setPosition(game.getBoard().getSquarePosition(Square.Jail));
+		System.out.println("Landed on Go To Jail, going to Jail!");
 	}
-
-	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll) {
+	
+	private void checkForPassGo(int oldPos, int newPos, int roll) {
+		if ((oldPos + roll) > game.getNumSquares()) {
+			deposit(20); //TODO - increase to $200 once houses can be bought
+			System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
+		}
+	}
+	
+	private void checkForMonopolies() {
 		List<SquareGroup> monopolies = Square.getMonopolies(getProperties());
 		
 		for (SquareGroup group : monopolies) {
 			System.out.println(this+" has a monopoly for "+group.name());
 		}
+	}
+	
+	private void printMove(int oldPos, int newPos) {
+		String oldSquare = game.getBoard().getSquareAt(oldPos).name();
+		String newSquare = game.getBoard().getSquareAt(newPos).name();
+		System.out.println("Moved from "+oldSquare+" ("+oldPos+") to "+newSquare+"("+newPos+")");
+	}
+	
+	public int takeTurn(Die dieOne, Die dieTwo) {
+		return takeTurn(dieOne, dieTwo, false);
+	}
+
+	public int takeTurn(Die dieOne, Die dieTwo, boolean suppressReroll) {
+		checkForMonopolies();
 		
 		int rollOne = dieOne.roll();
 		int rollTwo = dieTwo.roll();
@@ -171,14 +200,9 @@ public class Player {
 		int newPos = (position + roll) % game.getNumSquares();
 		
 		if (!inJail()) {
-			// Handle passing Go
-			System.out.println("Old position: "+oldPos+", New position: "+newPos+" "+game.getBoard().getSquareAt(newPos).name());
+			printMove(oldPos, newPos);
 			setPosition(newPos);
-			
-			if ((oldPos + roll) > game.getNumSquares()) {
-				deposit(20); //TODO - increase to $200 once houses can be bought
-				System.out.println(this+" passed Go! Receive $200, balance is now "+getBalance());
-			}
+			checkForPassGo(oldPos, newPos, roll);
 			
 			Square square = game.getBoard().getSquareAt(newPos);
 			
@@ -195,15 +219,11 @@ public class Player {
 					payTax(square);
 					break;
 				case UTILITIES:
-					int cost = roll * 4;
-					withdraw(cost);
-					System.out.println("Paid $"+cost+" in utilities.");
+					payUtilities(square, roll);
 					break;
 				case GO_TO_JAIL:
-					setInJail(true);
+					goToJail();
 					wentToJail = true;
-					setPosition(game.getBoard().getSquarePosition(Square.Jail));
-					System.out.println("Landed on Go To Jail.");
 					break;
 				default:
 					break;
