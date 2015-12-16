@@ -11,6 +11,7 @@ public class Player {
 	private Square square;
 	int money, doubleCount, jailTurnCount, outOfJailFreeCount, previousRoll;
 	boolean isInJail=false;
+	int ownRRCount=0;
 	List<Property> ownedProperties = new ArrayList<Property>();
 	Map<String, Integer> ownedGroups = new HashMap<String, Integer>();
 	
@@ -30,6 +31,14 @@ public class Player {
 	public String getToken(){
 		return token;
 	}//end getToken
+	
+	public int getOwnRRCount(){
+		return ownRRCount;
+	}//end getOwnRRCount
+	
+	public void setOwnRRCount(int ownRRCount){
+		this.ownRRCount = ownRRCount;
+	}//end setOwnRRCount
 	
 	public void buyProperty(Property property){
 		if(ownedProperties.contains(property))
