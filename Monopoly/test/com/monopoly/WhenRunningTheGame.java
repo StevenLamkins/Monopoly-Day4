@@ -328,4 +328,55 @@ public class WhenRunningTheGame {
 		assertEquals(startBal-25, endBal);
 	}
 	
+	@Test
+	public void shouldPay50ForTwoRailroads() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p1 = game.getPlayers().get(0);
+		Square.setSquareOwner(p1, Square.ReadingRailroad);
+		Square.setSquareOwner(p1, Square.PennsylvaniaRailroad);
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(3), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(startBal-50, endBal);
+	}
+	
+	@Test
+	public void shouldPay100ForThreeRailroads() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p1 = game.getPlayers().get(0);
+		Square.setSquareOwner(p1, Square.ReadingRailroad);
+		Square.setSquareOwner(p1, Square.PennsylvaniaRailroad);
+		Square.setSquareOwner(p1, Square.BAndORailroad);
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(3), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(startBal-100, endBal);
+	}
+	
+	@Test
+	public void shouldPay200ForFourRailroads() {
+		MonopolyGame game = new MonopolyGame(2);
+		
+		Player p1 = game.getPlayers().get(0);
+		Square.setSquareOwner(p1, Square.ReadingRailroad);
+		Square.setSquareOwner(p1, Square.PennsylvaniaRailroad);
+		Square.setSquareOwner(p1, Square.BAndORailroad);
+		Square.setSquareOwner(p1, Square.ShortLineRailroad);
+		
+		Player p2 = game.getPlayers().get(1);
+		int startBal = p2.getBalance();
+		p2.takeTurn(new LoadedDie(3), new LoadedDie(2));
+		int endBal = p2.getBalance();
+		
+		assertEquals(startBal-200, endBal);
+	}
+	
 }
