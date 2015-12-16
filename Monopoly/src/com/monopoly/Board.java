@@ -29,34 +29,11 @@ public class Board {
 	}
 
 	private void buildSquares() {
-		
-		
-		
-		for (int i =1; i < 40; i++)
+		for (int i =0; i < 40; i++)
 		{
 			checkCase(i);
 		}
-		
-		
-		for (int i =1; i < 40; i++)
-		{
-			if(i == 38)
-			{
-				LuxurySquare luxSquare = new LuxurySquare(38);
-				squares.add(luxSquare);
-			}
-			else if(i==4)
-			{
-				IncomeTaxSquare incomeTaxSquare = new IncomeTaxSquare(4);
-				squares.add(incomeTaxSquare);
-			}
-			else
-			{
-				Square temp = new Square(i,"Square " + i);
-				squares.add(temp);	
-			}
 
-		}
 	}
 
 	private void checkCase(int i) {
