@@ -98,7 +98,7 @@ public class MonopolyGame {
 	}
 	
 	public static void main(String[] args) {
-		MonopolyGame game = new MonopolyGame(8);
+		MonopolyGame game = new MonopolyGame(3);
 		Scanner keyboard = new Scanner(System.in);
 		int counter = 0;
 		while(game.getGameRunning()){
