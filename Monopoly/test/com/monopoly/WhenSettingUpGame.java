@@ -112,4 +112,14 @@ public class WhenSettingUpGame {
 		assertEquals(currentNumPlayers + 1, game.getNumberPlayers());
 	}
 	
+	@Test
+	public void playerShouldStartWithMoney() {
+		
+		//Setup
+		Board board = new Board();
+		Player player = new Player(board.getStartSquare(), 1);		
+		
+		assertEquals(1500.0, player.getAccountBalance());
+	}
+	
 }

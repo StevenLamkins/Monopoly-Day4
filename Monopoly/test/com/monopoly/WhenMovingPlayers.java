@@ -37,12 +37,37 @@ public class WhenMovingPlayers {
 		int dieValue2 = 4;
 		dice.add(new LoadedDie(6,dieValue1));
 		dice.add(new LoadedDie(6,dieValue2));
-		
-		int rollCount = dieValue1 + dieValue2;
 
 		player.takeTurn(dice);
-		assertEquals(player.getSquare().getName(), "Square7");
+		assertEquals(player.getSquare().getName(), "Square7");		
+
+	}
+	
+	@Test
+	public void playerShouldCircleTheBoard() {
+		Board board = new Board();
 		
+		List<Square> squares = board.getSquares();
+		for (Square square : squares) {
+			System.out.println(square.getName());
+		}
+
+		Player player = new Player(squares.get(38), 1);
+
+		List<Die> dice = new ArrayList<>();
+		int dieValue1 = 3;
+		int dieValue2 = 4;
+		dice.add(new LoadedDie(6,dieValue1));
+		dice.add(new LoadedDie(6,dieValue2));
+
+		player.takeTurn(dice);
+		
+		//Troubleshooting
+		for (Square square : squares) {
+			System.out.println("Square " + square.getName() + " NextSquare " + square.getNextSquare().getName());
+		}		
+		
+		assertEquals(player.getSquare().getName(), "Square5");		
 
 	}
 

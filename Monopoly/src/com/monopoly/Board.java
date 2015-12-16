@@ -15,11 +15,13 @@ public class Board {
 			squares.add(new Square("Square" + i));			
 		}
 		
-		int lastElement = squares.size() - 1;
+		int lastElement = squares.size() -1;
 		squares.get(lastElement).setNextSquare(squares.get(0));
-		for (int i = 0; i < lastElement - 1; i++) {
+		
+		for (int i = 0; i < lastElement; i++) {
 			squares.get(i).setNextSquare(squares.get(i+1));
 		}
+		
 	}
 
 	public List<Square> getSquares() {
