@@ -3,8 +3,6 @@ package com.monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dicegame.Die;
-
 public class MonopolyGame {
 	private static final int MIN_PLAYERS = 2;
 	private static final int MAX_PLAYERS = 8;

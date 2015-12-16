@@ -12,4 +12,8 @@ public class Square {
 		return next;
 	}
 
+	public void landedOnBy(Player player) {
+		// No-op for parent class		
+	}
+
 }

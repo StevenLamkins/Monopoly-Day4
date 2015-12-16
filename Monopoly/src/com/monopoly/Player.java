@@ -34,6 +34,16 @@ public class Player {
 			currSquare = currSquare.getNext();
 		}
 		position = currSquare;
+		
+		currSquare.landedOnBy(this);
+	}
+
+	public void decrementBalance(int amount) {
+		balance -= amount;		
+	}
+
+	public void incrementBalance(int amount) {
+		balance += amount;		
 	}
 
 }
