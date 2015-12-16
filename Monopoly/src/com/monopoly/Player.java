@@ -1,5 +1,6 @@
 package com.monopoly;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.monopoly.squares.Square;
@@ -12,6 +13,8 @@ public class Player {
 	 private Square location;
 	 private int balance;
 	 private String token = "Dog";
+	 private List<Square> deeds = new ArrayList<>();
+	 private int lastRoll = 0;
 	 
 	 public Player() {
 		 balance = STARTING_BALANCE;
@@ -40,22 +43,34 @@ public class Player {
 	public void takeTurn(List<Die> dice, Board board) {
 		int d1 = dice.get(0).roll();
 		int d2 = dice.get(1).roll();
-		int diceSum = d1 + d2;
-		int newLoc = diceSum + location.getPosition();
+		lastRoll = d1 + d2;
+		int newLoc = lastRoll + location.getPosition();
 		if (newLoc > 39) {
-			balance += 200;
+			credit(200);
 		}
 		Square newSquare = board.getSquares().get(newLoc % 40);
-		balance -= newSquare.landOnBy(this);
+		debit(newSquare.landOnBy(this));
 	    setLocation(newSquare);
-	}
-
-	public void payRent(int rent) {
-		balance -= rent;
 	}
 
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+
+	public List<Square> getDeeds() {
+		return deeds;
+	}
+
+	public void credit(int amount) {
+		balance += amount;
+	}
+
+	public void debit(int amount) {
+		balance -= amount;
+	}
+
+	public int getLastRoll() {
+		return lastRoll;
 	}
 	 
 	 

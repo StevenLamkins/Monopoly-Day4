@@ -2,17 +2,12 @@ package com.monopoly.squares;
 
 import com.monopoly.Player;
 
-public class LotSquare extends Square {
+public class LotSquare extends PropertySquare {
 	private String color;
-	private int rent;
-	private int price;
-	private int ownedFlag = 0;
 
 	public LotSquare(int index, String group) {
 		super(index);
 		color = group;
-		rent = rents[position];
-		price = prices[position];
 	}
 
 	public String getColor() {
@@ -23,8 +18,13 @@ public class LotSquare extends Square {
 		this.color = color;
 	}
 
-	public int landOnBy(Player player) {
-		return rents[position] * ownedFlag;
-	}	
+	@Override
+	public int collectRent(Player player) {
+		owner.credit(rents[position]);
+		return rents[position];
+	}
+	
+	
+
 
 }
