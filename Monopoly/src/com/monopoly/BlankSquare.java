@@ -11,4 +11,10 @@ public class BlankSquare extends Square {
 
 	}
 
+	@Override
+	public void passOver(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -23,4 +23,6 @@ public abstract class Square {
 	}
 	
 	public abstract void landOn(Player player);
+	
+	public abstract void passOver(Player player);
 }

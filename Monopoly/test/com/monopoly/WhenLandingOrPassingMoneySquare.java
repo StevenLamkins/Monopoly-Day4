@@ -66,5 +66,40 @@ public class WhenLandingOrPassingMoneySquare {
   		assertEquals(startingBalance - 200, player.getAccountBalance(), 0.001);
 
 	}	
+	
+	@Test
+	public void shouldPay10PercentTaxWhenLandingOnIncomeTaxWithLessThan2000Balance() {
+
+		Board board = new Board();	
+
+		Player player = new Player(board.getSquares().get(1), 1);
+		double startingBalance = player.getAccountBalance();
+		Die die1 = new LoadedDie(2);
+		Die die2 = new LoadedDie(1);
+		List<Die> dice = new ArrayList<>();
+		dice.add(die1);
+		dice.add(die2);
+  		player.takeTurn(dice);
+  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
+		
+  		assertEquals(startingBalance - 150, player.getAccountBalance(), 0.001);
+	}
+	
+	@Test
+	public void shouldCollect200WhenPassingGoSquare() {
+		Board board = new Board();
+		
+		Player player = new Player(board.getSquares().get(35), 1);
+		double startingBalance = player.getAccountBalance();
+		Die die1 = new LoadedDie(2);
+		Die die2 = new LoadedDie(5);
+		List<Die> dice = new ArrayList<>();
+		dice.add(die1);
+		dice.add(die2);
+  		player.takeTurn(dice);
+  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
+		
+  		assertEquals(startingBalance + 200, player.getAccountBalance(), 0.001);
+	}
 
 }

@@ -13,4 +13,10 @@ public class LuxeryTaxSquare extends Square {
 
 	}
 
+	@Override
+	public void passOver(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

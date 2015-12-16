@@ -14,9 +14,15 @@ public class IncomeTax extends Square {
 			player.incrementAccount(-200);
 		} else {
 
-			player.incrementAccount(player.getAccountBalance() * .1);
+			player.incrementAccount(-(player.getAccountBalance() * .1));
 		}
 
+	}
+
+	@Override
+	public void passOver(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
