@@ -167,6 +167,7 @@ public class Board {
 			Square square = squares.get(i);
 			Property property = (Property)square;
 			property.setPrice(i * 10);
+			property.setRent(i);
 		}
 	}
 	
