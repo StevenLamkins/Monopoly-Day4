@@ -3,38 +3,59 @@ package com.monopoly;
 import com.dicegame.Die;
 
 public class Player {
-	private String name;
-	private int money;
-	private String token;
+
 	private Square location;
-	
-	public Player(Square startSquare) {
+	private Token token;
+	private int money;
+	private int rollValue;
+
+	public Player(Token token, Square startSquare) {
 		this.location = startSquare;
+		this.token = token;
 		this.money = 1500;
 	}
-	
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
+
 	public Square getLocation() {
 		return location;
 	}
-	
+
+	public Token getToken() {
+		return token;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
 	public void takeTurn(Die die1, Die die2) {
-		int rollValue = die1.roll() + die2.roll();
-		System.out.println("roll value is " + rollValue);
+		this.rollValue = die1.roll() + die2.roll();
 		move(rollValue);
 	}
+
 	private void move(int rollValue) {
-		for (int i=0; i < rollValue; i++){
-			System.out.println("current location is " + location);
-			location = location.getNextSquare();
-			System.out.println("now location is " + location);
+		
+		for (int i = 0; i < rollValue - 1; i++) {
+			step();
+			location.passOverBy(this);
 		}
+		step();
+		location.landOnBy(this); 
 	}
-	
-	
+
+	private void step() {
+		location = location.getNextSquare();
+	}
+
+	public void credit(int amount) {
+		money += amount;
+	}
+
+	public void debit(int amount) { 
+		money -= amount;
+	}
+
+	public int getLastRoll() {
+		return rollValue;
+	}
+
 }

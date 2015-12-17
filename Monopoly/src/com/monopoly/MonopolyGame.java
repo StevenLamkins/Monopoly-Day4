@@ -5,35 +5,32 @@ import java.util.List;
 
 import com.dicegame.Die;
 
+
 public class MonopolyGame {
-	
+
 	private Board board;
-	private List<Player> players = new ArrayList<Player>();
-	public String[] tokens = new String[] {"dog", "wheelbarrow", "top hat", "thimble", "battleship", "car", "boot", "iron"};
+	private List<Player> players;
 	private Die die1;
 	private Die die2;
 	
-	public MonopolyGame(int people){
-		if (people < 2){
-			throw new IllegalArgumentException("Too few players");
-		}
-		else if(people > 8){
-			throw new IllegalArgumentException("Too many players");
-		}
+	public MonopolyGame(int numberOfPlayers) {
+		
+		if (numberOfPlayers > 8) throw new WrongNumberOfPlayersException("Too many!");
+		if (numberOfPlayers < 2) throw new WrongNumberOfPlayersException("Too few!");
 		board = new Board();
+		players = new ArrayList<>();
 		die1 = new Die();
 		die2 = new Die();
-		Player person;
-		for(int i=0; i < people; i++){
-			person= new Player(board.getSquares().get(0));
-			person.setToken(tokens[i]);
-			players.add(person);
-			board.getSquares().get(0).addPlayertoSpace(person);
+		
+		for (int i = 0; i < numberOfPlayers; i++) {
+			Token token = Token.values()[i];
+			players.add(new Player(token, board.getStartSquare()));
 		}
 		
 	}
-
+	
 	public List<Square> getSquares() {
+		
 		return board.getSquares();
 	}
 
@@ -42,11 +39,10 @@ public class MonopolyGame {
 	}
 
 	public void playRound() {
-		for(Player player : players){
+		for (Player player : players) {
 			player.takeTurn(die1, die2);
 		}
-		
 	}
 	
-
+	
 }
