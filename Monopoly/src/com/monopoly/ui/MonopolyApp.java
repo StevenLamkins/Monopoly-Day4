@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.monopoly.MonopolyGame;
 import com.monopoly.Player;
+import com.monopoly.Property;
 
 public class MonopolyApp {
 
@@ -12,6 +13,7 @@ public class MonopolyApp {
 		MonopolyGame game = new MonopolyGame(2);
 		
 		List<Player> players = game.getPlayers();
+
 		
 		for (int i = 0; i < 10; i++) 
 		{
