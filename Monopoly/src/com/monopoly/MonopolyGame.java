@@ -15,6 +15,9 @@ public class MonopolyGame {
 	private List<Die> dice;
 
 	public MonopolyGame() {
+		
+		//this(new FakeSquareDao());
+		
 		dice = new ArrayList<Die>();
 		dice.add(new Die());
 		dice.add(new Die());
