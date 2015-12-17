@@ -10,6 +10,7 @@ public class Player implements PlayerInfo {
 	private Square position;
 	private Token token;
 	private int balance;
+	private int lastRoll;
 
 	public Player(Token token, Square initSquare) {
 		this.token = token;
@@ -43,10 +44,10 @@ public class Player implements PlayerInfo {
 	}
 
 	public void takeTurn(Dice dice) {
-		int numSpaces = dice.roll();
+		lastRoll = dice.roll();
 		Square currSquare = position;
 		
-		for (int i = 1; i <= numSpaces-1; i++){
+		for (int i = 1; i <= lastRoll-1; i++){
 			currSquare = currSquare.getNext();
 			currSquare.passedBy(this);
 		}
@@ -67,9 +68,8 @@ public class Player implements PlayerInfo {
 	 * @see com.monopoly.PlayerInfo#getlastRoll()
 	 */
 	@Override
-	public int getlastRoll() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getLastRoll() {
+		return lastRoll;
 	}
 
 }

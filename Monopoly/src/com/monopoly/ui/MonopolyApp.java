@@ -15,7 +15,7 @@ public class MonopolyApp {
 		for (int i=0; i < 20; i++) {
 			game.playRound();
 			for (PlayerInfo player : players) {
-				System.out.println(player.getToken() + " rolled a " + player.getlastRoll());
+				System.out.println(player.getToken() + " rolled a " + player.getLastRoll());
 				System.out.println(player.getToken() + " landed on " + player.getPosition().getName());
 				System.out.println(player.getToken() + " has " + player.getBalance());
 			}

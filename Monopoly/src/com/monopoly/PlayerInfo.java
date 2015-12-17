@@ -8,6 +8,6 @@ public interface PlayerInfo {
 
 	public abstract int getBalance();
 
-	public abstract int getlastRoll();
+	public abstract int getLastRoll();
 
 }
