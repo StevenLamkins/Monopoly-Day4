@@ -4,7 +4,7 @@ import com.monopoly.Player;
 
 public class Square {
 	protected int[] prices = {0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180, 0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150, 280, 0, 300, 300, 0, 320, 200, 0, 350, 0, 400};
-	protected int[] rents = {0, 2, 0, 4, -100, 50, 6, 0, 6, 8, 0, 10, -1, 10, 13, 50, 14, 0, 14, 16, 0, 18, 0, 18, 20, 50, 22, 22, -1, 22, 0, 26, 26, 0, 28, 50, 0, 35, 75, 50};
+	protected int[] rents = {0, 2, 0, 4, -100, 25, 6, 0, 6, 8, 0, 10, -1, 10, 13, 25, 14, 0, 14, 16, 0, 18, 0, 18, 20, 25, 22, 22, -1, 22, 0, 26, 26, 0, 28, 25, 0, 35, 75, 50};
 	protected String[] names = {"Go", "Mediterranean", "Community Chest", "Baltic", "Income Tax", "Reading Railroad", "Oriental", "Chance", "Vermont", "Connecticut", "Jail",
 			"St. Charles Place", "Electric Company", "States", "Virginia", "Pennsylvania Railroad", "St. James Place", "Community Chest", "Tennessee", "New York",
 			"Free Parking", "Kentucky", "Chance", "Indiana", "Illinois", "B&O Railroad", "Atlantic", "Ventnor", "Water Works", "Marvin Gardens", "Go to Jail", "Pacific",

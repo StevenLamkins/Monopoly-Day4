@@ -24,7 +24,7 @@ public abstract class PropertySquare extends Square {
 
 	@Override
 	public int landOnBy(Player player) {
-		if ((owner == null) && (player.getBalance() > price)) {
+		if ((owner == null) && (player.getBalance() >= price)) {
 			owner = player;
 			player.getDeeds().add(this);
 			return price;
