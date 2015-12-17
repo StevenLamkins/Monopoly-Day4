@@ -16,7 +16,7 @@ public class WhenLandingOrPassingMoneySquare {
 
 		Board board = new Board();	
 
-		Player player = new Player(board.getSquares().get(38), 1);
+		Player player = new Player(board.getSquares().get(38), Token.BattleShip);
 		Die die1 = new LoadedDie(1);
 		Die die2 = new LoadedDie(1);
 		List<Die> dice = new ArrayList<>();
@@ -33,7 +33,7 @@ public class WhenLandingOrPassingMoneySquare {
 
 		Board board = new Board();	
 
-		Player player = new Player(board.getSquares().get(35), 1);
+		Player player = new Player(board.getSquares().get(35), Token.Dog);
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(1);
 		Die die2 = new LoadedDie(2);
@@ -52,7 +52,7 @@ public class WhenLandingOrPassingMoneySquare {
 
 		Board board = new Board();	
 
-		Player player = new Player(board.getSquares().get(1), 1);
+		Player player = new Player(board.getSquares().get(1), Token.Hat);
 		player.incrementAccount(500);
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
@@ -72,7 +72,7 @@ public class WhenLandingOrPassingMoneySquare {
 
 		Board board = new Board();	
 
-		Player player = new Player(board.getSquares().get(1), 1);
+		Player player = new Player(board.getSquares().get(1), Token.Iron);
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
@@ -89,7 +89,7 @@ public class WhenLandingOrPassingMoneySquare {
 	public void shouldCollect200WhenPassingGoSquare() {
 		Board board = new Board();
 		
-		Player player = new Player(board.getSquares().get(35), 1);
+		Player player = new Player(board.getSquares().get(35), Token.RaceCar);
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(5);

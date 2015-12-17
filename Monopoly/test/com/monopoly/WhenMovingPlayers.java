@@ -14,8 +14,10 @@ public class WhenMovingPlayers {
 	@Test
 	public void playersShouldLeaveGoSquare() {
 		MonopolyGame game = new MonopolyGame();
-		for (int i = 0; i < MonopolyGame.MAX_NUM_PLAYERS; i++) {
-			game.addPlayer();			
+
+		
+		for (Token token : Token.values()) {
+			game.addPlayer(token);
 		}
 		
 		List<Player> players = game.getPlayers();
@@ -31,7 +33,7 @@ public class WhenMovingPlayers {
 	@Test
 	public void playerShouldMoveCorrectAmountOfSquares() {
 		Board board = new Board();
-		Player player = new Player(board.getStartSquare(), 1);
+		Player player = new Player(board.getStartSquare(), Token.BattleShip);
 		List<Die> dice = new ArrayList<>();
 		int dieValue1 = 3;
 		int dieValue2 = 4;
@@ -55,7 +57,7 @@ public class WhenMovingPlayers {
 			System.out.println(square.getName());
 		}
 
-		Player player = new Player(squares.get(38), 1);
+		Player player = new Player(squares.get(38), Token.BattleShip);
 
 		List<Die> dice = new ArrayList<>();
 		int dieValue1 = 3;

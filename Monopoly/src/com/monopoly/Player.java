@@ -6,15 +6,22 @@ import com.dicegame.Die;
 
 public class Player {
 	private Square square;
-	private String token;
+	private String tokenStr;
+	private Token token;
 	private double accountBalance;
 
 	public static final String[] TOKENS = { "Dog", "WheelBarrow", "Hat",
 			"Thimble", "Battleship", "Race Car", "Boot", "Iron" };
 
-	public Player(Square square, int tokenIndex) {
+//	public Player(Square square, int tokenIndex) {
+//		this.square = square;
+//		token = TOKENS[tokenIndex];
+//		accountBalance = 1500.0;
+//	}
+	
+	public Player(Square square, Token token) {
 		this.square = square;
-		token = TOKENS[tokenIndex];
+		this.token = token;
 		accountBalance = 1500.0;
 	}
 
@@ -22,7 +29,7 @@ public class Player {
 		return square;
 	}
 
-	public String getToken() {
+	public Token getToken() {
 		return token;
 	}
 
