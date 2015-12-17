@@ -23,7 +23,6 @@ public class WhenLandingOrPassingMoneySquare {
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
-  		System.out.println(player.getSquare().getName());
 		
 		assertEquals(1700.0, player.getAccountBalance(), 0.001);
 	}
@@ -41,7 +40,6 @@ public class WhenLandingOrPassingMoneySquare {
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
-  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
 		
   		assertEquals(startingBalance -75.0, player.getAccountBalance(), 0.001);
 
@@ -61,7 +59,6 @@ public class WhenLandingOrPassingMoneySquare {
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
-  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
 		
   		assertEquals(startingBalance - 200, player.getAccountBalance(), 0.001);
 
@@ -80,7 +77,6 @@ public class WhenLandingOrPassingMoneySquare {
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
-  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
 		
   		assertEquals(startingBalance - 150, player.getAccountBalance(), 0.001);
 	}
@@ -97,7 +93,6 @@ public class WhenLandingOrPassingMoneySquare {
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
-  		System.out.println(player.getSquare().getName() + " balance  " + player.getAccountBalance());
 		
   		assertEquals(startingBalance + 200, player.getAccountBalance(), 0.001);
 	}

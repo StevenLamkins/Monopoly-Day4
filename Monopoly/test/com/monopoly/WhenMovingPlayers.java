@@ -25,8 +25,6 @@ public class WhenMovingPlayers {
 		
 		for (PlayerInfo player : players) {
 			assertFalse(player.getSquare().getName().equals("Go"));
-			
-			System.out.println("Player " +  player.getToken() + " " + player.getSquare().getName());
 		} 
 	}
 	
@@ -54,7 +52,6 @@ public class WhenMovingPlayers {
 		
 		List<Square> squares = board.getSquares();
 		for (Square square : squares) {
-			System.out.println(square.getName());
 		}
 
 		Player player = new Player(squares.get(38), Token.BattleShip);
@@ -66,11 +63,7 @@ public class WhenMovingPlayers {
 		dice.add(new LoadedDie(6,dieValue2));
 
 		player.takeTurn(dice);
-		
-		//Troubleshooting
-		for (Square square : squares) {
-			System.out.println("Square " + square.getName() + " NextSquare " + square.getNextSquare().getName());
-		}		
+	
 		
 		assertEquals(player.getSquare().getName(), "RailRoad Square 5");		
 

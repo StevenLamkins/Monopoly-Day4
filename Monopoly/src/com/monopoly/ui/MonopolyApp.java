@@ -3,7 +3,6 @@ package com.monopoly.ui;
 import java.util.List;
 
 import com.monopoly.MonopolyGame;
-import com.monopoly.Player;
 import com.monopoly.PlayerInfo;
 import com.monopoly.Token;
 

@@ -88,7 +88,6 @@ public class Player implements PlayerInfo {
 	}
 
 	public void debit(double amount) {
-		System.out.println("Hit this point3");
 		accountBalance -= amount;
 	}
 
