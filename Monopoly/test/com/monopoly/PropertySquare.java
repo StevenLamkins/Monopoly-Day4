@@ -2,13 +2,13 @@ package com.monopoly;
 
 public class PropertySquare extends Square {
 	
-	private Player owner;
+	private PlayerInfo owner;
 
 	public PropertySquare(String name, int squareNumber) {
 		super(name, squareNumber);
 	}
 	
-	public Player getOwner() {
+	public PlayerInfo getOwner() {
 		return owner;
 	}
 

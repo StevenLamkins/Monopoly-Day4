@@ -29,7 +29,7 @@ public class WhenMovingAroundBoard {
 		List<Square> squares = game.getSquares();
 		Square firstSquare = squares.get(0);
 		game.playRound();
-		for (Player player: game.getPlayers()) {
+		for (PlayerInfo player: game.getPlayers()) {
 			Square currSquare = player.getPosition();
 			assertNotNull (currSquare);
 			assertNotSame(currSquare, firstSquare);

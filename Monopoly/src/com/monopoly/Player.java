@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-public class Player {
+public class Player implements PlayerInfo {
 
 	private static final int INITIAL_BALANCE = 1500;
 	private Square position;
@@ -17,15 +17,27 @@ public class Player {
 		balance = INITIAL_BALANCE;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getPosition()
+	 */
+	@Override
 	public Square getPosition() {
 
 		return position;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getToken()
+	 */
+	@Override
 	public Token getToken() {
 		return token;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getBalance()
+	 */
+	@Override
 	public int getBalance() {
 		return balance;
 	}
@@ -51,6 +63,10 @@ public class Player {
 		balance += amount;		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getlastRoll()
+	 */
+	@Override
 	public int getlastRoll() {
 		// TODO Auto-generated method stub
 		return 0;

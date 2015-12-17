@@ -53,8 +53,12 @@ public class MonopolyGame {
 		}	
 	}
 
-	public List<Player> getPlayers() {
-		return players;
+	public List<PlayerInfo> getPlayers() {
+		List<PlayerInfo> piList = new ArrayList();
+		for (Player player : players) {
+			piList.add((PlayerInfo)player);
+		}
+		return piList;
 	}
 
 	public void playRound() {
