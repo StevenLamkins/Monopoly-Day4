@@ -45,12 +45,16 @@ public class Player {
 		int d2 = dice.get(1).roll();
 		lastRoll = d1 + d2;
 		int newLoc = lastRoll + location.getPosition();
+		
 		if (newLoc > 39) {
 			credit(200);
 		}
 		Square newSquare = board.getSquares().get(newLoc % 40);
 		debit(newSquare.landOnBy(this));
 	    setLocation(newSquare);
+	    //if (d1 == d2) {
+	    //	takeTurn(dice, board);
+	    //}
 	}
 
 	public void setBalance(int balance) {

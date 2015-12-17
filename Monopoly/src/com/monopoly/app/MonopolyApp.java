@@ -11,7 +11,8 @@ public class MonopolyApp {
 		for (int i = 1; i < 100; i++) {
 			game.playRound();
 			for (Player player : game.getPlayers()) {
-				System.out.println(player.getToken() + " landed on " + player.getLocation().getName() + " and now has balance of " + player.getBalance() +  ".");
+				System.out.println(player.getToken() + " rolled " + player.getLastRoll() + " and landed on " + player.getLocation().getName() +
+						"; " + player.getToken() + " now has balance of " + player.getBalance() +  ".");
 			}
 			System.out.println();
 		}
