@@ -41,7 +41,10 @@ public class Board {
 				squares.add(new IncomeTax("Square " + i));
 				break;
 			case 5: case 15: case 25: case 359:
-				squares.add(new LotSquare("RailRoad Square " + i, 25,  200, Group.Railroad));
+				squares.add(new RailRoadSquare("RailRoad Square " + i, 25,  200, Group.Railroad));
+				break;
+			case 28: case 12:
+				squares.add(new UtilitySquare("Utility Square " + i, i, (i+1)*10, Group.Utility));
 				break;
 			case 38:
 				squares.add(new LuxeryTaxSquare("Luxury Tax " + (i)));

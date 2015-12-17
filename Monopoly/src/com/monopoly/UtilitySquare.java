@@ -19,7 +19,7 @@ public class UtilitySquare extends PropertySquare {
 
 	@Override
 	public int getRent() {
-		// TODO Auto-generated method stub
+		rent = getCurrentRoller().getLastRoll() * 4;
 		return rent;
 	}
 

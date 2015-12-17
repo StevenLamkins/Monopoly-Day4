@@ -3,6 +3,7 @@ package com.monopoly;
 public abstract class  PropertySquare extends Square {
 
 	private Player owner;
+	private Player currentRoller;
 	private int price;
 
 
@@ -15,6 +16,8 @@ public abstract class  PropertySquare extends Square {
 	@Override
 	public void landOn(Player player) {
 
+		setCurrentRoller(player);
+		
 		if (owner == null && player.getAccountBalance() >= price) {
 			player.debit(price);
 			owner = player;
@@ -24,6 +27,15 @@ public abstract class  PropertySquare extends Square {
 			player.debit(getRent());
 			owner.credit(getRent());
 		}
+	}
+
+	private void setCurrentRoller(Player player) {
+		currentRoller = player;
+		
+	}
+
+	public Player getCurrentRoller() {
+		return currentRoller;
 	}
 
 	@Override

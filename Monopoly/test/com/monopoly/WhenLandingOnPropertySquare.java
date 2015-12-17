@@ -94,7 +94,7 @@ public class WhenLandingOnPropertySquare {
 		assertEquals(1494, player2.getAccountBalance(), 0.001);
 
 	}
-	
+
 	@Test
 	public void playerShouldPayRentToOwnerForRailRoad() {
 		Board board = new Board();
@@ -115,5 +115,40 @@ public class WhenLandingOnPropertySquare {
 		assertEquals(1325, player.getAccountBalance(), 0.001);
 		assertEquals(1475, player2.getAccountBalance(), 0.001);
 
+	}
+	
+	@Test
+	public void playerShouldPayRentToOwnerForUtility() {
+		Board board = new Board();
+
+		Player player = new Player(board.getSquares().get(23), Token.Shoe);
+		Player player2 = new Player(board.getSquares().get(23), Token.Thimble);
+
+		Die die1 = new LoadedDie(2);
+		Die die2 = new LoadedDie(3);
+		List<Die> dice = new ArrayList<>();
+		dice.add(die1);
+		dice.add(die2);
+		player.takeTurn(dice);
+		player2.takeTurn(dice);
+
+		assertEquals(1230, player.getAccountBalance(), 0.001);
+		assertEquals(1480, player2.getAccountBalance(), 0.001);
+	}
+	
+	@Test
+	public void playerShouldGetLastRoll() {
+		Board board = new Board();
+
+		Player player = new Player(board.getSquares().get(23), Token.Shoe);
+
+		Die die1 = new LoadedDie(2);
+		Die die2 = new LoadedDie(3);
+		List<Die> dice = new ArrayList<>();
+		dice.add(die1);
+		dice.add(die2);
+		player.takeTurn(dice);
+		
+		assertEquals(5, player.getLastRoll());
 	}
 }

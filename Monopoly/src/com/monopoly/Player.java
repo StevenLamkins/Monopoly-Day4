@@ -8,15 +8,17 @@ public class Player implements PlayerInfo {
 	private Square square;
 	private Token token;
 	private double accountBalance;
+	private int lastRoll;
 
-	
 	public Player(Square square, Token token) {
 		this.square = square;
 		this.token = token;
 		accountBalance = 1500.0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.monopoly.PlayerInfo#getSquare()
 	 */
 	@Override
@@ -24,7 +26,9 @@ public class Player implements PlayerInfo {
 		return square;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.monopoly.PlayerInfo#getToken()
 	 */
 	@Override
@@ -42,12 +46,18 @@ public class Player implements PlayerInfo {
 	}
 
 	private void movePlayer(int moveCount) {
-		for (int i = 0; i < moveCount -1; i++) {
+		setLastRoll(moveCount);
+
+		for (int i = 0; i < moveCount - 1; i++) {
 			step();
-				getSquare().passOver(this);
+			getSquare().passOver(this);
 		}
 		step();
 		getSquare().landOn(this);
+	}
+
+	private void setLastRoll(int lastRoll) {
+		this.lastRoll = lastRoll;
 
 	}
 
@@ -59,7 +69,9 @@ public class Player implements PlayerInfo {
 		this.square = square;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.monopoly.PlayerInfo#getAccountBalance()
 	 */
 	@Override
@@ -70,15 +82,18 @@ public class Player implements PlayerInfo {
 	public void incrementAccount(double amount) {
 		accountBalance += amount;
 	}
-	
+
 	public void credit(double amount) {
 		accountBalance += amount;
 	}
-	
+
 	public void debit(double amount) {
 		System.out.println("Hit this point3");
 		accountBalance -= amount;
 	}
-	
+
+	public int getLastRoll() {
+		return lastRoll;
+	}
 
 }
