@@ -9,28 +9,32 @@ import org.junit.Test;
 public class WhenLandingOnProperty
 {
 	private MonopolyGame game;
-	Player player;
+	Player playerOne, playerTwo;
 	
 	@Before
 	public void setup()
 	{
 		game = new MonopolyGame(2);
-		player = game.getPlayers().get(0);
+		playerOne = game.getPlayers().get(0);
+		playerTwo = game.getPlayers().get(1);
 	}
 
 	@Test
 	public void buyUnownedAndAffordableProperty()
 	{
-		player.move(3);
-		Property currentProperty = (Property)player.getCurrentPosition();
-		fail();
+		Property expectedProperty = (Property) game.getSquares().get(3);
+		playerOne.move(3);
+		Property playerProperty = (Property)playerOne.getCurrentPosition();
+		assertEquals(expectedProperty,playerProperty);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void dontBuyOwnedProperty()
 	{
-		fail();
+		playerTwo.move(3);
+		Property actualProperty = (Property) game.getSquares().get(3);
+		assertTrue(!playerTwo.getName().equals(actualProperty.getOwner()));
 	}
 	
 	@Ignore

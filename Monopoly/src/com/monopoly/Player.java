@@ -68,12 +68,16 @@ public class Player
 	  currentPosition.action(this);
 	  Square landingPosition = currentPosition;
 	  
-	  if(landingPosition.getPosition() - initialPosition.getPosition() < 0)
+	  passGo(initialPosition, landingPosition);
+	  
+  }
+
+private void passGo(Square initialPosition, Square landingPosition) {
+	if(landingPosition.getPosition() - initialPosition.getPosition() < 0)
 	  {
 		  addMoney(200);
 	  }
-	  
-  }
+}
   
   public int getMoney()
   {
