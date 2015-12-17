@@ -98,6 +98,7 @@ public void buy(Property property)
 {
 	money = money - property.getPrice();
 	property.setOwner(this);
+	
 }
 
 public void payRent(Property property)
