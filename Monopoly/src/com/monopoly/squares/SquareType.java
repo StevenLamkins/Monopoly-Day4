@@ -37,6 +37,10 @@ public abstract class SquareType {
 		}
 	}
 	
+	public static void setNumGoPasses(int numGoPasses) {
+		SquareType.numGoPasses = numGoPasses;
+	}
+	
 	public static void incrementNumGoPasses() {
 		numGoPasses++;
 	}

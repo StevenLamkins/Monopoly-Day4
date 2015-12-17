@@ -10,6 +10,7 @@ import java.util.Set;
 
 import com.monopoly.board.Move;
 import com.monopoly.player.Player;
+import com.monopoly.player.PlayerInfo;
 
 public enum Square {
 	Go                   (new GoSquare(SquareGroup.NONE, 0, 0)),
@@ -57,8 +58,8 @@ public enum Square {
 	private static Map<Square, Player> ownerMap;
 	
 	public static void setup() {
-		monopolyMap = new HashMap<>();
-		ownerMap = new HashMap<>();
+		monopolyMap = new HashMap<SquareGroup, LinkedHashSet<Square>>();
+		ownerMap = new HashMap<Square, Player>();
 		
 		for (Square s : Square.values()) {
 			SquareGroup group = s.getType().getGroup();
@@ -72,9 +73,9 @@ public enum Square {
 	}
 	
 	public static List<SquareGroup> getMonopolies(List<Square> properties) {
-		List<SquareGroup> monopolies = new ArrayList<>();
+		List<SquareGroup> monopolies = new ArrayList<SquareGroup>();
 		
-		Map<SquareGroup, Set<Square>> monopolyMap = new HashMap<>();
+		Map<SquareGroup, Set<Square>> monopolyMap = new HashMap<SquareGroup, Set<Square>>();
 		
 		for (Square s : properties) {
 			SquareGroup group = s.getType().getGroup();
@@ -127,7 +128,7 @@ public enum Square {
 		ownerMap.put(square, p);
 	}
 	
-	public static int getNumRailroadsOwned(Player p) {
+	public static int getNumRailroadsOwned(PlayerInfo p) {
 		return (getSquareOwner(Square.BAndORailroad) == p ? 1 : 0) +
 			   (getSquareOwner(Square.PennsylvaniaRailroad) == p ? 1 : 0) +
 			   (getSquareOwner(Square.ReadingRailroad) == p ? 1 : 0) +

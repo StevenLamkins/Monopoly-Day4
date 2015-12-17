@@ -11,7 +11,7 @@ import com.monopoly.squares.Square;
 import com.monopoly.squares.SquareGroup;
 import com.monopoly.squares.SquareType;
 
-public class Player {
+public class Player implements PlayerInfo {
 	private static int turnCount;
 	private MonopolyGame game;
 	private Piece piece;
@@ -27,17 +27,33 @@ public class Player {
 		this.piece = piece;
 		this.balance = balance;
 		this.position = 0;
-		this.properties = new ArrayList<>();
+		this.properties = new ArrayList<Square>();
 	}
 	
+	public static void setTurnCount(int turnCount) {
+		Player.turnCount = turnCount;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.monopoly.player.PlayerInfo#getPiece()
+	 */
+	@Override
 	public Piece getPiece() {
 		return piece;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.monopoly.player.PlayerInfo#getBalance()
+	 */
+	@Override
 	public int getBalance() {
 		return balance;
 	}
 		
+	/* (non-Javadoc)
+	 * @see com.monopoly.player.PlayerInfo#getPosition()
+	 */
+	@Override
 	public int getPosition() {
 		return position;
 	}
@@ -46,6 +62,10 @@ public class Player {
 		this.position = position;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.monopoly.player.PlayerInfo#getProperties()
+	 */
+	@Override
 	public List<Square> getProperties() {
 		return properties;
 	}
@@ -148,7 +168,7 @@ public class Player {
 	private void printMove(int oldPos, int newPos) {
 		Square newSquare = game.getBoard().getSquareAt(newPos);
 		Square oldSquare = game.getBoard().getSquareAt(oldPos);
-		Player owner = Square.getSquareOwner(newSquare);
+		PlayerInfo owner = Square.getSquareOwner(newSquare);
 		int numHouses = newSquare.getType().getNumHouses();
 		
 		System.out.println(String.format(

@@ -9,7 +9,7 @@ public class Board {
 	private List<Square> squares;
 	
 	public Board() {
-		this.squares = new ArrayList<>();
+		this.squares = new ArrayList<Square>();
 		Square[] squares = Square.values();
 		
 		for (int i=0; i<squares.length; i++) {

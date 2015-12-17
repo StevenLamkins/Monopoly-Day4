@@ -11,7 +11,9 @@ import com.monopoly.dice.Die;
 import com.monopoly.exceptions.WrongNumberOfPlayersException;
 import com.monopoly.player.Piece;
 import com.monopoly.player.Player;
+import com.monopoly.player.PlayerInfo;
 import com.monopoly.squares.Square;
+import com.monopoly.squares.SquareType;
 
 public class MonopolyGame {
 	private List<Player> players;
@@ -33,9 +35,9 @@ public class MonopolyGame {
 			throw new WrongNumberOfPlayersException("Incorrect number of players (2-8)");
 		}
 		
-		players = new ArrayList<>();
+		players = new ArrayList<Player>();
 		
-		LinkedList<Piece> pieces = new LinkedList<>();
+		LinkedList<Piece> pieces = new LinkedList<Piece>();
 		pieces.addAll(Arrays.asList(Piece.values()));
 		
 		// Create players, start with $1500
@@ -47,6 +49,8 @@ public class MonopolyGame {
 		dieOne = new Die();
 		dieTwo = new Die();
 		
+		SquareType.setNumGoPasses(0);
+		Player.setTurnCount(0);
 		Square.setup();
 	}
 	
@@ -60,6 +64,10 @@ public class MonopolyGame {
 	
 	public List<Player> getPlayers() {
 		return players;
+	}
+	
+	public List<PlayerInfo> getPlayersInfo() {
+		return new ArrayList<PlayerInfo>(players);
 	}
 	
 	public Board getBoard() {

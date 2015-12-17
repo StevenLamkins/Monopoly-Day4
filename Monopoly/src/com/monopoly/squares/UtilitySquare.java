@@ -2,6 +2,7 @@ package com.monopoly.squares;
 
 import com.monopoly.board.Move;
 import com.monopoly.player.Player;
+import com.monopoly.player.PlayerInfo;
 
 public class UtilitySquare extends PropertySquare {
 
@@ -25,7 +26,7 @@ public class UtilitySquare extends PropertySquare {
 	public void handleMove(Move move) {
 		Square square = move.getSquare();
 		Player player = move.getPlayer();
-		Player payee = Square.getSquareOwner(square);
+		PlayerInfo payee = Square.getSquareOwner(square);
 		
 		if (payee != null && payee != player) {
 			payUtilities(square, player, move.getRoll());

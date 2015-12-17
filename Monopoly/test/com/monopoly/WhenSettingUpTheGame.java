@@ -87,7 +87,7 @@ public class WhenSettingUpTheGame {
 	
 	@Test
 	public void shouldHaveUniquePiecesForPlayers() {
-		Set<Piece> pieces = new HashSet<>();
+		Set<Piece> pieces = new HashSet<Piece>();
 		
 		MonopolyGame game = new MonopolyGame(8);
 		List<Player> players = game.getPlayers();
