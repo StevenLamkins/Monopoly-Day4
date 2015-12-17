@@ -19,7 +19,7 @@ public class WhenLandingOrPassingMoneySquare {
 		Player player = new Player(board.getSquares().get(38), Token.BattleShip);
 		Die die1 = new LoadedDie(1);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
@@ -36,7 +36,7 @@ public class WhenLandingOrPassingMoneySquare {
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(1);
 		Die die2 = new LoadedDie(2);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
@@ -55,7 +55,7 @@ public class WhenLandingOrPassingMoneySquare {
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
@@ -73,7 +73,7 @@ public class WhenLandingOrPassingMoneySquare {
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);
@@ -89,7 +89,7 @@ public class WhenLandingOrPassingMoneySquare {
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(5);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
   		player.takeTurn(dice);

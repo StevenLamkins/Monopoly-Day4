@@ -15,7 +15,7 @@ public class MonopolyGame {
 	private List<Die> dice;
 
 	public MonopolyGame() {
-		dice = new ArrayList<>();
+		dice = new ArrayList<Die>();
 		dice.add(new Die());
 		dice.add(new Die());
 		board = new Board();
@@ -46,7 +46,7 @@ public class MonopolyGame {
 
 	public void addPlayer(Token token) {
 
-		List<Token> tokens = new ArrayList<>();
+		List<Token> tokens = new ArrayList<Token>();
 		for (PlayerInfo player : playerList) {
 			tokens.add(player.getToken());
 		}

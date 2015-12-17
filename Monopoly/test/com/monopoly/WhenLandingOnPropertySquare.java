@@ -20,7 +20,7 @@ public class WhenLandingOnPropertySquare {
 		double startingBalance = player.getAccountBalance();
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -40,7 +40,7 @@ public class WhenLandingOnPropertySquare {
 
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -61,7 +61,7 @@ public class WhenLandingOnPropertySquare {
 		player.debit(1490);
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(1);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -82,7 +82,7 @@ public class WhenLandingOnPropertySquare {
 
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(4);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -104,7 +104,7 @@ public class WhenLandingOnPropertySquare {
 
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(3);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -126,7 +126,7 @@ public class WhenLandingOnPropertySquare {
 
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(3);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);
@@ -144,7 +144,7 @@ public class WhenLandingOnPropertySquare {
 
 		Die die1 = new LoadedDie(2);
 		Die die2 = new LoadedDie(3);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		dice.add(die1);
 		dice.add(die2);
 		player.takeTurn(dice);

@@ -32,7 +32,7 @@ public class WhenMovingPlayers {
 	public void playerShouldMoveCorrectAmountOfSquares() {
 		Board board = new Board();
 		Player player = new Player(board.getStartSquare(), Token.BattleShip);
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		int dieValue1 = 3;
 		int dieValue2 = 4;
 		dice.add(new LoadedDie(6,dieValue1));
@@ -56,7 +56,7 @@ public class WhenMovingPlayers {
 
 		Player player = new Player(squares.get(38), Token.BattleShip);
 
-		List<Die> dice = new ArrayList<>();
+		List<Die> dice = new ArrayList<Die>();
 		int dieValue1 = 3;
 		int dieValue2 = 4;
 		dice.add(new LoadedDie(6,dieValue1));
