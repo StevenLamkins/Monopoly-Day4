@@ -38,7 +38,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldErrorWithTooManyPlayers() {
 		try {
-			MonopolyGame badGame = new MonopolyGame(20);
+			MonopolyGameplay badGame = new MonopolyGame(20);
 			fail("Did not throw exception.");
 		}
 		catch (IllegalArgumentException e)
@@ -51,7 +51,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldErrorWithTooFewPlayers() {
 		try {
-			MonopolyGame badGame = new MonopolyGame(1);
+			MonopolyGameplay badGame = new MonopolyGame(1);
 			fail("Did not throw exception.");
 		}
 		catch (IllegalArgumentException e)
@@ -63,7 +63,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldStartPlayersOnGo() {
 		List<Player> players = game.getPlayers();
-		for(Player player : players)
+		for(PlayerData player : players)
 		{
 			assertEquals("Go Square", player.getSquare().getName());
 		}
@@ -74,7 +74,7 @@ public class WhenSettingUpGame {
 		List<Player> players = game.getPlayers();
 		List<Token> playerTokens = new ArrayList<>();
 		
-		for(Player player : players)
+		for(PlayerData player : players)
 		{
 			Token token = player.getToken();
 			assertFalse(playerTokens.contains(token));
@@ -92,7 +92,7 @@ public class WhenSettingUpGame {
 	public void shouldStartPlayersWithMoney() {
 		List<Player> players = game.getPlayers();
 		
-		for(Player player : players)
+		for(PlayerData player : players)
 		{
 			assertEquals(1500, player.getMoney());
 		}

@@ -1,6 +1,7 @@
 package com.monopoly.squares;
 
 import com.monopoly.Player;
+import com.monopoly.PlayerData;
 
 public class Property extends Square{
 	private int value;
@@ -29,7 +30,7 @@ public class Property extends Square{
 		}
 	}
 
-	protected int calculateRent(Player player) {
+	protected int calculateRent(PlayerData player) {
 		return rent;
 	}
 
@@ -49,7 +50,7 @@ public class Property extends Square{
 		this.rent = newRent;
 	}
 
-	public Player getOwner() {
+	public PlayerData getOwner() {
 		return owner;
 	}
 

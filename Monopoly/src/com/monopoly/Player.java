@@ -7,7 +7,7 @@ import com.monopoly.MonopolyGame.Token;
 import com.monopoly.squares.Property;
 import com.monopoly.squares.Square;
 
-public class Player {
+public class Player implements PlayerData {
 
 	private List<Die> dice;
 	private Square square;
@@ -33,14 +33,26 @@ public class Player {
 		return square.getPosition();
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerData#getSquare()
+	 */
+	@Override
 	public Square getSquare(){
 		return square;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerData#getToken()
+	 */
+	@Override
 	public Token getToken() {
 		return token;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerData#getMoney()
+	 */
+	@Override
 	public int getMoney() {
 		return money;
 	}
@@ -71,6 +83,10 @@ public class Player {
 		return total;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerData#getLastRoll()
+	 */
+	@Override
 	public int getLastRoll() {
 		return dice.get(0).getFaceValue() + dice.get(1).getFaceValue();
 	}

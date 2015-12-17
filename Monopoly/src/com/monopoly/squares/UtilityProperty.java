@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.monopoly.Player;
+import com.monopoly.PlayerData;
 
 public class UtilityProperty extends Property{
 
@@ -34,7 +35,7 @@ public class UtilityProperty extends Property{
 	}
 
 	@Override
-	protected int calculateRent(Player player) {
+	protected int calculateRent(PlayerData player) {
 		return getRent() * player.getLastRoll();
 	}
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.monopoly.squares.Square;
 
-public class MonopolyGame {
+public class MonopolyGame implements MonopolyGameplay {
 
 	private List<Player> players = new ArrayList<>();
 	private List<Die> dice = new ArrayList<>();
@@ -46,6 +46,10 @@ public class MonopolyGame {
 		return dice;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.monopoly.MonopolyGameplay#playRound()
+	 */
+	@Override
 	public void  playRound() {
 		for (Player player : players) {
 			player.takeTurn();
@@ -86,10 +90,15 @@ public class MonopolyGame {
 	
 	private void showDistanceGameWinners(List<Player> winners, int winPosition) {
 		System.out.println("Winning player(s) at position " + winPosition);
-		for (Player winner : winners)
+		for (PlayerData winner : winners)
 		{
 			System.out.println("  " + winner);
 		}
+	}
+
+	@Override
+	public List<PlayerData> getPlayerData() {
+		return new ArrayList<PlayerData>(players);
 	}
 
 	

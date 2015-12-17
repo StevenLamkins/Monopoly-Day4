@@ -27,9 +27,9 @@ public class MonopolyUI {
 			else if (input.startsWith("y") || input.startsWith("Y")) 
 			{
 				game.playRound();
-				for(Player player : game.getPlayers())
+				for(PlayerData player : game.getPlayerData())
 				{
-					System.out.println(player + " is at " + player.getSquare() + " and has $" + player.getMoney());
+					System.out.println(player.getToken() + " is at " + player.getSquare() + " and has $" + player.getMoney());
 				}
 			}
 		}
