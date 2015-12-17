@@ -18,23 +18,35 @@ public class WhenLandingOnPropertySquares {
 		assertEquals(visitor, property.getOwner());		
 
 	}
-	
-	@Ignore 
 	@Test
 	public void shouldNotPurchaseOwnedProperty() {
-		fail("Not yet implemented");
+		Board board = new Board();
+		Player owner = new Player(Token.Battleship, board.getStartSquare());
+		Player visitor = new Player(Token.Iron, board.getStartSquare());
+		PropertySquare property = (PropertySquare)board.getSquares().get(9);
+		owner.takeTurn(new LoadedDie(5), new LoadedDie(4));
+		visitor.takeTurn(new LoadedDie(5), new LoadedDie(4));
+		
+		assertEquals(1500, visitor.getMoney());
+		assertNotEquals(visitor, property.getOwner());	
 	}
-	
-	@Ignore 
+	@Ignore
 	@Test
 	public void shouldNotPurchaseUnaffordableProperty() {
-		fail("Not yet implemented");
+		
 	}
-	
-	@Ignore 
+	 
 	@Test
 	public void shouldPayRentForOwnedLot() {
-		fail("Not yet implemented");
+		Board board = new Board();
+		Player owner = new Player(Token.Battleship, board.getStartSquare());
+		Player visitor = new Player(Token.Iron, board.getStartSquare());
+		PropertySquare property = (PropertySquare)board.getSquares().get(9);
+		owner.takeTurn(new LoadedDie(6), new LoadedDie(6));
+		visitor.takeTurn(new LoadedDie(6), new LoadedDie(6));
+		
+		assertEquals(1491, visitor.getMoney());
+		assertEquals(1409, owner.getMoney());
 	}
 	
 	@Ignore 
@@ -46,6 +58,14 @@ public class WhenLandingOnPropertySquares {
 	@Ignore 
 	@Test
 	public void shouldPayRentForOwnedUtility() {
-		fail("Not yet implemented");
+		Board board = new Board();
+		Player owner = new Player(Token.Battleship, board.getStartSquare());
+		Player visitor = new Player(Token.Iron, board.getStartSquare());
+		PropertySquare property = (PropertySquare)board.getSquares().get(9);
+		owner.takeTurn(new LoadedDie(6), new LoadedDie(6));
+		visitor.takeTurn(new LoadedDie(6), new LoadedDie(6));
+		
+		assertEquals(1452, visitor.getMoney());
+		assertEquals(14, owner.getMoney());
 	}
 }

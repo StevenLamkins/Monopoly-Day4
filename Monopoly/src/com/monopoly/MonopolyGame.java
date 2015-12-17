@@ -34,8 +34,8 @@ public class MonopolyGame {
 		return board.getSquares();
 	}
 
-	public List<Player> getPlayers() {
-		return players;
+	public List<PlayerInfo> getPlayers() {
+		return new ArrayList<PlayerInfo>(players);
 	}
 
 	public void playRound() {

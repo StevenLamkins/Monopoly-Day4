@@ -14,12 +14,12 @@ public class WhenMovingPlayers {
 	@Test
 	public void shouldLeaveGoSquare() {
 		MonopolyGame game = new MonopolyGame(8);
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 		Square goSquare = game.getSquares().get(0);
 		
 		game.playRound();
 		
-		for (Player player : players) {
+		for (PlayerInfo player : players) {
 			assertNotEquals(goSquare, player.getLocation());
 		}
 	}

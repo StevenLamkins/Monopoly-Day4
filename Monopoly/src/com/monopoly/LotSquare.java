@@ -10,7 +10,7 @@ public class LotSquare extends PropertySquare {
 	}
 
 	@Override
-	public int getRent() {
+	public int calculateRent() {
 		return rent;
 	}
 

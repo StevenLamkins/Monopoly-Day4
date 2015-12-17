@@ -22,7 +22,7 @@ public class WhenSettingUpGame {
 	public void shouldHaveCorrectNumberOfPlayers() {
 		MonopolyGame game = new MonopolyGame(4);
 
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 
 		assertEquals(4, players.size());
 	}
@@ -43,9 +43,9 @@ public class WhenSettingUpGame {
 
 		List<Square> squares = game.getSquares();
 		Square goSquare = squares.get(0);
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 
-		for (Player player : players) {
+		for (PlayerInfo player : players) {
 			assertEquals(goSquare, player.getLocation());
 		}
 	}
@@ -53,7 +53,7 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldHaveUniqueTokensForPlayers() {
 		MonopolyGame game = new MonopolyGame(4);
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 
 		assertEquals(Token.Dog, players.get(0).getToken());
 		assertEquals(Token.Iron, players.get(1).getToken());
@@ -76,9 +76,9 @@ public class WhenSettingUpGame {
 	@Test
 	public void shouldStartPlayersWith1500() {
 		MonopolyGame game = new MonopolyGame(8);
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 		
-		for (Player player : players) {
+		for (PlayerInfo player : players) {
 			assertEquals(1500, player.getMoney());
 		}
 	}

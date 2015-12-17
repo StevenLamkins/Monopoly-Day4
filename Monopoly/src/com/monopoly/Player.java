@@ -2,7 +2,7 @@ package com.monopoly;
 
 import com.dicegame.Die;
 
-public class Player {
+public class Player implements PlayerInfo {
 
 	private Square location;
 	private Token token;
@@ -15,14 +15,26 @@ public class Player {
 		this.money = 1500;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getLocation()
+	 */
+	@Override
 	public Square getLocation() {
 		return location;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getToken()
+	 */
+	@Override
 	public Token getToken() {
 		return token;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getMoney()
+	 */
+	@Override
 	public int getMoney() {
 		return money;
 	}
@@ -54,6 +66,10 @@ public class Player {
 		money -= amount;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getLastRoll()
+	 */
+	@Override
 	public int getLastRoll() {
 		return rollValue;
 	}

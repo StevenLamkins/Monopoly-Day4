@@ -41,6 +41,9 @@ public class Board {
 			case 31: case 32: case 34: case 37: case 39:
 				squares.add(new LotSquare("Lot Square " + i, (i+1)*10, i));
 				break;
+			case 12: case 28:
+				squares.add(new UtilitySquare("Utility Square" + i, 150));
+				break;
 			default:
 				squares.add(new Square("Square " + i));
 				break;

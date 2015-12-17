@@ -12,14 +12,35 @@ public abstract class PropertySquare extends Square {
 	 
 	@Override
 	public void landOnBy(Player player) {
-		player.debit(price);
-		this.owner = player;
+		if(isForSale())
+		{	
+			purchaseProperty(player);
+		}
+		else{
+			collectRent(player);
+		}
+	}
+
+	private void collectRent(Player player) {
+		player.debit(calculateRent());
+		owner.credit(calculateRent());
+	}
+
+	private void purchaseProperty(Player player) {
+		if(player.getMoney() >= price){
+			player.debit(price);
+			this.owner = player;
+		}
+	}
+
+	private boolean isForSale() {
+		return this.getOwner() == null;
 	}
 
 	public Player getOwner() {
 		return owner;
 	}
 	
-	public abstract int getRent();
+	public abstract int calculateRent();
 
 }
