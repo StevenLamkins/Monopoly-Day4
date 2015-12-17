@@ -1,9 +1,5 @@
 package com.monopoly;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-
 public class Player implements PlayerInfo {
 
 	private static final int INITIAL_BALANCE = 1500;

@@ -54,7 +54,7 @@ public class MonopolyGame {
 	}
 
 	public List<PlayerInfo> getPlayers() {
-		List<PlayerInfo> piList = new ArrayList();
+		List<PlayerInfo> piList = new ArrayList<>();
 		for (Player player : players) {
 			piList.add((PlayerInfo)player);
 		}
