@@ -24,46 +24,25 @@ public class Board {
 	private void buildSquares() {
 		squares = new ArrayList<>();
 		
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 40; i++) { 
 			switch (i) {
 			case 0:
 				squares.add(new GoSquare());
 				break;
-			case 2:
-			case 17:
-			case 33:
-				squares.add(new CommunitySquare ("Community Square"));
-				break;
 			case 4:
 				squares.add(new IncomeTaxSquare());
-				break;
-			case 6:
-			case 15:
-			case 25:
-			case 35:
-				squares.add(new RailRoadSquare("Rail Road"));
-				break;
-			case 7: 
-			case 22:
-			case 36:
-				squares.add(new ChanceSquare("Chance"));
-				break;
-			case 10:
-			case 30:
-				squares.add(new JailSquare("Jail"));
-				break;
-			case 12:
-			case 28:
-				squares.add(new UtilitySquare("Utility"));
-				break;
-			case 20: 
-				squares.add(new FreeParkingSquare("Free Parking"));
 				break;
 			case 38: 
 				squares.add(new LuxuryTaxSquare());
 				break;
+			case  1: case  3: case  6: case  8: case  9:
+			case 11: case 13: case 14: case 16: case 18: case 19:
+			case 21: case 23: case 24: case 26: case 27: case 29:
+			case 31: case 32: case 34: case 37: case 39:
+				squares.add(new LotSquare("Lot Square " + i, (i+1)*10, i));
+				break;
 			default:
-				squares.add(new LotSquare ("Property", (i+1)*10, i+1));
+				squares.add(new Square("Square " + i));
 				break;
 			}
 		}

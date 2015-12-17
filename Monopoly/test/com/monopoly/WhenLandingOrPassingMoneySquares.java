@@ -57,30 +57,4 @@ public class WhenLandingOrPassingMoneySquares {
 		
 		assertEquals(1700, testPlayer.getMoney());
 	}
-	
-	@Test
-	public void shouldPurchaseUnownedAndAffordableProperty() {
-		Board board = new Board();
-		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
-		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
-		
-		assertEquals(1100, testPlayer.getMoney());
-		
-	}
-	
-
-	@Test
-	public void shouldPayRentToOwned() {
-		Board board = new Board();
-		Player testPlayer = new Player(Token.Battleship, board.getSquares().get(36));
-		testPlayer.takeTurn(new LoadedDie(1), new LoadedDie(2));
-		
-		assertEquals(1100, testPlayer.getMoney());
-		
-		Player testPlayer2 = new Player(Token.Dog, board.getSquares().get(36));
-		testPlayer2.takeTurn(new LoadedDie(1), new LoadedDie(2));
-		assertEquals(1460, testPlayer2.getMoney());
-		assertEquals(1150, testPlayer.getMoney());
-
-	}
 }

@@ -7,6 +7,7 @@ public class Player {
 	private Square location;
 	private Token token;
 	private int money;
+	private int rollValue;
 
 	public Player(Token token, Square startSquare) {
 		this.location = startSquare;
@@ -27,7 +28,7 @@ public class Player {
 	}
 
 	public void takeTurn(Die die1, Die die2) {
-		int rollValue = die1.roll() + die2.roll();
+		this.rollValue = die1.roll() + die2.roll();
 		move(rollValue);
 	}
 
@@ -38,7 +39,7 @@ public class Player {
 			location.passOverBy(this);
 		}
 		step();
-		location.landOnBy(this);
+		location.landOnBy(this); 
 	}
 
 	private void step() {
@@ -53,15 +54,8 @@ public class Player {
 		money -= amount;
 	}
 
-	public void purchase( int price) {
-	
-		money -= price;
-		
-	}
-
-	public void rent(int rent) {
-		money -= rent;
-		
+	public int getLastRoll() {
+		return rollValue;
 	}
 
 }
