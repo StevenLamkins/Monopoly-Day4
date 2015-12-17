@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.monopoly.squares.Square;
 
-public class Player {
+public class Player implements PlayerInfo{
 	
 	public static final int FIRST_LOCATION = 0;
 	public static final int STARTING_BALANCE = 1500;

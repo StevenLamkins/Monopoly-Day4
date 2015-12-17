@@ -49,6 +49,10 @@ public class MonopolyGame {
 		return playerList;
 	}
 
+	public List<PlayerInfo> getPlayersInfo() {		
+		return new ArrayList<PlayerInfo>(playerList);
+	}
+
 	public List<Die> getDice() {
 		return dice;
 	}
