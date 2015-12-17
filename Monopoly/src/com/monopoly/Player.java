@@ -92,6 +92,12 @@ public class Player implements PlayerInfo {
 		accountBalance -= amount;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.monopoly.PlayerInfo#getLastRoll()
+	 */
+	@Override
 	public int getLastRoll() {
 		return lastRoll;
 	}

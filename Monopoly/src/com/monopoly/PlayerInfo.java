@@ -7,5 +7,7 @@ public interface PlayerInfo {
 	public abstract Token getToken();
 
 	public abstract double getAccountBalance();
+	
+	public abstract int getLastRoll();	
 
 }
