@@ -24,8 +24,8 @@ public abstract class  PropertySquare extends Square {
 		}
 		else if (owner != null)
 		{
-			player.debit(getRent());
-			owner.credit(getRent());
+			player.debit(chargeRent());
+			owner.credit(chargeRent());
 		}
 	}
 
@@ -52,7 +52,7 @@ public abstract class  PropertySquare extends Square {
 	public int getPrice() {
 		return price;
 	}
-	public abstract int getRent();
+	public abstract int chargeRent();
 	
 	public abstract Group getGroup();
 

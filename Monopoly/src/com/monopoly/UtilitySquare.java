@@ -18,7 +18,7 @@ public class UtilitySquare extends PropertySquare {
 	}
 
 	@Override
-	public int getRent() {
+	public int chargeRent() {
 		rent = getCurrentRoller().getLastRoll() * 4;
 		return rent;
 	}

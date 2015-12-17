@@ -18,7 +18,7 @@ public class LotSquare extends PropertySquare {
 	}
 
 	@Override
-	public int getRent() {
+	public int chargeRent() {
 		// TODO Auto-generated method stub
 		return rent;
 	}
