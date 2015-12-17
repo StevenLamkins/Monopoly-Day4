@@ -84,8 +84,8 @@ public class WhenSettingUpGame {
 		game.addPlayer(Token.RaceCar);
 		game.addPlayer(Token.Shoe);
 		game.start();
-		List<Player> players = game.getPlayers();
-		for (Player player : players) {
+		List<PlayerInfo> players = game.getPlayers();
+		for (PlayerInfo player : players) {
 			Square square = player.getSquare();
 
 			assertEquals("Go", square.getName());
@@ -122,7 +122,7 @@ public class WhenSettingUpGame {
 		
 		//Setup
 		Board board = new Board();
-		Player player = new Player(board.getStartSquare(), Token.BattleShip);		
+		PlayerInfo player = new Player(board.getStartSquare(), Token.BattleShip);		
 		
 		assertEquals(1500.0, player.getAccountBalance(), 0.001);
 	}

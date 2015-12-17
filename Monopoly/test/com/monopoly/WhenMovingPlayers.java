@@ -20,10 +20,10 @@ public class WhenMovingPlayers {
 			game.addPlayer(token);
 		}
 		
-		List<Player> players = game.getPlayers();
+		List<PlayerInfo> players = game.getPlayers();
 		game.playRound();
 		
-		for (Player player : players) {
+		for (PlayerInfo player : players) {
 			assertFalse(player.getSquare().getName().equals("Go"));
 			
 			System.out.println("Player " +  player.getToken() + " " + player.getSquare().getName());

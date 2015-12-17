@@ -4,20 +4,11 @@ import java.util.List;
 
 import com.dicegame.Die;
 
-public class Player {
+public class Player implements PlayerInfo {
 	private Square square;
-	private String tokenStr;
 	private Token token;
 	private double accountBalance;
 
-	public static final String[] TOKENS = { "Dog", "WheelBarrow", "Hat",
-			"Thimble", "Battleship", "Race Car", "Boot", "Iron" };
-
-//	public Player(Square square, int tokenIndex) {
-//		this.square = square;
-//		token = TOKENS[tokenIndex];
-//		accountBalance = 1500.0;
-//	}
 	
 	public Player(Square square, Token token) {
 		this.square = square;
@@ -25,10 +16,18 @@ public class Player {
 		accountBalance = 1500.0;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getSquare()
+	 */
+	@Override
 	public Square getSquare() {
 		return square;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getToken()
+	 */
+	@Override
 	public Token getToken() {
 		return token;
 	}
@@ -60,6 +59,10 @@ public class Player {
 		this.square = square;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.monopoly.PlayerInfo#getAccountBalance()
+	 */
+	@Override
 	public double getAccountBalance() {
 		return accountBalance;
 	}

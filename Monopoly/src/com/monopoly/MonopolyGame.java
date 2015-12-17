@@ -39,14 +39,15 @@ public class MonopolyGame {
 		return playerList.size();
 	}
 
-	public List<Player> getPlayers() {
-		return playerList;
+	public List<PlayerInfo> getPlayers() {
+		return new ArrayList<PlayerInfo>(playerList);
+		//return playerList;
 	}
 
 	public void addPlayer(Token token) {
 
 		List<Token> tokens = new ArrayList<>();
-		for (Player player : playerList) {
+		for (PlayerInfo player : playerList) {
 			tokens.add(player.getToken());
 		}
 		if (tokens.contains(token))
