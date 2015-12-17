@@ -18,15 +18,19 @@ public abstract class  PropertySquare extends Square {
 
 		setCurrentRoller(player);
 		
-		if (owner == null && player.getAccountBalance() >= price) {
+		if (isForSale() && player.getAccountBalance() >= price) {
 			player.debit(price);
 			owner = player;
 		}
-		else if (owner != null)
+		else if (!isForSale())
 		{
 			player.debit(chargeRent());
 			owner.credit(chargeRent());
 		}
+	}
+
+	private boolean isForSale() {
+		return owner == null;
 	}
 
 	private void setCurrentRoller(Player player) {
