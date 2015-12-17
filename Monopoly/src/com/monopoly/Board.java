@@ -54,8 +54,6 @@ public class Board {
 				squares.add(new BlankSquare("Square " + i));
 				break;
 			}
-		
-			System.out.println(squares.get(i).getName());
 		}
 		
 	}
