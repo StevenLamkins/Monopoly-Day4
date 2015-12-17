@@ -159,9 +159,15 @@ public class Board {
 			
 			case 39:squares.add(new Lot(39,"Boardwalk"));
 			break;
-	
-				
-}
+
+		}
+		
+		if(squares.get(i) instanceof Property)
+		{
+			Square square = squares.get(i);
+			Property property = (Property)square;
+			property.setPrice(i * 10);
+		}
 	}
 	
 	public List<Square> getSquares(){
