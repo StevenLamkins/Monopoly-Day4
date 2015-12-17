@@ -21,7 +21,7 @@ public class Board {
 			squares.get(i).setNextSquare(squares.get(i+1));
 		}
 	}
-
+ 
 	private void buildSquares() {
 		squares = new ArrayList<Square>();
 		squares.add(new GoSquare("Go"));
