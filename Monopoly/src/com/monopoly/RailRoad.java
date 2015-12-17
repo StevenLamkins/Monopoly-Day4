@@ -7,5 +7,10 @@ public class RailRoad extends PropSquare {
 		
 	}
 
+	@Override
+	public int getRent() {
+		return 50;
+	}
+
 	
 }

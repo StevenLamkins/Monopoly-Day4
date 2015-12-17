@@ -57,7 +57,7 @@ public class Board {
 				squares.add(new Square("Square" + i));
 				break;
 			default:
-				squares.add(new Lot("Square" + i, (i+1)*10));
+				squares.add(new Lot("Square" + i, (i+1)*10, i));
 				break;
 			}
 		}

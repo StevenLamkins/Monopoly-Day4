@@ -51,5 +51,57 @@ public class WhenLandingOnProperty {
 		//System.out.println("Ownwer: " + prop.getOwner().getToken());
 		assertFalse(prop.isOwned());
 	}
+	
+	//visitor
+	@Test
+	public void shouldPayRentForOwnedLot() {
+		Board board = new Board();
+		Player testPlayer = new Player(board.getSquares().get(27), Token.BATTLESHIP);
+		testPlayer.takeTurn(new LoadedDie(2));
+		
+		Player testPlayer2 = new Player(board.getSquares().get(27), Token.BOOT);
+		testPlayer2.takeTurn(new LoadedDie(2));
+		
+		assertEquals(1469, testPlayer2.getMoney());
+	    
+	}
+	
+	//owner
+	@Test
+	public void shouldNotPayRentForOwnedLot() {
+		Board board = new Board();
+		Player testPlayer = new Player(board.getSquares().get(27), Token.BATTLESHIP);
+		testPlayer.takeTurn(new LoadedDie(2));
+			
+		assertEquals(1180, testPlayer.getMoney());
+	}
+	
+	@Test
+	public void shouldPayRentForOwnedRailroad() {
+		Board board = new Board();
+		Player testPlayer = new Player(board.getSquares().get(27), Token.BATTLESHIP);
+		testPlayer.takeTurn(new LoadedDie(4));
+			
+		Player testPlayer2 = new Player(board.getSquares().get(27), Token.BOOT);
+		testPlayer2.takeTurn(new LoadedDie(4));
+		
+		assertEquals(1450, testPlayer2.getMoney());
+	    
+	}
+	
+	
+	@Test
+	public void shouldPayRentForOwnedUtility() {
+		Board board = new Board();
+		Player testPlayer = new Player(board.getSquares().get(26), Token.BATTLESHIP);
+		testPlayer.takeTurn(new LoadedDie(1));
+			
+		Player testPlayer2 = new Player(board.getSquares().get(26), Token.BOOT);
+		testPlayer2.takeTurn(new LoadedDie(1));
+		
+		assertEquals(1450, testPlayer2.getMoney());
+	    
+	}
+	
 
 }

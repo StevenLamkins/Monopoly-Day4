@@ -12,9 +12,12 @@ public abstract class PropSquare extends Square {
 	
 	@Override
 	public void landOnBy(Player aPlayer) {
+		//Check if we can buy the property
 		if((aPlayer.getMoney() >= price) && !isOwned()){
 			aPlayer.debit(price);
 			owner = aPlayer;
+		} else if (isOwned() && owner != aPlayer) {
+			aPlayer.debit(getRent());
 		}
 	}
 
@@ -41,5 +44,7 @@ public abstract class PropSquare extends Square {
 	public void setOwner(Player owner) {
 		this.owner = owner;
 	}
+	
+	public abstract int getRent();
 
 }
